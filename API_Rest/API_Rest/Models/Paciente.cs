@@ -5,7 +5,7 @@ public class Paciente
     public int Id { get; set; }
     public string Nombre { get; set; }
     public string Apellidos { get; set; }
-    public int Cedula { get; set; }
+    public string Cedula { get; set; }
     public List<string> Telefonos { get; set; }
     public List<string> Direcciones { get; set; }
     public DateTime FechaNacimiento { get; set; }
