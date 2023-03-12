@@ -23,7 +23,7 @@ namespace API_Rest.Data
                 .HasForeignKey(hc => hc.Paciente);
 
             modelBuilder.Entity<Reservacion>()
-                .HasOne(r => r.)
+                .HasOne(r => r.cama)
                 .WithMany(c => c.Reservaciones)
                 .HasForeignKey(r => r.CamaId);
 
