@@ -1,0 +1,46 @@
+body{
+    background:lightgray;
+}
+.container-big{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 730px;
+}
+.container_class{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 auto;
+    background-color: rgb(240,245,245);
+    background-size: 150%;
+    background-repeat: no-repeat;
+    background-image:url('https://www.shutterstock.com/image-photo/empty-hospital-hallway-260nw-611606933.jpg');
+    animation: movimiento 10s infinite;
+    flex: 3;
+
+}
+.titulo{
+    font-size:20px;
+    color: black;
+}
+.info{ 
+    flex-grow: 1;
+    height:320px;
+    animation: movimiento 10s linear infinite;
+    background-repeat: no-repeat;
+    background-size:120%;  
+    background-image: url('https://st2.depositphotos.com/7341970/10438/v/450/depositphotos_104389970-stock-illustration-medical-team-desktop.jpg');
+}
+
+@keyframes movimiento{
+    from{
+        background-position: bottom left;
+    }
+    to{
+        background-position: top right;
+    }
+}

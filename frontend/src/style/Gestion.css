@@ -1,0 +1,18 @@
+.card-style{
+    border: 2px solid lightskyblue;
+    border-radius: 20px;
+    box-shadow: 5px 2px 2px 2px lightblue;
+    margin: 25px;
+    padding: 7px;
+    flex: 1;
+    background-color: white;
+    min-width: 200px;
+    flex-shrink: 10;
+}
+.card-style:hover{
+    box-shadow: 8px 8px 5px 5px lightblue;
+    transform: scale(1.09);
+}
+.imagen{
+    width: 30%;
+}
