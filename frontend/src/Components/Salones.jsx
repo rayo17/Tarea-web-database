@@ -74,7 +74,7 @@ function Salones () {
           <Form.Label>Zip</Form.Label>
           <Form.Control type="text" placeholder="Zip" required />
           <Form.Control.Feedback type="invalid">
-            Please provide a valid zip.
+            Please provide a va
           </Form.Control.Feedback>
         </Form.Group>
       </Row>
