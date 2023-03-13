@@ -18,6 +18,7 @@ function VistaAdm () {
           imagen='https://cdn0.iconfinder.com/data/icons/medical-checkup-2/512/MedicalCheckup_Patient-Information-medical-hospital-64.png'
           text="Gestion de Salones"
           titulo="Gestion de Salones"
+          direccion='/salones'
         />
         <Gestion titulo="Procedimiento medico" text="fwojfwoefwn" imagen='https://cdn1.iconfinder.com/data/icons/medical-2-19/512/medical-healthcare-hospital-01-512.png'/>
         <Gestion titulo="Gestion Equipo medico" text="sfjwofw" imagen="https://cdn3.iconfinder.com/data/icons/virus-transmission-color/48/Crowd_Patient-64.png" />

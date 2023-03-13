@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card'
 import 'bootstrap/dist/css/bootstrap.css'
 import PropTypes from 'prop-types'
 import '../style/Gestion.css'
-function Gestion ({ imagen, titulo, text }) {
+function Gestion ({ imagen, titulo, text, direccion }) {
   return (
   <Card style={{ width: '10rem' }} className='card-style'>
       <Card.Img variant="top" src={imagen} className='imagen'/>
@@ -13,7 +13,7 @@ function Gestion ({ imagen, titulo, text }) {
         <Card.Text>
             {text}
         </Card.Text>
-        <Button variant="primary">acceder</Button>
+        <Button variant="primary" href= { direccion }>acceder</Button>
       </Card.Body>
     </Card>
   )
@@ -22,6 +22,7 @@ Gestion.propTypes = {
   imagen: PropTypes.string.isRequired,
   titulo: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
+  direccion: PropTypes.string
 }
 export default Gestion
