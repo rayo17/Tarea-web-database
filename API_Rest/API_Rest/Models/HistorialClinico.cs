@@ -8,7 +8,7 @@ namespace API_Rest.Models
         public string Procedimiento { get; set; }
         public DateTime Fecha { get; set; }
         public string Tratamiento { get; set; }
-        public int CedulaPaciente { get; set; }
+        public string CedulaPaciente { get; set; }
         
         public Paciente Paciente { get; set; }  // propiedad de navegación
 

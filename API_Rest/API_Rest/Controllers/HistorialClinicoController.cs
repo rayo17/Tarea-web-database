@@ -58,25 +58,26 @@ namespace API_Rest.Controllers
 
             return Ok("Historial eliminado");
         }
+        
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateHistorialClinico(Paciente paciente, int id, HistorialClinico historialClinico)
+        public async Task<IActionResult> UpdateHistorialClinico(string pacienteId, int id, HistorialClinico historialClinico)
         {
-            if (id != historialClinico.Id || paciente != historialClinico.Paciente)
+            if (id != historialClinico.Id || pacienteId != historialClinico.CedulaPaciente)
             {
                 return BadRequest();
             }
 
-            var existingHistorialClinico = await _historialService.GetHistorialClinicoAsync(paciente, id);
+            var existingHistorialClinico = await _historialService.GetHistorialClinicoByIdAsync(id);
 
             if (existingHistorialClinico == null)
             {
                 return NotFound();
             }
 
-            await _historialService.UpdateHistorialClinicoAsync(paciente, historialClinico);
+            await _historialService.UpdateHistorialClinicoAsync(pacienteId, historialClinico);
 
             return NoContent();
-        } 
+        }
     }
     
 }

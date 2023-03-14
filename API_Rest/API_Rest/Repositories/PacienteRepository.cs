@@ -17,30 +17,30 @@ namespace API_Rest.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Paciente>> GetPacientesAsync()
+        public async Task<List<Paciente>> GetAllPacientes()
         {
             return await _dbContext.Pacientes.ToListAsync();
         }
 
-        public async Task<Paciente> GetPacienteByIdAsync(int id)
+        public async Task<Paciente> GetPacienteById(string id)
         {
             return await _dbContext.Pacientes.FindAsync(id);
         }
 
-        public async Task<Paciente> CreatePacienteAsync(Paciente paciente)
+        public async Task<Paciente> AddPaciente(Paciente paciente)
         {
             _dbContext.Pacientes.Add(paciente);
             await _dbContext.SaveChangesAsync();
             return paciente;
         }
 
-        public async Task UpdatePacienteAsync(Paciente paciente)
+        public async Task<Paciente> UpdatePaciente(string id, Paciente paciente)
         {
             //_dbContext.Entry(paciente).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeletePacienteAsync(int id)
+        public async Task DeletePaciente(string id)
         {
             var paciente = await _dbContext.Pacientes.FindAsync(id);
             _dbContext.Pacientes.Remove(paciente);
@@ -54,37 +54,12 @@ namespace API_Rest.Repositories
                 .ToListAsync();
         }
 
-        public async Task<HistorialClinico> CreateHistorialClinicoAsync(int pacienteId, HistorialClinico historialClinico)
+        public async Task<HistorialClinico> CreateHistorialClinicoAsync(string pacienteId, HistorialClinico historialClinico)
         {
             historialClinico.CedulaPaciente = pacienteId;
             _dbContext.HistorialClinicos.Add(historialClinico);
             await _dbContext.SaveChangesAsync();
             return historialClinico;
-        }
-
-        public Task<List<Paciente>> GetAllPacientes()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Paciente> GetPacienteById(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Paciente> AddPaciente(Paciente paciente)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Paciente> UpdatePaciente(string id, Paciente paciente)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeletePaciente(string id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

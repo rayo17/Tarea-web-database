@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_Rest.Data;
 using API_Rest.Models;
+using API_Rest.Repositories.Interfaces;
 using API_Rest.Services.Interfaces;
 
 namespace API_Rest.Services
@@ -10,6 +11,7 @@ namespace API_Rest.Services
     public class HistorialClinicoService : IHistorialClinicoService
     {
         private readonly IHistorialClinicoRepository _historialClinicoRepository;
+        private readonly IPacienteRepository _pacienteRepository;
 
         public HistorialClinicoService(IHistorialClinicoRepository historialClinicoRepository)
         {
@@ -40,21 +42,29 @@ namespace API_Rest.Services
             await _historialClinicoRepository.SaveChangesAsync();
         }
 
-        public async Task UpdateHistorialClinicoAsync(int id, string procedimiento, DateTime fecha, string tratamiento)
+        public async Task<bool> UpdateHistorialClinico(string cedula, int id, HistorialClinico historialClinico)
         {
-            var historialClinico = await _historialClinicoRepository.GetByIdAsync(id);
-
-            if (historialClinico == null)
+            var paciente = await _pacienteRepository.GetPacienteById(cedula);
+            if (paciente == null)
             {
-                throw new ArgumentException($"No existe el historial clínico con id {id}");
+                return false;
             }
 
-            historialClinico.Procedimiento = procedimiento;
-            historialClinico.Fecha = fecha;
-            historialClinico.Tratamiento = tratamiento;
+            var historial = await _historialClinicoRepository.GetById(id);
+            if (historial == null || historial.PacienteId != paciente.Id)
+            {
+                return false;
+            }
 
-            await _historialClinicoRepository.SaveChangesAsync();
+            historial.Procedimiento = historialClinico.Procedimiento;
+            historial.Fecha = historialClinico.Fecha;
+            historial.Tratamiento = historialClinico.Tratamiento;
+
+            await _historialClinicoRepository.Update(historial);
+
+            return true;
         }
+
         
         
 
