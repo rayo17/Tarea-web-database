@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_Rest.Models;
 using API_Rest.Services.Interfaces;
-namespace HospitalAPI.Controllers
+namespace API_Rest.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

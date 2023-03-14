@@ -74,5 +74,20 @@ namespace API_Rest.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> ObtenerReservacion(int id)
+        {
+            
+            var reservacion = _reservacionService.ObtenerReservacion(id);
+                
+            if (reservacion == null)
+            { 
+                return NotFound();
+            }
+                
+            return Ok(reservacion);
+            
+        } 
     }
 }
