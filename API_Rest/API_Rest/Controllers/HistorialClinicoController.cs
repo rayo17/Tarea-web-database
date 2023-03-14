@@ -13,31 +13,17 @@ namespace API_Rest.Controllers
     
     public class HistorialClinicoController : ControllerBase
     {
-        private readonly IHistorialService _historialService;
+        private readonly IHistorialClinicoService _historialService;
 
-        public HistorialClinicoController(IHistorialService historialService)
+        public HistorialClinicoController(IHistorialClinicoService historialService)
         {
             _historialService = historialService;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> CrearHistorial(HistorialClinico historial)
-        {
-            try
-            {
-                await _historialService.CreateHistorialAsync(historial);
-                return Ok("Historial Clinico creado con éxito");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
         [HttpGet("{id}")]
-        public async Task<IActionResult> ObtenerHistorialPorID(string id)
+        public async Task<IActionResult> ObtenerHistorialPorID(int id)
         {
-            var historial = await _historialService.GetHistorialByIdAsync(id);
+            var historial = await _historialService.GetHistorialClinicoByIdAsync(id);
 
             if (historial == null)
             {
@@ -46,26 +32,13 @@ namespace API_Rest.Controllers
 
             return Ok(historial);
         }
-        [HttpPost("AgregarHistorial")]
-        public async Task<IActionResult> AgregarHistorial(Paciente paciente)
-        {
-            try
-            {
-                await _historialService.CreateHistorialAsync(paciente);
-                return Ok("Historial agregado con éxito");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
 
-        [HttpPost("AgregarPaciente")]
-        public async Task<IActionResult> AgregarPaciente(string id, Paciente paciente)
+        [HttpPost("AgregarHistorial")]
+        public async Task<IActionResult> AgregarPaciente(Paciente paciente, string procedimiento, DateTime fecha, string tratamiento)
         {
             try
             {
-                _historialService.CreatePacienteAsync(id, paciente);
+                _historialService.AddHistorialClinicoAsync(paciente, procedimiento, fecha, tratamiento);
                 return Ok("Paciente agregado con éxito");
             }
             catch (Exception ex)
@@ -73,6 +46,37 @@ namespace API_Rest.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpDelete("EliminarHistorial")]
+        public async Task<IActionResult> DeleteHistorial(int id)
+        {
+            _historialService.DeleteHistorialClinicoAsync(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            return Ok("Historial eliminado");
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateHistorialClinico(Paciente paciente, int id, HistorialClinico historialClinico)
+        {
+            if (id != historialClinico.Id || paciente != historialClinico.Paciente)
+            {
+                return BadRequest();
+            }
+
+            var existingHistorialClinico = await _historialService.GetHistorialClinicoAsync(paciente, id);
+
+            if (existingHistorialClinico == null)
+            {
+                return NotFound();
+            }
+
+            await _historialService.UpdateHistorialClinicoAsync(paciente, historialClinico);
+
+            return NoContent();
+        } 
     }
     
 }

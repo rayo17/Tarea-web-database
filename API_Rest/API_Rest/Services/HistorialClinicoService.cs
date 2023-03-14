@@ -55,6 +55,8 @@ namespace API_Rest.Services
 
             await _historialClinicoRepository.SaveChangesAsync();
         }
+        
+        
 
         public async Task DeleteHistorialClinicoAsync(int id)
         {
