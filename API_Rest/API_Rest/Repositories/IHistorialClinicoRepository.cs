@@ -9,7 +9,7 @@ namespace API_Rest.Repositories.Interfaces
         Task<List<HistorialClinico>> GetAllHistorialClinico();
         Task<HistorialClinico> GetHistorialClinicoById(int id);
         Task<HistorialClinico> AddHistorialClinico(Paciente paciente, string procedimiento, DateTime fecha, string tratamiento);
-        Task<Paciente> UpdateHistorialClinico(int id, Paciente paciente, );
+        Task<HistorialClinico> UpdateHistorialClinico(string pacienteid, int id, HistorialClinico historialClinico);
         Task DeleteHistorialClinico(int id);
     }
     

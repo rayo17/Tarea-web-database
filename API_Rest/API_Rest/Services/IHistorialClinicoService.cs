@@ -10,5 +10,6 @@ namespace API_Rest.Services.Interfaces
         Task<HistorialClinico> GetHistorialClinicoByIdAsync(int id);
         Task AddHistorialClinicoAsync(Paciente paciente, string procedimiento, DateTime fecha, string tratamiento);
         Task DeleteHistorialClinicoAsync(int id);
+        Task UpdateHistorialClinicoAsync(string pacienteid, int id, HistorialClinico historialClinico);
     }
 }

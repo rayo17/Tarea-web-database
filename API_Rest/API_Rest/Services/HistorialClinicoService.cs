@@ -40,7 +40,7 @@ namespace API_Rest.Services
             await _historialClinicoRepository.SaveChangesAsync();
         }
 
-        public async Task UpdateHistorialClinicoAsync(int id, string procedimiento, DateTime fecha, string tratamiento)
+        public async Task UpdateHistorialClinicoAsync(string pacienteid,int id, HistorialClinico historialupdate)
         {
             var historialClinico = await _historialClinicoRepository.GetByIdAsync(id);
 
@@ -49,10 +49,7 @@ namespace API_Rest.Services
                 throw new ArgumentException($"No existe el historial clínico con id {id}");
             }
 
-            historialClinico.Procedimiento = procedimiento;
-            historialClinico.Fecha = fecha;
-            historialClinico.Tratamiento = tratamiento;
-
+            historialClinico = historialupdate;
             await _historialClinicoRepository.SaveChangesAsync();
         }
         
