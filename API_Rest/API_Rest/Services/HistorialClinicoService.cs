@@ -43,7 +43,7 @@ namespace API_Rest.Services
 
         public async Task UpdateHistorialClinicoAsync(string pacienteid,int id, HistorialClinico historialupdate)
         {
-            var historialClinico = await _historialClinicoRepository.GetByIdAsync(id);
+            var historialClinico = await _historialClinicoRepository.GetHistorialClinicoById(id);
 
             if (historialClinico == null)
             {
@@ -51,22 +51,22 @@ namespace API_Rest.Services
             }
 
             historialClinico = historialupdate;
-            await _historialClinicoRepository.SaveChangesAsync();
+            await _historialClinicoRepository.SaveChangesHistorialClinico();
         }
         
         
 
         public async Task DeleteHistorialClinicoAsync(int id)
         {
-            var historialClinico = await _historialClinicoRepository.GetByIdAsync(id);
+            var historialClinico = await _historialClinicoRepository.GetHistorialClinicoById(id);
 
             if (historialClinico == null)
             {
                 throw new ArgumentException($"No existe el historial clínico con id {id}");
             }
 
-            await _historialClinicoRepository.DeleteAsync(historialClinico);
-            await _historialClinicoRepository.SaveChangesAsync();
+            await _historialClinicoRepository.DeleteHistorialClinico(id);
+            await _historialClinicoRepository.SaveChangesHistorialClinico();
         }
     }
 }
