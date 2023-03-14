@@ -27,6 +27,26 @@ namespace API_Rest.Repositories
             return await _dbContext.Reservaciones.FindAsync(id);
         }
 
+        public Task<IEnumerable<Reservacion>> GetReservacionesByFechaAsync(DateTime fecha)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Reservacion>> GetReservacionesByCamaIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Reservacion>> GetReservacionesByPacienteIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IReservacionRepository.CreateReservacionAsync(Reservacion reservacion)
+        {
+            return CreateReservacionAsync(reservacion);
+        }
+
         public async Task<Reservacion> CreateReservacionAsync(Reservacion reservacion)
         {
             _dbContext.Reservaciones.Add(reservacion);
