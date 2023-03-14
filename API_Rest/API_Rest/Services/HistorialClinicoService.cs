@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_Rest.Data;
 using API_Rest.Models;
+using API_Rest.Repositories.Interfaces;
 using API_Rest.Services.Interfaces;
 
 namespace API_Rest.Services
@@ -18,12 +19,12 @@ namespace API_Rest.Services
 
         public async Task<IEnumerable<HistorialClinico>> GetAllHistorialClinicoAsync()
         {
-            return await _historialClinicoRepository.GetAllAsync();
+            return await _historialClinicoRepository.GetAllHistorialClinico();
         }
 
         public async Task<HistorialClinico> GetHistorialClinicoByIdAsync(int id)
         {
-            return await _historialClinicoRepository.GetByIdAsync(id);
+            return await _historialClinicoRepository.GetHistorialClinicoById(id);
         }
 
         public async Task AddHistorialClinicoAsync(Paciente paciente, string procedimiento, DateTime fecha, string tratamiento)
@@ -36,13 +37,13 @@ namespace API_Rest.Services
                 Tratamiento = tratamiento
             };
 
-            await _historialClinicoRepository.AddAsync(historialClinico);
-            await _historialClinicoRepository.SaveChangesAsync();
+            await _historialClinicoRepository.AddHistorialClinico(historialClinico);
+            await _historialClinicoRepository.SaveChangesHistorialClinico();
         }
 
         public async Task UpdateHistorialClinicoAsync(string pacienteid,int id, HistorialClinico historialupdate)
         {
-            var historialClinico = await _historialClinicoRepository.GetByIdAsync(id);
+            var historialClinico = await _historialClinicoRepository.GetHistorialClinicoById(id);
 
             if (historialClinico == null)
             {
@@ -50,22 +51,22 @@ namespace API_Rest.Services
             }
 
             historialClinico = historialupdate;
-            await _historialClinicoRepository.SaveChangesAsync();
+            await _historialClinicoRepository.SaveChangesHistorialClinico();
         }
         
         
 
         public async Task DeleteHistorialClinicoAsync(int id)
         {
-            var historialClinico = await _historialClinicoRepository.GetByIdAsync(id);
+            var historialClinico = await _historialClinicoRepository.GetHistorialClinicoById(id);
 
             if (historialClinico == null)
             {
                 throw new ArgumentException($"No existe el historial clínico con id {id}");
             }
 
-            await _historialClinicoRepository.DeleteAsync(historialClinico);
-            await _historialClinicoRepository.SaveChangesAsync();
+            await _historialClinicoRepository.DeleteHistorialClinico(id);
+            await _historialClinicoRepository.SaveChangesHistorialClinico();
         }
     }
 }
