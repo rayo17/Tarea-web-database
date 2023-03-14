@@ -4,12 +4,12 @@ using API_Rest.Models;
 
 namespace API_Rest.Repositories.Interfaces
 {
-    public class IHistorialClinicoRepository
+    public interface IHistorialClinicoRepository
     {
-        Task<List<HistorialClinico>> GetAllHistorialClinico();
+        Task<IEnumerable<HistorialClinico>> GetAllHistorialClinico();
         Task<HistorialClinico> GetHistorialClinicoById(int id);
-        Task<HistorialClinico> AddHistorialClinico(Paciente paciente, string procedimiento, DateTime fecha, string tratamiento);
-        Task<HistorialClinico> UpdateHistorialClinico(string pacienteid, int id, HistorialClinico historialClinico);
+        Task<HistorialClinico> AddHistorialClinico(HistorialClinico historialClinico);
+        Task UpdateHistorialClinico(int id, HistorialClinico historialClinico);
         Task DeleteHistorialClinico(int id);
     }
     

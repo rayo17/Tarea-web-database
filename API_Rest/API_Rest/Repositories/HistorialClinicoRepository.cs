@@ -12,7 +12,7 @@ namespace API_Rest.Repositories
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public PacienteRepository(ApplicationDbContext dbContext)
+        public HistorialClinicoRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -26,9 +26,22 @@ namespace API_Rest.Repositories
         {
             return await _dbContext.HistorialClinico.FindAsync(id);
         }
-        public async Task<HistorialClinico> AddHistorialClinico(Paciente paciente, string procedimiento, DateTime fecha, string tratamiento)
+        public async Task<HistorialClinico> AddHistorialClinico(HistorialClinico historialClinico)
         {
-            return await _dbContext.HistorialClinico.;
+            _dbContext.HistorialClinico.Add(historialClinico);
+            await _dbContext.SaveChangesAsync();
+            return historialClinico;
+        }
+        public async Task UpdateHistorialClinico(int id, HistorialClinico historialClinico)
+        {
+            //_dbContext.Entry(historialClinico).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+        }
+        public async Task DeleteHistorialClinico(int id)
+        {
+            var historialclinico = await _dbContext.HistorialClinico.FindAsync(id);
+            _dbContext.HistorialClinico.Remove(historialclinico);
+            await _dbContext.SaveChangesAsync();
         }
     }
     

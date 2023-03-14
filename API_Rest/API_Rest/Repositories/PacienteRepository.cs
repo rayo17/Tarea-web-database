@@ -34,7 +34,7 @@ namespace API_Rest.Repositories
             return paciente;
         }
 
-        public async Task<Paciente> UpdatePaciente(string id, Paciente paciente)
+        public async Task UpdatePaciente(string id, Paciente paciente)
         {
             //_dbContext.Entry(paciente).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
@@ -54,7 +54,8 @@ namespace API_Rest.Repositories
                 .ToListAsync();
         }
 
-        public async Task<HistorialClinico> CreateHistorialClinicoAsync(string pacienteId, HistorialClinico historialClinico)
+        public async Task<HistorialClinico> CreateHistorialClinicoAsync(string pacienteId,
+            HistorialClinico historialClinico)
         {
             historialClinico.CedulaPaciente = pacienteId;
             _dbContext.HistorialClinicos.Add(historialClinico);
