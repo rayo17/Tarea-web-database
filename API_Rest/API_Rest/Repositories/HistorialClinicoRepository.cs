@@ -43,6 +43,18 @@ namespace API_Rest.Repositories
             _dbContext.HistorialClinico.Remove(historialclinico);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<int> SaveChangesHistorialClinico()
+        {
+            try
+            {
+                return await _dbContext.SaveChangesHistorialClinico;
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new ApplicationException("An error occurred while saving changes.", ex);
+            }
+        }
     }
     
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_Rest.Data;
 using API_Rest.Models;
+using API_Rest.Repositories.Interfaces;
 using API_Rest.Services.Interfaces;
 
 namespace API_Rest.Services
@@ -18,12 +19,12 @@ namespace API_Rest.Services
 
         public async Task<IEnumerable<HistorialClinico>> GetAllHistorialClinicoAsync()
         {
-            return await _historialClinicoRepository.GetAllAsync();
+            return await _historialClinicoRepository.GetAllHistorialClinico();
         }
 
         public async Task<HistorialClinico> GetHistorialClinicoByIdAsync(int id)
         {
-            return await _historialClinicoRepository.GetByIdAsync(id);
+            return await _historialClinicoRepository.GetHistorialClinicoById(id);
         }
 
         public async Task AddHistorialClinicoAsync(Paciente paciente, string procedimiento, DateTime fecha, string tratamiento)
@@ -36,8 +37,8 @@ namespace API_Rest.Services
                 Tratamiento = tratamiento
             };
 
-            await _historialClinicoRepository.AddAsync(historialClinico);
-            await _historialClinicoRepository.SaveChangesAsync();
+            await _historialClinicoRepository.AddHistorialClinico(historialClinico);
+            await _historialClinicoRepository.SaveChangesHistorialClinico();
         }
 
         public async Task UpdateHistorialClinicoAsync(string pacienteid,int id, HistorialClinico historialupdate)
