@@ -61,5 +61,30 @@ namespace API_Rest.Repositories
             await _dbContext.SaveChangesAsync();
             return historialClinico;
         }
+
+        public Task<List<Paciente>> GetAllPacientes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Paciente> GetPacienteById(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Paciente> AddPaciente(Paciente paciente)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Paciente> UpdatePaciente(string id, Paciente paciente)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeletePaciente(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

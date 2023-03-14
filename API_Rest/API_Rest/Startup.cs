@@ -29,7 +29,7 @@ namespace API_Rest
             services.AddScoped<IPacienteRepository, PacienteRepository>();
             services.AddScoped<IPacienteService, PacienteService>();
 
-            services.AddScoped<IReservacionRepository, ReservacionRepository>();
+            //services.AddScoped<IReservacionRepository, ReservacionRepository>();
             services.AddScoped<IReservacionService, ReservacionService>();
 
             services.AddControllers();
