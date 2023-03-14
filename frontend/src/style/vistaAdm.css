@@ -1,10 +1,12 @@
 body{
     background:lightgray;
+    margin: 0px;
 }
 .container-big{
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
     height: 730px;
 }
 .container_class{
@@ -30,10 +32,14 @@ body{
 .info{ 
     flex-grow: 1;
     height:320px;
+    width: 100%;
+    height: 100%;
     animation: movimiento 10s linear infinite;
     background-repeat: no-repeat;
     background-size:120%;  
     background-image: url('https://st2.depositphotos.com/7341970/10438/v/450/depositphotos_104389970-stock-illustration-medical-team-desktop.jpg');
+    min-width: 200px;
+    min-height: 200px;
 }
 
 @keyframes movimiento{

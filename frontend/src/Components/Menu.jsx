@@ -7,7 +7,7 @@ import '../style/Menu.css'
 function Menu () {
   return (
     <Navbar bg="light" expand="lg">
-      <a>
+      <a href='/'>
         {' '}
         <img
           src="https://cdn0.iconfinder.com/data/icons/medical-health-care-6/256/5-64.png"
@@ -20,8 +20,8 @@ function Menu () {
         </Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav" className='space'>
           <Nav className="me-auto">
-            <Nav.Link href="/vistadm">Vista Admin</Nav.Link>
-            <Nav.Link href="#link">Paciente</Nav.Link>
+            <Nav.Link href="/vistaAdministrador">Vista Admin</Nav.Link>
+            <Nav.Link href="/salones">salones</Nav.Link>
             <NavDropdown title="Gestion" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">r</NavDropdown.Item>
