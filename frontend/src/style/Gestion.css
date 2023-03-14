@@ -8,6 +8,7 @@
     background-color: white;
     min-width: 200px;
     flex-shrink: 10;
+    text-align: center;
 }
 .card-style:hover{
     box-shadow: 8px 8px 5px 5px lightblue;
