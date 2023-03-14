@@ -5,7 +5,7 @@ import VistaAdm from './Components/VistaAdm'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Salones from './Components/Salones'
 import Menu from './Components/Menu'
-import Formsalon from './Components/Formsalon'
+import Vistapaciente from './Components/Vistapaciente'
 function App () {
   return (
       <BrowserRouter>
@@ -13,7 +13,7 @@ function App () {
       <Route path='/' element={<Menu/>}/>
       <Route path='/vistaAdministrador' element={<VistaAdm/>}/>
       <Route path='/salones' element={<Salones/>}/>
-      <Route path='/formsalon-crear' element={<Formsalon accion='crear'/>}/>
+      <Route path='/paciente' element={<Vistapaciente/>}/>
       </Routes>
       </BrowserRouter>
 

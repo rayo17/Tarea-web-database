@@ -4,7 +4,7 @@ function Vistapaciente () {
   return (
     <div>
         <Menu/>
-        hadfwe
+        had
     </div>
   )
 }
