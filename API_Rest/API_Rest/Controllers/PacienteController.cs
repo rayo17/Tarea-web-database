@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_Rest.Models;
-using API_Rest.Models;
 using API_Rest.Services.Interfaces;
 namespace HospitalAPI.Controllers
 {
@@ -33,19 +32,17 @@ namespace HospitalAPI.Controllers
         }
 
         [HttpGet("{cedula}")]
-        public async Task<IActionResult> VerHistorialClinico(int cedula)
+        public async Task<IActionResult> ObtenerPacientePorCedula(string cedula)
         {
-            try
-            {
-                IEnumerable<HistorialClinico> historialClinico = await _pacienteService.GetHistorialClinicoByPacienteIdAsync(cedula);
-                return Ok(historialClinico);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+            var paciente = await _pacienteService.GetPacienteByIdAsync(cedula);
 
+            if (paciente == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(paciente);
+        }
         [HttpPost("AgregarPaciente")]
         public async Task<IActionResult> AgregarPaciente(Paciente paciente)
         {
@@ -61,7 +58,7 @@ namespace HospitalAPI.Controllers
         }
 
         [HttpPost("AgregarHistorialClinico")]
-        public async Task<IActionResult> AgregarHistorialClinico(int cedula, HistorialClinico historialClinico)
+        public async Task<IActionResult> AgregarHistorialClinico(string cedula, HistorialClinico historialClinico)
         {
             try
             {

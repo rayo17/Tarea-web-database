@@ -20,7 +20,7 @@ namespace API_Rest.Services
             return await _pacienteRepository.GetAllPacientes();
         }
 
-        public async Task<Paciente> ObtenerPacientePorCedula(int cedula)
+        public async Task<Paciente> ObtenerPacientePorCedula(string cedula)
         {
             return await _pacienteRepository.GetPacienteById(cedula);
         }
@@ -30,7 +30,7 @@ namespace API_Rest.Services
             return await _pacienteRepository.AddPaciente(paciente);
         }
 
-        public async Task<HistorialClinico> AgregarHistorialClinico(int cedula, HistorialClinico historialClinico)
+        public async Task<HistorialClinico> AgregarHistorialClinico(string cedula, HistorialClinico historialClinico)
         {
             var paciente = await _pacienteRepository.GetPacienteById(cedula);
 
@@ -46,7 +46,7 @@ namespace API_Rest.Services
             return historialClinico;
         }
 
-        public async Task<IEnumerable<HistorialClinico>> ObtenerHistorialClinicoPorCedula(int cedula)
+        public async Task<IEnumerable<HistorialClinico>> ObtenerHistorialClinicoPorCedula(string cedula)
         {
             var paciente = await _pacienteRepository.GetPacienteById(cedula);
 
@@ -59,6 +59,11 @@ namespace API_Rest.Services
         }
 
         public Task<IEnumerable<Paciente>> GetPacientesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Paciente> GetPacienteByIdAsync(string id)
         {
             throw new NotImplementedException();
         }
@@ -89,6 +94,11 @@ namespace API_Rest.Services
         }
 
         public Task CreateHistorialClinicoAsync(int pacienteId, HistorialClinico historialClinico)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task CreateHistorialClinicoAsync(string pacienteId, HistorialClinico historialClinico)
         {
             throw new NotImplementedException();
         }
