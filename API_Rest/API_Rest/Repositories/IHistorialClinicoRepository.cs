@@ -9,7 +9,7 @@ namespace API_Rest.Repositories.Interfaces
         Task<IEnumerable<HistorialClinico>> GetAllHistorialClinico();
         Task<HistorialClinico> GetHistorialClinicoById(int id);
         Task<HistorialClinico> AddHistorialClinico(HistorialClinico historialClinico);
-        Task<int> SaveChangesHistorialClinico();
+        Func<Task<int>> SaveChangesHistorialClinico();
         Task UpdateHistorialClinico(int id, HistorialClinico historialClinico);
         Task DeleteHistorialClinico(int id);
     }

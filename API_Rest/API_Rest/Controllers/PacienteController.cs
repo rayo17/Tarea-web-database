@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_Rest.Models;
 using API_Rest.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+
 namespace API_Rest.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class PacienteController : ControllerBase
@@ -17,6 +20,7 @@ namespace API_Rest.Controllers
             _pacienteService = pacienteService;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CrearPaciente(Paciente paciente)
         {
@@ -31,6 +35,7 @@ namespace API_Rest.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{cedula}")]
         public async Task<IActionResult> ObtenerPacientePorCedula(string cedula)
         {
@@ -43,6 +48,7 @@ namespace API_Rest.Controllers
 
             return Ok(paciente);
         }
+        [Authorize]
         [HttpPost("AgregarPaciente")]
         public async Task<IActionResult> AgregarPaciente(Paciente paciente)
         {
@@ -57,6 +63,7 @@ namespace API_Rest.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("AgregarHistorialClinico")]
         public async Task<IActionResult> AgregarHistorialClinico(string cedula, HistorialClinico historialClinico)
         {

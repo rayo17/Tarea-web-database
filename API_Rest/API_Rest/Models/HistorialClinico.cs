@@ -11,6 +11,7 @@ namespace API_Rest.Models
         public string CedulaPaciente { get; set; }
         
         public Paciente Paciente { get; set; }  // propiedad de navegación
-
+        public DateTime UltimaModificacion { get; set; }
+        public DateTime FechaCreacion { get; set; }
     }
 }

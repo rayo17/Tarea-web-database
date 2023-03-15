@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using API_Rest.Models;
 using API_Rest.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace API_Rest.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     
@@ -19,7 +21,7 @@ namespace API_Rest.Controllers
         {
             _historialService = historialService;
         }
-
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> ObtenerHistorialPorID(int id)
         {
@@ -32,7 +34,7 @@ namespace API_Rest.Controllers
 
             return Ok(historial);
         }
-
+        [Authorize]
         [HttpPost("AgregarHistorial")]
         public async Task<IActionResult> AgregarPaciente(Paciente paciente, string procedimiento, DateTime fecha, string tratamiento)
         {
@@ -46,7 +48,7 @@ namespace API_Rest.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        [Authorize]
         [HttpDelete("EliminarHistorial")]
         public async Task<IActionResult> DeleteHistorial(int id)
         {
@@ -58,6 +60,7 @@ namespace API_Rest.Controllers
 
             return Ok("Historial eliminado");
         }
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateHistorialClinico(string pacienteid, int id, HistorialClinico historialClinico)
         {

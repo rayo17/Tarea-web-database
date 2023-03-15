@@ -38,7 +38,7 @@ namespace API_Rest.Services
             };
 
             await _historialClinicoRepository.AddHistorialClinico(historialClinico);
-            await _historialClinicoRepository.SaveChangesHistorialClinico();
+            _historialClinicoRepository.SaveChangesHistorialClinico();
         }
 
         public async Task UpdateHistorialClinicoAsync(string pacienteid,int id, HistorialClinico historialupdate)
@@ -51,7 +51,7 @@ namespace API_Rest.Services
             }
 
             historialClinico = historialupdate;
-            await _historialClinicoRepository.SaveChangesHistorialClinico();
+            _historialClinicoRepository.SaveChangesHistorialClinico();
         }
         
         
@@ -66,7 +66,7 @@ namespace API_Rest.Services
             }
 
             await _historialClinicoRepository.DeleteHistorialClinico(id);
-            await _historialClinicoRepository.SaveChangesHistorialClinico();
+            _historialClinicoRepository.SaveChangesHistorialClinico();
         }
     }
 }

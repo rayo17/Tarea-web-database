@@ -56,7 +56,7 @@ namespace API_Rest.Repositories
 
         public async Task UpdateReservacionAsync(Reservacion reservacion)
         {
-            //_dbContext.Entry(reservacion).State = EntityState.Modified;
+            _dbContext.Entry(reservacion).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
 

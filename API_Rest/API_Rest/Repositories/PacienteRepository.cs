@@ -36,7 +36,7 @@ namespace API_Rest.Repositories
 
         public async Task UpdatePaciente(string id, Paciente paciente)
         {
-            //_dbContext.Entry(paciente).State = EntityState.Modified;
+            _dbContext.Entry(paciente).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
 
@@ -47,10 +47,10 @@ namespace API_Rest.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<HistorialClinico>> GetHistorialClinicoByPacienteIdAsync(int pacienteId)
+        public async Task<IEnumerable<HistorialClinico>> GetHistorialClinicoByPacienteIdAsync(string pacienteId)
         {
             return await _dbContext.HistorialClinicos
-                .Where(hc => hc.PacienteId == pacienteId)
+                .Where(hc => hc.CedulaPaciente == pacienteId)
                 .ToListAsync();
         }
 

@@ -1,16 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using API_Rest.Repositories;
 using API_Rest.Repositories.Interfaces;
 using API_Rest.Services;
 using API_Rest.Services.Interfaces;
+using API_Rest.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 namespace API_Rest
 {
@@ -21,17 +27,23 @@ namespace API_Rest
         {
             Configuration = configuration;
         }
-        public void ConfugureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddAuthorization();
+            services.AddRouting();
+            services.AddAuthentication();
+            services.AddLogging();
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IPacienteRepository, PacienteRepository>();
             services.AddScoped<IPacienteService, PacienteService>();
 
-            //services.AddScoped<IReservacionRepository, ReservacionRepository>();
+            services.AddScoped<IReservacionRepository, ReservacionRepository>();
             services.AddScoped<IReservacionService, ReservacionService>();
 
+
+            
             services.AddControllers();
         }
 
@@ -43,6 +55,7 @@ namespace API_Rest
             }
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
