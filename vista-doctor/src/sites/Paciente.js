@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Pacientes from './funcion'
 
+
 class Paciente extends Component {
   constructor(props) {
     super(props)
@@ -10,10 +11,11 @@ class Paciente extends Component {
        posts: []
     }
   }
-
+  
 
   render() {
     const { posts, errorMsg } = this.state
+
     return (
       <div>
         <h1>Pacientes</h1>
