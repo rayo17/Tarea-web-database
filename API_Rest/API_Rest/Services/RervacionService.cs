@@ -15,64 +15,40 @@ namespace API_Rest.Services
             _reservacionRepository = reservacionRepository;
         }
 
-        public async Task<IEnumerable<Reservacion>> GetReservacionesAsync()
+        public async Task<IEnumerable<Reservacion>> ObtenerTodasLasReservaciones()
         {
             return await _reservacionRepository.GetReservacionesAsync();
         }
 
-        public async Task<Reservacion> GetReservacionByIdAsync(int id)
+        public Task<IEnumerable<Reservacion>> ObtenerReservacionesPorPaciente(Paciente paciente)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<DateTime> CalcularFechaDeSalida(Reservacion reservacion)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Reservacion> ObtenerReservacion(int id)
         {
             return await _reservacionRepository.GetReservacionByIdAsync(id);
         }
 
-        public async Task CreateReservacionAsync(Reservacion reservacion)
+        public async Task CrearReservacion(Reservacion reservacion)
         {
             await _reservacionRepository.CreateReservacionAsync(reservacion);
         }
 
-        public async Task UpdateReservacionAsync(Reservacion reservacion)
+        public async Task ModificarReservacion(Reservacion reservacion)
         {
             await _reservacionRepository.UpdateReservacionAsync(reservacion);
         }
 
-        public async Task DeleteReservacionAsync(int id)
+        public async Task EliminarReservacion(int id)
         {
             await _reservacionRepository.DeleteReservacionAsync(id);
         }
-
-        public Reservacion CrearReservacion(Reservacion reservacion)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Reservacion ModificarReservacion(Reservacion reservacion)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool EliminarReservacion(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Reservacion ObtenerReservacion(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Reservacion> ObtenerTodasLasReservaciones()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Reservacion> ObtenerReservacionesPorPaciente(Paciente paciente)
-        {
-            throw new NotImplementedException();
-        }
-
-        public DateTime CalcularFechaDeSalida(Reservacion reservacion)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

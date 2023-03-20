@@ -6,12 +6,12 @@ namespace API_Rest.Services.Interfaces
 {
     public interface IReservacionService
     {
-        Reservacion CrearReservacion(Reservacion reservacion);
-        Reservacion ModificarReservacion(Reservacion reservacion);
-        bool EliminarReservacion(int id);
-        Reservacion ObtenerReservacion(int id);
-        IEnumerable<Reservacion> ObtenerTodasLasReservaciones();
-        IEnumerable<Reservacion> ObtenerReservacionesPorPaciente(Paciente paciente);
-        DateTime CalcularFechaDeSalida(Reservacion reservacion);
+        Task CrearReservacion(Reservacion reservacion);
+        Task ModificarReservacion(Reservacion reservacion);
+        Task EliminarReservacion(int id);
+        Task<Reservacion> ObtenerReservacion(int id);
+        Task<IEnumerable<Reservacion>> ObtenerTodasLasReservaciones();
+        Task<IEnumerable<Reservacion>> ObtenerReservacionesPorPaciente(Paciente paciente);
+        Task<DateTime> CalcularFechaDeSalida(Reservacion reservacion);
     }
 }

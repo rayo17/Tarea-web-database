@@ -26,6 +26,23 @@ namespace API_Rest.Data
         }
 
         public DbSet<Paciente> Pacientes { get; set; }
+ 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Paciente>()
+                .HasKey(p => p.Cedula);
+            modelBuilder.Entity<Paciente>()
+                .HasMany(p => p.Telefonos)
+                .WithOne()
+                .HasForeignKey(t => t)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Paciente>()
+                .HasMany(p => p.Direcciones)
+                .WithOne()
+                .HasForeignKey(d => d)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
         public DbSet<HistorialClinico> HistorialClinicos { get; set; }
         public DbSet<Reservacion> Reservaciones { get; set; }
         

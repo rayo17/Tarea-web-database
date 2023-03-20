@@ -26,7 +26,7 @@ namespace API_Rest.Controllers
         {
             try
             {
-                Reservacion reservacionCreada = _reservacionService.CrearReservacion(reservacion);
+                Task reservacionCreada = _reservacionService.CrearReservacion(reservacion);
                 return CreatedAtAction(nameof(CrearReservacion), new { id = reservacionCreada.Id }, reservacionCreada);
             }
             catch (Exception ex)
