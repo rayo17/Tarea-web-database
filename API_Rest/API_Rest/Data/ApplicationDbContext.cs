@@ -16,7 +16,7 @@ namespace API_Rest.Data
                     .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
                     .AddJsonFile("appsettings.json")
                     .Build();
-                string connectionString = configuration.GetConnectionString("HospitalDatabase");
+                string connectionString = configuration.GetConnectionString("HospitalTECNologico");
                 optionsBuilder.UseSqlServer(connectionString);
             }
         }
