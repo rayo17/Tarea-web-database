@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using API_Rest.Repositories;
-using API_Rest.Repositories.Interfaces;
-using API_Rest.Services;
-using API_Rest.Services.Interfaces;
 using API_Rest.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -15,14 +11,17 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace API_Rest
 {
     public class Startup
     {
+        private readonly string _connectionString  = "Data Source=HospitecDB/HospitalTECNologico.db";
         public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
@@ -30,26 +29,25 @@ namespace API_Rest
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlite(_connectionString));
             services.AddAuthorization();
             services.AddRouting();
             services.AddAuthentication();
             services.AddLogging();
-            services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddScoped<IPacienteRepository, PacienteRepository>();
-            services.AddScoped<IPacienteService, PacienteService>();
+            
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Mi API", Version = "v1" });
             });
-
-            services.AddScoped<IReservacionRepository, ReservacionRepository>();
-            services.AddScoped<IReservacionService, ReservacionService>();
-
+            
 
             
             services.AddControllers();
+            //Llama a la funcion para habilitar CORS
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -82,6 +80,8 @@ namespace API_Rest
                     await context.Response.WriteAsync("Hello word");
                 });
             });
+            
+            
         }
     }
 }

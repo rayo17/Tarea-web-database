@@ -4,80 +4,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API_Rest.Models;
+using API_Rest.Models.Views;
 namespace API_Rest.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                IConfigurationRoot configuration = new ConfigurationBuilder()
-                    .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-                    .AddJsonFile("appsettings.json")
-                    .Build();
-                string connectionString = configuration.GetConnectionString("HospitalDatabase");
-                optionsBuilder.UseSqlServer(connectionString);
-            }
-        }
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-
-        public DbSet<Paciente> Pacientes { get; set; }
-        public DbSet<Patologia> Patologias { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public override int SaveChanges()
         {
-            modelBuilder.Entity<Paciente>()
-                .HasMany(p => p.Telefonos)
-                .WithOne()
-                .HasForeignKey(t => t)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Paciente>()
-                .HasMany(p => p.Direcciones)
-                .WithOne()
-                .HasForeignKey(d => d)
-                .OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<Paciente>()
-                .HasMany(p => p.Patologias)
-                .WithOne()
-                .HasForeignKey(p => p.Cedula);
-            
-            modelBuilder.Entity<Paciente>()
-                .HasKey(p => p.Cedula);
-
-            modelBuilder.Entity<Patologia>()
-                .HasKey(p => p.Cedula);
-
-            base.OnModelCreating(modelBuilder);
-        }
-        public DbSet<HistorialClinico> HistorialClinicos { get; set; }
-        public DbSet<Reservacion> Reservaciones { get; set; }
-        
-        
-        public async Task<int> SaveChangesHistorialClinico()
-        {
-            var entries = ChangeTracker
-                .Entries()
-                .Where(e => e.Entity is HistorialClinico && (
-                    e.State == EntityState.Added
-                    || e.State == EntityState.Modified));
-
-            foreach (var entry in entries)
-            {
-                ((HistorialClinico)entry.Entity).UltimaModificacion = DateTime.Now;
-
-                if (entry.State == EntityState.Added)
-                {
-                    ((HistorialClinico)entry.Entity).FechaCreacion = DateTime.Now;
-                }
-            }
-
+            ChangeTracker.DetectChanges();
             return base.SaveChanges();
         }
+        
+        //Tables
+        public DbSet<Paciente> paciente { get; set; }
+        public DbSet<Paciente_Patologia> paciente_patologia { get; set; }
+
+        //Views
+ 
+        public DbSet<vPaciente> vpaciente { get; set; }
+        public DbSet<vPaciente_Patologia> vpaciente_patologia { get; set; }
         
     }
 }

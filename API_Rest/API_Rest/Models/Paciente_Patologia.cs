@@ -6,16 +6,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace API_Rest.Models;
 
-public class Reservacion
+public class Paciente_Patologia
 {
-    public Reservacion()
+    public Paciente_Patologia()
     {
     }
 
     [Key]
-    public int IdReservacion { get; set; }
-    public DateTime Fechaingreso { get; set; }
-    public DateTime Fechasalida { get; set; }
     public int Idpaciente { get; set; }
-    public int Idcama { get; set; }
+    public int Idpatologia { get; set; }
+    public string Tratamiento { get; set; } 
 }
