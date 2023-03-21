@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using API_Rest.Models;
 using API_Rest.Data;
 using API_Rest.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_Rest.Repositories
@@ -14,7 +15,7 @@ namespace API_Rest.Repositories
 
         public PacienteRepository(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext), "El contexto de base de datos no se ha inicializado correctamente.");
         }
 
         public async Task<List<Paciente>> GetAllPacientes()
@@ -29,11 +30,19 @@ namespace API_Rest.Repositories
 
         public async Task<Paciente> AddPaciente(Paciente paciente)
         {
-            _dbContext.Pacientes.Add(paciente);
-            await _dbContext.SaveChangesAsync();
-            return paciente;
+            try
+            {
+                _dbContext.Pacientes.Add(paciente);
+                await _dbContext.SaveChangesAsync();
+                return paciente;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Console.WriteLine($"An error occurred while adding a new patient en PacienteRepository: {ex.Message}");
+                throw;
+            }
         }
-
         public async Task UpdatePaciente(string id, Paciente paciente)
         {
             _dbContext.Entry(paciente).State = EntityState.Modified;
@@ -54,7 +63,7 @@ namespace API_Rest.Repositories
                 .ToListAsync();
         }
 
-        public async Task<HistorialClinico> CreateHistorialClinicoAsync(string pacienteId,
+        public async Task<HistorialClinico> CreateHistorialClinicoAsync(string? pacienteId,
             HistorialClinico historialClinico)
         {
             historialClinico.CedulaPaciente = pacienteId;

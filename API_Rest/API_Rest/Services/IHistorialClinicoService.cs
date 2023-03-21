@@ -8,8 +8,8 @@ namespace API_Rest.Services.Interfaces
     {
         Task<IEnumerable<HistorialClinico>> GetAllHistorialClinicoAsync();
         Task<HistorialClinico> GetHistorialClinicoByIdAsync(int id);
-        Task AddHistorialClinicoAsync(Paciente paciente, string procedimiento, DateTime fecha, string tratamiento);
+        Task AddHistorialClinicoAsync(String pacienteid, string procedimiento, DateTime fecha, string tratamiento);
         Task DeleteHistorialClinicoAsync(int id);
-        Task UpdateHistorialClinicoAsync(string pacienteid, int id, HistorialClinico historialClinico);
+        Task UpdateHistorialClinicoAsync(int id, HistorialClinico historialClinico);
     }
 }

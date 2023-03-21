@@ -1,10 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using API_Rest.Models;
 using API_Rest.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
+
 
 namespace API_Rest.Controllers
 {
@@ -22,16 +19,22 @@ namespace API_Rest.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CrearPaciente(Paciente paciente)
+        public async Task<IActionResult> CrearPaciente([FromBody] Paciente paciente)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            paciente.HistorialClinico = new List<HistorialClinico>(); // inicializar lista vacía
             try
             {
-               await _pacienteService.CreatePacienteAsync(paciente);
+                await _pacienteService.CreatePacienteAsync(paciente);
                 return Ok("Paciente creado con éxito");
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError, "Ha ocurrido un error en el servidor al crear el paciente: " + ex.Message);
             }
         }
 
@@ -50,12 +53,13 @@ namespace API_Rest.Controllers
         }
 
         [HttpPost("AgregarPaciente")]
-        public async Task<IActionResult> AgregarPaciente(Paciente paciente)
+        public async Task<IActionResult> AgregarPaciente([FromBody] Paciente paciente)
         {
+            paciente.HistorialClinico = new List<HistorialClinico>(); // inicializar lista vacía
             try
             {
                 await _pacienteService.CreatePacienteAsync(paciente);
-                return Ok("Paciente agregado con éxito");
+                return Ok("Paciente creado con éxito");
             }
             catch (Exception ex)
             {
@@ -63,13 +67,12 @@ namespace API_Rest.Controllers
             }
         }
 
-  
-        [HttpPost("AgregarHistorialClinico")]
+        [HttpPut("AgregarHistorialClinico/{cedula}")]
         public async Task<IActionResult> AgregarHistorialClinico(string cedula, HistorialClinico historialClinico)
         {
             try
             {
-                _pacienteService.CreateHistorialClinicoAsync(cedula, historialClinico);
+                await _pacienteService.CreateHistorialClinicoAsync(cedula, historialClinico);
                 return Ok("Historial clínico agregado con éxito");
             }
             catch (Exception ex)

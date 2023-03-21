@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_Rest.Controllers
 {
-    [Authorize]
+
     [ApiController]
     [Route("api/[controller]")]
     public class ReservacionController : ControllerBase
@@ -20,7 +20,7 @@ namespace API_Rest.Controllers
             _reservacionService = reservacionService;
         }
 
-        [Authorize]
+
         [HttpPost]
         public async Task<ActionResult<Reservacion>> CrearReservacion(Reservacion reservacion)
         {
@@ -35,7 +35,7 @@ namespace API_Rest.Controllers
             }
         }
 
-        [Authorize]
+
         [HttpPut("{id}")]
         public async Task<IActionResult> ModificarReservacion(int id, Reservacion reservacion)
         {
@@ -64,7 +64,7 @@ namespace API_Rest.Controllers
             return NoContent();
         }
 
-        [Authorize]
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> EliminarReservacion(int id)
         {
@@ -80,7 +80,7 @@ namespace API_Rest.Controllers
             return NoContent();
         }
 
-        [Authorize]
+
         [HttpGet("{id}")]
         public async Task<IActionResult> ObtenerReservacion(int id)
         {

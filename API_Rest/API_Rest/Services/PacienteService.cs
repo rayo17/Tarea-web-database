@@ -27,17 +27,16 @@ namespace API_Rest.Services
 
         public async Task<Paciente> CreatePacienteAsync(Paciente paciente)
         {
-            return await _pacienteRepository.AddPaciente(paciente);
-        }
-
-        public Task UpdatePacienteAsync(Paciente paciente)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeletePacienteAsync(int id)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                return await _pacienteRepository.AddPaciente(paciente);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                Console.WriteLine($"An error occurred while creating a new patient en PacienteService: {ex.Message}");
+                throw;
+            }
         }
 
         public async Task<HistorialClinico> CreateHistorialClinicoAsync(string cedula, HistorialClinico historialClinico)
@@ -49,14 +48,14 @@ namespace API_Rest.Services
                 throw new KeyNotFoundException($"No se encontró ningún paciente con la cédula: {cedula}");
             }
 
-            paciente.HistorialClinico.Add(historialClinico);
+            paciente.HistorialClinico?.Add(historialClinico);
 
             await _pacienteRepository.UpdatePaciente(cedula,paciente);
 
             return historialClinico;
         }
 
-        public async Task<IEnumerable<HistorialClinico>> GetHistorialClinicoByPacienteIdAsync(string cedula)
+        public async Task<IEnumerable<HistorialClinico>?> GetHistorialClinicoByPacienteIdAsync(string cedula)
         {
             var paciente = await _pacienteRepository.GetPacienteById(cedula);
 

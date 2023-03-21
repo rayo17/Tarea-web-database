@@ -1,7 +1,7 @@
 /*ver tratamientos*/
 SELECT 
     Elementos_tratamiento.Medicamento,
-    Elementos_tratamiento.Indicaciones
+    Paciente_toma_para.Comentarios_Indicaciones
 FROM PACIENTE
 JOIN Paciente_toma_para
     ON Paciente.Cedula = Paciente_toma_para.Cedula_Paci

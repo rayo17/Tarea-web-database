@@ -11,6 +11,7 @@ namespace API_Rest.Services
     public class HistorialClinicoService : IHistorialClinicoService
     {
         private readonly IHistorialClinicoRepository _historialClinicoRepository;
+        private readonly IPacienteRepository _pacienteRepository;
 
         public HistorialClinicoService(IHistorialClinicoRepository historialClinicoRepository)
         {
@@ -27,11 +28,17 @@ namespace API_Rest.Services
             return await _historialClinicoRepository.GetHistorialClinicoById(id);
         }
 
-        public async Task AddHistorialClinicoAsync(Paciente paciente, string procedimiento, DateTime fecha, string tratamiento)
+        public async Task AddHistorialClinicoAsync(String cedulaPaciente, string procedimiento, DateTime fecha, string tratamiento)
         {
+            var paciente = await _pacienteRepository.GetPacienteById(cedulaPaciente);
+            
+            if (paciente == null)
+            {
+                throw new Exception("Paciente no encontrado");
+            }
             var historialClinico = new HistorialClinico
             {
-                Paciente = paciente,
+                CedulaPaciente = cedulaPaciente,
                 Procedimiento = procedimiento,
                 Fecha = fecha,
                 Tratamiento = tratamiento
@@ -41,7 +48,7 @@ namespace API_Rest.Services
             _historialClinicoRepository.SaveChangesHistorialClinico();
         }
 
-        public async Task UpdateHistorialClinicoAsync(string pacienteid,int id, HistorialClinico historialupdate)
+        public async Task UpdateHistorialClinicoAsync(int id, HistorialClinico historialupdate)
         {
             var historialClinico = await _historialClinicoRepository.GetHistorialClinicoById(id);
 

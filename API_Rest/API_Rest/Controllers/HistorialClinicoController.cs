@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace API_Rest.Controllers
 {
-    [Authorize]
+
     [ApiController]
     [Route("api/[controller]")]
     
@@ -21,7 +21,7 @@ namespace API_Rest.Controllers
         {
             _historialService = historialService;
         }
-        [Authorize]
+
         [HttpGet("{id}")]
         public async Task<IActionResult> ObtenerHistorialPorID(int id)
         {
@@ -34,13 +34,13 @@ namespace API_Rest.Controllers
 
             return Ok(historial);
         }
-        [Authorize]
+
         [HttpPost("AgregarHistorial")]
-        public async Task<IActionResult> AgregarPaciente(Paciente paciente, string procedimiento, DateTime fecha, string tratamiento)
+        public async Task<IActionResult> AgregarPaciente(string pacienteid, string procedimiento, DateTime fecha, string tratamiento)
         {
             try
             {
-                _historialService.AddHistorialClinicoAsync(paciente, procedimiento, fecha, tratamiento);
+                _historialService.AddHistorialClinicoAsync(pacienteid, procedimiento, fecha, tratamiento);
                 return Ok("Paciente agregado con éxito");
             }
             catch (Exception ex)
@@ -48,7 +48,7 @@ namespace API_Rest.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [Authorize]
+
         [HttpDelete("EliminarHistorial")]
         public async Task<IActionResult> DeleteHistorial(int id)
         {
@@ -60,7 +60,7 @@ namespace API_Rest.Controllers
 
             return Ok("Historial eliminado");
         }
-        [Authorize]
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateHistorialClinico(string pacienteid, int id, HistorialClinico historialClinico)
         {
@@ -76,7 +76,7 @@ namespace API_Rest.Controllers
                 return NotFound();
             }
 
-            await _historialService.UpdateHistorialClinicoAsync(pacienteid, id, historialClinico);
+            await _historialService.UpdateHistorialClinicoAsync(id, historialClinico);
 
             return NoContent();
         } 
