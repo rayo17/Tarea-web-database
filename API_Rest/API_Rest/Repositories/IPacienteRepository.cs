@@ -11,5 +11,6 @@ namespace API_Rest.Repositories.Interfaces
         Task<Paciente> AddPaciente(Paciente paciente);
         Task UpdatePaciente(string id, Paciente paciente);
         Task DeletePaciente(string id);
+        Task  AddPatologia(string cedula, Patologia patologia);
     }
 }

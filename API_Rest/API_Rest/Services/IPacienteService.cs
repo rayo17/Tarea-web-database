@@ -9,7 +9,6 @@ namespace API_Rest.Services.Interfaces
         Task<IEnumerable<Paciente>> GetPacientesAsync();
         Task<Paciente> GetPacienteByIdAsync(string id);
         Task<Paciente> CreatePacienteAsync(Paciente paciente);
-        Task<IEnumerable<HistorialClinico>?> GetHistorialClinicoByPacienteIdAsync(string pacienteId);
-        Task<HistorialClinico> CreateHistorialClinicoAsync(string pacienteId, HistorialClinico historialClinico);
+        Task AddPatologia(string cedula, Patologia patologia);
     }
 }

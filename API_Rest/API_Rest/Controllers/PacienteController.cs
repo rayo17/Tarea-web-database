@@ -5,7 +5,6 @@ using API_Rest.Services.Interfaces;
 
 namespace API_Rest.Controllers
 {
-
     [ApiController]
     [Route("api/[controller]")]
     public class PacienteController : ControllerBase
@@ -26,9 +25,10 @@ namespace API_Rest.Controllers
                 return BadRequest(ModelState);
             }
 
-            paciente.HistorialClinico = new List<HistorialClinico>(); // inicializar lista vacía
+            
             try
             {
+                Console.WriteLine("Creando paciente...");
                 await _pacienteService.CreatePacienteAsync(paciente);
                 return Ok("Paciente creado con éxito");
             }
@@ -55,7 +55,6 @@ namespace API_Rest.Controllers
         [HttpPost("AgregarPaciente")]
         public async Task<IActionResult> AgregarPaciente([FromBody] Paciente paciente)
         {
-            paciente.HistorialClinico = new List<HistorialClinico>(); // inicializar lista vacía
             try
             {
                 await _pacienteService.CreatePacienteAsync(paciente);
@@ -66,19 +65,12 @@ namespace API_Rest.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-        [HttpPut("AgregarHistorialClinico/{cedula}")]
-        public async Task<IActionResult> AgregarHistorialClinico(string cedula, HistorialClinico historialClinico)
+        [HttpPost("{cedula}/patologias")]
+        public ActionResult<Paciente> AgregarPatologia(string cedula, [FromBody] Patologia patologia)
         {
-            try
-            {
-                await _pacienteService.CreateHistorialClinicoAsync(cedula, historialClinico);
-                return Ok("Historial clínico agregado con éxito");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            _pacienteService.AddPatologia(cedula, patologia);
+            return Ok();
         }
+        
     }
 }

@@ -29,6 +29,7 @@ namespace API_Rest.Services
         {
             try
             {
+                Console.WriteLine("llamando al repositorio para añadir paciente a la base");
                 return await _pacienteRepository.AddPaciente(paciente);
             }
             catch (Exception ex)
@@ -38,33 +39,17 @@ namespace API_Rest.Services
                 throw;
             }
         }
-
-        public async Task<HistorialClinico> CreateHistorialClinicoAsync(string cedula, HistorialClinico historialClinico)
+        public async Task AddPatologia(string cedula, Patologia patologia)
         {
-            var paciente = await _pacienteRepository.GetPacienteById(cedula);
-
-            if (paciente == null)
+            try
             {
-                throw new KeyNotFoundException($"No se encontró ningún paciente con la cédula: {cedula}");
+                await _pacienteRepository.AddPatologia(cedula, patologia);
             }
-
-            paciente.HistorialClinico?.Add(historialClinico);
-
-            await _pacienteRepository.UpdatePaciente(cedula,paciente);
-
-            return historialClinico;
-        }
-
-        public async Task<IEnumerable<HistorialClinico>?> GetHistorialClinicoByPacienteIdAsync(string cedula)
-        {
-            var paciente = await _pacienteRepository.GetPacienteById(cedula);
-
-            if (paciente == null)
+            catch (Exception ex)
             {
-                throw new KeyNotFoundException($"No se encontró ningún paciente con la cédula: {cedula}");
+                throw new Exception($"Error adding patologia to paciente: {ex.Message}");
             }
-
-            return paciente.HistorialClinico;
         }
+        
     }
 }

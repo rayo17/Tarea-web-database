@@ -13,5 +13,6 @@ namespace API_Rest.Services.Interfaces
         Task<IEnumerable<Reservacion>> ObtenerTodasLasReservaciones();
         Task<IEnumerable<Reservacion>> ObtenerReservacionesPorPaciente(Paciente paciente);
         Task<DateTime> CalcularFechaDeSalida(Reservacion reservacion);
+
     }
 }

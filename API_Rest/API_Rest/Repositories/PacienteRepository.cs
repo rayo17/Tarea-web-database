@@ -32,8 +32,11 @@ namespace API_Rest.Repositories
         {
             try
             {
+                Console.WriteLine("Añadiendo Paciente a la base dbContext");
                 _dbContext.Pacientes.Add(paciente);
+                Console.WriteLine("Paciente añadido a la base dbContext");
                 await _dbContext.SaveChangesAsync();
+                Console.WriteLine("Cambios Guardados");
                 return paciente;
             }
             catch (Exception ex)
@@ -41,6 +44,14 @@ namespace API_Rest.Repositories
                 // Log the exception
                 Console.WriteLine($"An error occurred while adding a new patient en PacienteRepository: {ex.Message}");
                 throw;
+            }
+        }
+        public async Task AddPatologia(string cedula, Patologia patologia)
+        {
+            var paciente = _dbContext.Pacientes.FirstOrDefault(p => p.Cedula == cedula);
+            if (paciente != null)
+            {
+                _dbContext.SaveChanges();
             }
         }
         public async Task UpdatePaciente(string id, Paciente paciente)
