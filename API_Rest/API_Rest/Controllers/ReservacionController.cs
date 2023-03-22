@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using API_Rest.Data;
 using API_Rest.Models;
 using API_Rest.Models.Views;
+using Microsoft.Data.SqlClient;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore.Storage;
 using Newtonsoft.Json;
 
@@ -83,6 +85,61 @@ namespace API_Rest.Controllers
             return JsonConvert.SerializeObject(resultado);
 
         }
+        
+        [Route("api/PostReservacion")]
+        [HttpPost]
+        public async Task<string> PostReservacion([FromBody] PostReservacion reservacion)
+        {
+            /*_context.paciente.Add(paciente);
+            await _context.SaveChangesAsync();*/
+
+            string query = "INSERT INTO Paci_tiene_proc("
+                           +"Cedula, "
+                           + "Id_proc, " +"Fecha) "
+                           + "VALUES (" 
+                           + $"'{reservacion.Cedula}', '{reservacion.Id_proc}', "
+                           + $"'{reservacion.Fecha.ToString("yyyy-MM-dd")}'"
+                           + ");";
+            
+            Console.WriteLine(query);
+
+            await _context.Database.ExecuteSqlRawAsync(query);
+
+            Task<string> reservacion_wid = GetReservacion(reservacion.Cedula);
+
+            return await reservacion_wid; //CreatedAtAction("GetPaciente", new { id = paciente.cedula }, paciente);
+        }
+        
+        [Route("api/DeleteReservacion")]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteReservacion(int cedula, int idProc)
+        {
+            string query = $"DELETE FROM Paci_tiene_proc WHERE Cedula = {cedula} AND Id_proc = {idProc}";
+
+            int result = await _context.Database.ExecuteSqlRawAsync(query);
+
+            if (result == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok();
+        }
+        
+        [Route("api/UpdateReservacion")]
+        [HttpPatch]
+        public async Task<IActionResult> UpdateReservacion(int cedula, int idProc, [FromBody] PostReservacion reservacion)
+        {
+            string query = "UPDATE Paci_tiene_proc SET Id_proc = @idProc, Fecha = @fecha WHERE Cedula = @cedula AND Id_proc = @idProc;";
+            await _context.Database.ExecuteSqlRawAsync(query, new SqliteParameter("@fecha", reservacion.Fecha), new SqliteParameter("@cedula", cedula), new SqliteParameter("@idProc", idProc));
+
+
+            return Ok(new { message = "Reservacion actualizada con éxito." });
+        }
+
+
+
+        
 
     }
 }
