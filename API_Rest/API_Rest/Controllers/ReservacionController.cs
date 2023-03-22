@@ -131,7 +131,7 @@ namespace API_Rest.Controllers
         public async Task<IActionResult> UpdateReservacion(int cedula, int idProc, [FromBody] PostReservacion reservacion)
         {
             string query = "UPDATE Paci_tiene_proc SET Id_proc = @idProc, Fecha = @fecha WHERE Cedula = @cedula AND Id_proc = @idProc;";
-            await _context.Database.ExecuteSqlRawAsync(query, new SqliteParameter("@fecha", reservacion.Fecha), new SqliteParameter("@cedula", cedula), new SqliteParameter("@idProc", idProc));
+            await _context.Database.ExecuteSqlRawAsync(query, new SqliteParameter("@fecha", reservacion.Fecha), new SqliteParameter("@cedula", cedula), new SqliteParameter("@idProc", reservacion.Id_proc));
 
 
             return Ok(new { message = "Reservacion actualizada con éxito." });
