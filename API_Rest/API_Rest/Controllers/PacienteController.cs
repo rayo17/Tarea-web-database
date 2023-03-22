@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using API_Rest.Data;
 using API_Rest.Models;
 using API_Rest.Models.Views;
+using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+
 
 namespace API_Rest.Controllers
 {
@@ -30,10 +33,6 @@ namespace API_Rest.Controllers
                 + "* "
                 + "FROM "
                 + "Paciente "
-                + "JOIN "
-                + "Direcciones_paciente "
-                + "On "
-                + "Paciente.Cedula = Direcciones_paciente.Cedula_paci "
                 + ";";
             
             //Retorna todos los objetos obtenidos
@@ -137,6 +136,34 @@ namespace API_Rest.Controllers
             Console.WriteLine(query);
             await _context.Database.ExecuteSqlRawAsync(query);
             return Ok();
+        }
+        /*
+* GET: "api/GetPacientesCompleto"
+* Obtiene todos los pacientes en la base de datos con sus teléfonos, direcciones, patologías y tratamientos
+*/
+        [Route("api/GetPacientesCompleto")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<vPacienteCompleto>>> GetPacientesCompleto()
+        {
+            //Query de SELECT para obtener la información completa de los pacientes
+            string query =
+                "SELECT "
+                + "Paciente.*, "
+                + "Direcciones_paciente.Descripcion AS Direccion, "
+                + "Telefonos_paciente.Numero AS Telefono, "
+                + "Patologia.Nombre AS Patologia "
+                + "FROM "
+                + "Paciente, Patologia "
+                + "LEFT JOIN Direcciones_paciente "
+                + "ON Paciente.Cedula = Direcciones_paciente.Cedula_paci "
+                + "LEFT JOIN Telefonos_paciente "
+                + "ON Paciente.Cedula = Telefonos_paciente.Cedula_paci "
+                + "LEFT JOIN Paci_tiene_pat "
+                + "ON Paciente.Cedula = Paci_tiene_pat.Cedula_paci "
+                + ";";
+
+            //Retorna todos los objetos obtenidos
+            return await _context.VPacienteCompleto.FromSqlRaw(query).ToListAsync();
         }
     }
 }

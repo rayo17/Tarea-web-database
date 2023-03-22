@@ -6,5 +6,5 @@ public class TelefonosPaciente
 {
     [Key]
     public int Cedula_Paci { get; set; }
-    public int Numero { get; set; }
+    public List<TelefonosPaciente> Numero { get; set; }
 }

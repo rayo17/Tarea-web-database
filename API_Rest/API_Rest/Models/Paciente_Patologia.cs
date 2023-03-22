@@ -14,5 +14,5 @@ public class Paciente_Patologia
 
     [Key]
     public int Idpatologia { get; set; }
-    public string Tratamiento { get; set; } 
+    public List<Paciente_Patologia> Tratamiento { get; set; } 
 }

@@ -17,5 +17,4 @@ public class vPaciente
     public string Primer_apellido { get; set; }
     public string Segundo_apellido { get; set; }
     public DateTime Fecha_nacimiento { get; set; }
-    public string Descripcion { get; set; }
 }
