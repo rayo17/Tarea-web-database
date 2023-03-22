@@ -10,9 +10,7 @@ namespace API_Rest.Models.Views;
 public class vReservacion
 {
     [Key]
-    public int IdReservacion { get; set; }
-    public DateTime Fechaingreso { get; set; }
-    public DateTime Fechasalida { get; set; }
-    public int Idpaciente { get; set; }
-    public int Idcama { get; set; }
+    public int Id_proc { get; set; }
+    public DateTime Fecha { get; set; }
+    public int Cedula { get; set; }
 }
