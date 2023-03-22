@@ -8,10 +8,16 @@ VALUES(123456789, "100m este del blah, blah");
 INSERT INTO Direcciones_paciente(Cedula_paci, Descripcion)
 VALUES(123456789, "500m blah");
 
+/*TELEFONOS DEL PACIENTE*/ 
+INSERT INTO Telefonos_paciente(Cedula_paci, Numero)
+VALUES(123456789, "+50689674910");
 /*PATOLOGIAS DEL PACIENTE*/
 INSERT INTO Paci_tiene_pat(Cedula_paci, Id_pat) 
 VALUES(123456789, 2);
 
+
 /*TRATAMIENTO QUE TOMA EL PACIENTE PARA CIERTA Patologia*/
 INSERT INTO Paciente_toma_para(Cedula_paci, Id_trat, Id_pat, Comentarios_Indicaciones)
 VALUES(123456789, 1, 2, "3 veces al dia");
+
+/*
