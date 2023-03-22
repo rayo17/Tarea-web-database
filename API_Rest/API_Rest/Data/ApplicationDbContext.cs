@@ -27,5 +27,8 @@ namespace API_Rest.Data
         public DbSet<vPaciente> vpaciente { get; set; }
         public DbSet<vPaciente_Patologia> vpaciente_patologia { get; set; }
         
+        public DbSet<vReservacion> vReservacion { get; set; }
+        public DbSet<Reservacion> Reservacion { get; set; }
+
     }
 }
