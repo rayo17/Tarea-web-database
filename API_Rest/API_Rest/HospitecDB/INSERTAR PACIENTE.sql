@@ -15,3 +15,4 @@ VALUES(123456789, 2);
 /*TRATAMIENTO QUE TOMA EL PACIENTE PARA CIERTA Patologia*/
 INSERT INTO Paciente_toma_para(Cedula_paci, Id_trat, Id_pat, Comentarios_Indicaciones)
 VALUES(123456789, 1, 2, "3 veces al dia");
+

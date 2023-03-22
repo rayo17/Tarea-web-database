@@ -18,4 +18,5 @@ public class Reservacion
     public DateTime Fechasalida { get; set; }
     public int Idpaciente { get; set; }
     public int Idcama { get; set; }
+    public string Nombre { get; set; }
 }
