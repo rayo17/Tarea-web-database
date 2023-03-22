@@ -22,6 +22,7 @@ namespace API_Rest.Data
         public DbSet<Paciente> paciente { get; set; }
         public DbSet<Paciente_Patologia> paciente_patologia { get; set; }
         public DbSet<DireccionPaciente> DireccionPaciente { get; set; }
+        public DbSet<TelefonosPaciente> TelefonosPacientes { get; set; }
 
         //Views
  

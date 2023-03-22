@@ -127,5 +127,16 @@ namespace API_Rest.Controllers
 
             return Ok();
         }
+
+        [HttpPost]
+        [Route("api/PostTelefono")]
+        public async Task<ActionResult> PostTelPaciente([FromBody] TelefonosPaciente telefono)
+        {
+            string query = "INSERT INTO Telefonos_paciente (Cedula_paci, Numero) " +
+                           $"VALUES ({telefono.Cedula_Paci}, {telefono.Numero})";
+            Console.WriteLine(query);
+            await _context.Database.ExecuteSqlRawAsync(query);
+            return Ok();
+        }
     }
 }
