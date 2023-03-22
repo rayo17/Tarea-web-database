@@ -34,7 +34,11 @@ namespace API_Rest.Controllers
                 "SELECT "
                 + "* "
                 + "FROM "
-                + "Paciente"
+                + "Paciente "
+                + "JOIN "
+                + "Direcciones_paciente "
+                + "On "
+                + "Paciente.Cedula = Direcciones_paciente.Cedula_paci "
                 + ";";
             
             //Retorna todos los objetos obtenidos
@@ -103,7 +107,7 @@ namespace API_Rest.Controllers
 
             return Ok();
         }
-        [Route("api/PostPatPaciente")]
+        [Route("api/PostPatologiaPaciente")]
         [HttpPost]
         public async Task<IActionResult> PostPaciTienePat([FromBody] PaciTienePat paciTienePat)
         {
@@ -116,7 +120,7 @@ namespace API_Rest.Controllers
         }
 
         [HttpPost]
-        [Route("api/PostPacienteTomaPara")]
+        [Route("api/PostPacienteTratamiento")]
         public async Task<ActionResult<PacienteTomaPara>> PostPacienteTomaPara([FromBody] PacienteTomaPara pacienteTomaPara)
         {
             string query = $"INSERT INTO Paciente_toma_para(Cedula_paci, Id_trat, Id_pat, Comentarios_Indicaciones) VALUES " +

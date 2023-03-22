@@ -1,8 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace API_Rest.Models;
 
 public class DireccionPaciente
 {
-    public int Id { get; set; }
+    [Key]
     public int CedulaPaciente { get; set; }
     public string Descripcion { get; set; }
 }

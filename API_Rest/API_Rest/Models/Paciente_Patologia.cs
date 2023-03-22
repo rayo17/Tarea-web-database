@@ -13,7 +13,6 @@ public class Paciente_Patologia
     }
 
     [Key]
-    public int Idpaciente { get; set; }
     public int Idpatologia { get; set; }
     public string Tratamiento { get; set; } 
 }
