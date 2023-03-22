@@ -25,15 +25,14 @@ namespace API_Rest.Controllers
         * GET: "api/GetPacientes"
         * Obtiene todos los pacientes en la base de datos
         */
-        [Route("api/Paciente")]
+        [Route("api/GetPacientes")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<vPaciente>>> Getpaciente()
         {
             //Query de SELECT del view VIEWPACIENTE para obtener los datos necesarios para mostrar todos los pacientes
             string query =
                 "SELECT "
-                + "nombre, "
-                + "cedula "
+                + "* "
                 + "FROM "
                 + "Paciente"
                 + ";";
@@ -91,6 +90,43 @@ namespace API_Rest.Controllers
 
             return await paciente_wid; //CreatedAtAction("GetPaciente", new { id = paciente.cedula }, paciente);
         }
+        [Route("api/PostDirPaciente")]
+        [HttpPost]
+        public async Task<ActionResult> PostDirPaciente([FromBody] DireccionPaciente direccion)
+        {
+            string query = "INSERT INTO Direcciones_paciente(Cedula_paci, Descripcion) " +
+                           $"VALUES ({direccion.CedulaPaciente}, '{direccion.Descripcion}')";
 
+            Console.WriteLine(query);
+
+            await _context.Database.ExecuteSqlRawAsync(query);
+
+            return Ok();
+        }
+        [Route("api/PostPatPaciente")]
+        [HttpPost]
+        public async Task<IActionResult> PostPaciTienePat([FromBody] PaciTienePat paciTienePat)
+        {
+            string query = "INSERT INTO Paci_tiene_pat (Cedula_paci, Id_pat) " +
+                           $"VALUES ({paciTienePat.CedulaPaci}, {paciTienePat.IdPat})";
+
+            await _context.Database.ExecuteSqlRawAsync(query);
+
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("api/PostPacienteTomaPara")]
+        public async Task<ActionResult<PacienteTomaPara>> PostPacienteTomaPara([FromBody] PacienteTomaPara pacienteTomaPara)
+        {
+            string query = $"INSERT INTO Paciente_toma_para(Cedula_paci, Id_trat, Id_pat, Comentarios_Indicaciones) VALUES " +
+                           $"({pacienteTomaPara.Cedula_paci}, {pacienteTomaPara.Id_trat}, {pacienteTomaPara.Id_pat}, '{pacienteTomaPara.Comentarios_Indicaciones}')";
+    
+            Console.WriteLine(query);
+
+            await _context.Database.ExecuteSqlRawAsync(query);
+
+            return Ok();
+        }
     }
 }
