@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API_Rest.Models
 {
-    public class Paciente
+    public class Historial
     {
         [Key]
         public int Cedula { get; set; }

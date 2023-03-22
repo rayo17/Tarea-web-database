@@ -1,1 +1,0 @@
-SELECT * FROM Elementos_tratamiento;

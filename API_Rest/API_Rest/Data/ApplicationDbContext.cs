@@ -4,32 +4,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API_Rest.Models;
-using API_Rest.Models.Views;
+
 namespace API_Rest.Data
 {
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
+            Database.EnsureCreated();
         }
-        public override int SaveChanges()
+
+        /*protected override void OnModelCreating(ModelBuilder ModelBuilder)
         {
-            ChangeTracker.DetectChanges();
-            return base.SaveChanges();
-        }
-        
-        //Tables
-        public DbSet<Paciente> paciente { get; set; }
-        public DbSet<Paciente_Patologia> paciente_patologia { get; set; }
+            modelBuilder.Entity<Direcciones_paciente>()
+                .hasKey(p => new {p.Paciente, p.Direccion});
+        }*/
 
-        public DbSet<Paci_tiene_proc> paci_tiene_proc { get; set; }
-        public DbSet<Procedimiento_medico> procedimiento_medico { get; set; }
-
-        //Views
- 
-        public DbSet<vPaciente> vpaciente { get; set; }
-        public DbSet<vPaciente_Patologia> vpaciente_patologia { get; set; }
-        public DbSet<vHistorialClinico> vhistorial_clinico { get; set; }
-
+        public DbSet<Paciente> Paciente { get; set; }
+        public DbSet<Historial> Historial { get; set; }
+        //public DbSet<Direcciones_paciente> Direcciones_paciente { get; set; }
     }
 }
