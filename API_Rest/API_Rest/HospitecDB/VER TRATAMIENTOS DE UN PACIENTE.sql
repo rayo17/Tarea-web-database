@@ -8,3 +8,7 @@ JOIN Paciente_toma_para
 JOIN Elementos_tratamiento
     ON Elementos_tratamiento.Id = Paciente_toma_para.Id_trat
 WHERE Paciente.Cedula = 604560524;
+
+
+
+UPDATE Paci_tiene_proc SET Id_proc = @idProc, Fecha = @fecha WHERE Cedula = @cedula AND Id_proc = @idProc;

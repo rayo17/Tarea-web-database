@@ -11,14 +11,6 @@ C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\ob
 C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\API_Rest.AssemblyInfo.cs
 C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\API_Rest.csproj.CoreCompileInputs.cache
 C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\API_Rest.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\staticwebassets\msbuild.API_Rest.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\staticwebassets\msbuild.build.API_Rest.props
-C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.API_Rest.props
-C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.API_Rest.props
-C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\staticwebassets.pack.json
-C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\staticwebassets.build.json
-C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\staticwebassets.development.json
-C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\scopedcss\bundle\API_Rest.styles.css
 C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\API_Rest.dll
 C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\refint\API_Rest.dll
 C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\API_Rest.pdb
@@ -225,3 +217,10 @@ D:\Universidad\SemestreVII\Tarea-web-database\API_Rest\API_Rest\bin\Debug\net7.0
 D:\Universidad\SemestreVII\Tarea-web-database\API_Rest\API_Rest\bin\Debug\net7.0\Microsoft.CodeAnalysis.Razor.dll
 D:\Universidad\SemestreVII\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\API_Rest.RazorAssemblyInfo.cache
 D:\Universidad\SemestreVII\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\API_Rest.RazorAssemblyInfo.cs
+C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
+C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\bin\Debug\net7.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\bin\Debug\net7.0\Microsoft.CodeAnalysis.dll
+C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\bin\Debug\net7.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\bin\Debug\net7.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\API_Rest.RazorAssemblyInfo.cache
+C:\Users\irodr\OneDrive\Documents\GitHub\Tarea-web-database\API_Rest\API_Rest\obj\Debug\net7.0\API_Rest.RazorAssemblyInfo.cs
