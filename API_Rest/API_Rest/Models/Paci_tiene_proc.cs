@@ -6,14 +6,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace API_Rest.Models;
 
-public class Procedimiento
+public class Paci_tiene_proc
 {
-    public Procedimiento()
+    public Paci_tiene_proc()
     {
     }
 
     [Key]
-    public int Idprocedimiento { get; set; }
-    public string Nombre { get; set; }
-    public int DiasRecuperacion { get; set; }
+    public int Cedula { get; set; }
+    public string Id_proc { get; set; }
+    public DateTime Fecha { get; set; }
 }

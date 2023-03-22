@@ -12,10 +12,10 @@ namespace API_Rest.Models
         {
         }
         [Key]
-        public int Id { get; set; }
-        public int IdPaciente { get; set; }
-        public int Idprocedimiento { get; set; }
+        public int Cedula { get; set; }
+        public int Id_proc { get; set; }
+
         public DateTime Fecha { get; set; }
-        public string Tratamiento { get; set; }
+        public string Nombre_proc { get; set; }
     }
 }
