@@ -16,7 +16,7 @@ namespace DetailTEC_API.Controllers
             this.context = context;
         }
         
-        // GET: api/<ReservacionControllerg>/cedula
+        // GET: api/<ReservacionController>/cedula
         [HttpGet("{cedula}")]
         public Reservacion Get(string cedula)
         {
