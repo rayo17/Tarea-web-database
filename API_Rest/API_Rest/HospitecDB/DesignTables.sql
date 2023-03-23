@@ -62,12 +62,13 @@ CREATE TABLE RESERVACION(
                             Id int NOT NULL,
                             Paciente VARCHAR(10) NOT NULL,
                             Fecha DATE NOT NULL,
-                            Id_Procedimiento VARCHAR (20) NOT NULL,
+                            Id_Procedimiento int NOT NULL,
 
                             PRIMARY KEY(Id),
                             FOREIGN KEY (Paciente) REFERENCES PACIENTE(Cedula),
                             FOREIGN KEY (Id_Procedimiento) REFERENCES PROCEDIMIENTO_MEDICO(Id)
 );
+
 
 
 

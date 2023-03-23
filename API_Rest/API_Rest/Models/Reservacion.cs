@@ -11,6 +11,6 @@ namespace API_Rest.Models
         public string Paciente { get; set; }
         public DateTime Fecha { get; set; }
         [ForeignKey("Id_Procedimiento")]
-        public string Id_Procedimiento { get; set; }
+        public int Id_Procedimiento { get; set; }
     }
 }
