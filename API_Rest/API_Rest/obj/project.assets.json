@@ -4574,19 +4574,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\irodr\\.nuget\\packages\\": {}
+    "C:\\Users\\Joanj\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\irodr\\OneDrive\\Documents\\GitHub\\Tarea-web-database\\API_Rest\\API_Rest\\API_Rest.csproj",
+      "projectUniqueName": "D:\\Universidad\\SemestreVII\\Tarea-web-database\\API_Rest\\API_Rest\\API_Rest.csproj",
       "projectName": "API_Rest",
-      "projectPath": "C:\\Users\\irodr\\OneDrive\\Documents\\GitHub\\Tarea-web-database\\API_Rest\\API_Rest\\API_Rest.csproj",
-      "packagesPath": "C:\\Users\\irodr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\irodr\\OneDrive\\Documents\\GitHub\\Tarea-web-database\\API_Rest\\API_Rest\\obj\\",
+      "projectPath": "D:\\Universidad\\SemestreVII\\Tarea-web-database\\API_Rest\\API_Rest\\API_Rest.csproj",
+      "packagesPath": "C:\\Users\\Joanj\\.nuget\\packages\\",
+      "outputPath": "D:\\Universidad\\SemestreVII\\Tarea-web-database\\API_Rest\\API_Rest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\irodr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Joanj\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -4674,7 +4674,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\irodr\\.dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
