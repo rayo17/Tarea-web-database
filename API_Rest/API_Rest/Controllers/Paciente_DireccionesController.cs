@@ -24,10 +24,20 @@ namespace DetailTEC_API.Controllers
         }
     
         // GET: api/<Paciente_DireccionesController>/cedula
+        // Needs some work and changes
+        /*
         [HttpGet("{cedula}")]
-        public Paciente_Direcciones Get(string paciente)
+        public Paciente_Direcciones Get(string cedula)
         {
-            return context.Paciente_Direcciones.FirstOrDefault(pD => pD.Paciente == paciente);
+            return context.Paciente_Direcciones.FirstOrDefault(pD => pD.Paciente == cedula);
+        }
+        */
+        
+        // GET: api/<Paciente_DireccionesController>/cedula/ubicacion
+        [HttpGet("{cedula}/{ubicacion}")]
+        public Paciente_Direcciones Get(string cedula, string ubicacion)
+        {
+            return context.Paciente_Direcciones.FirstOrDefault(pD => pD.Paciente == cedula && pD.Ubicacion == ubicacion);
         }
     
         // POST: api/<Paciente_DireccionesController>
@@ -47,23 +57,26 @@ namespace DetailTEC_API.Controllers
         }
         
         // PUT: api</Paciente_DireccionesController>
-        [HttpPut("{cedula}")]
-        public ActionResult Put(string paciente, [FromBody] Paciente_Direcciones paciente_direcciones)
+        // Not necessary alaik
+        /*
+        [HttpPut("{cedula}/{ubicacion}")]
+        public ActionResult Put(string cedula, string ubicacion, [FromBody] Paciente_Direcciones paciente_direcciones)
         {
-            if (paciente_direcciones.Paciente == paciente)
+            if (paciente_direcciones.Paciente == cedula && paciente_direcciones.Ubicacion == ubicacion)
             {
-                context.Entry(paciente).State = EntityState.Modified;
+                context.Entry(paciente_direcciones).State = EntityState.Modified;
                 context.SaveChanges();
                 return Ok();
             }
             return BadRequest();
         }
+        */
     
         // DELETE: api/<PacienteController>
-        [HttpDelete("{cedula}")]
-        public ActionResult Delete(string paciente)
+        [HttpDelete("{cedula}/{ubicacion}")]
+        public ActionResult Delete(string cedula, string ubicacion)
         {
-            var pD = context.Paciente_Direcciones.FirstOrDefault(pD => pD.Paciente == paciente);
+            var pD = context.Paciente_Direcciones.FirstOrDefault(pD => pD.Paciente == cedula && pD.Ubicacion == ubicacion);
             if (pD != null)
             {
                 
