@@ -14,13 +14,14 @@ namespace API_Rest.Data
             Database.EnsureCreated();
         }
 
-        /*protected override void OnModelCreating(ModelBuilder ModelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Direcciones_paciente>()
-                .hasKey(p => new {p.Paciente, p.Direccion});
-        }*/
+            modelBuilder.Entity<Paciente_Direcciones>()
+                .HasKey(p => new {p.Paciente, p.Ubicacion});
+        }
 
         public DbSet<Paciente> Paciente { get; set; }
+        public DbSet<Paciente_Direcciones> Paciente_Direcciones { get; set; }
         public DbSet<Historial> Historial { get; set; }
         //public DbSet<Direcciones_paciente> Direcciones_paciente { get; set; }
     }

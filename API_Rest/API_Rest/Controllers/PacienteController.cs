@@ -2,7 +2,6 @@ using API_Rest.Data;
 using API_Rest.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Win32.SafeHandles;
 
 namespace DetailTEC_API.Controllers
 {
@@ -16,6 +15,7 @@ namespace DetailTEC_API.Controllers
         {
             this.context = context;
         }
+        
         // GET: api/<PacienteController>
         [HttpGet]
         public IEnumerable<Paciente> Get()
