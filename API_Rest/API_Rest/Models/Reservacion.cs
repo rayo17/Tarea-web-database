@@ -9,9 +9,8 @@ namespace API_Rest.Models
         public int Id { get; set; }
         [ForeignKey("Paciente")] 
         public string Paciente { get; set; }
-        [ForeignKey("Fecha")]
         public DateTime Fecha { get; set; }
-        [ForeignKey("Procedimiento")]
-        public string Procedimiento { get; set; }
+        [ForeignKey("Id_Procedimiento")]
+        public string Id_Procedimiento { get; set; }
     }
 }
