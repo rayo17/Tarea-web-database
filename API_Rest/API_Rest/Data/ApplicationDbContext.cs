@@ -20,6 +20,7 @@ namespace API_Rest.Data
                 .HasKey(p => new {p.Paciente, p.Ubicacion});
             modelBuilder.Entity<Paciente_Telefonos>()
                 .HasKey(p => new {p.Paciente, p.Telefono});
+            modelBuilder.Entity<Procedimiento_Medico>().HasKey(p => new { p.nombre, p.Fecha });
         }
 
         public DbSet<Paciente> Paciente { get; set; }
@@ -27,6 +28,7 @@ namespace API_Rest.Data
         public DbSet<Paciente_Telefonos> Paciente_Telefonos { get; set; }
         public DbSet<Historial> Historial { get; set; }
         public DbSet<Patologia> Patologia { get; set; }
+        public DbSet<Procedimiento_Medico> Procedimiento_Medico { get; set;}
         public DbSet<Cama> Cama { get; set; }
         //public DbSet<Direcciones_paciente> Direcciones_paciente { get; set; }
     }
