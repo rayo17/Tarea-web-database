@@ -30,6 +30,36 @@ namespace DetailTEC_API.Controllers
             return context.Paciente.FirstOrDefault(p => p.Cedula == cedula);
         }
 
+        // POST: api/<PacienteController>
+        [HttpPost]
+        public ActionResult Post([FromBody] Paciente paciente)
+        {
+            try
+            {
+                context.Paciente.Add(paciente);
+                context.SaveChanges();
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+        
+        // PUT: api</PacienteController>
+        [HttpPut("{cedula}")]
+        public ActionResult Put(string cedula, [FromBody] Paciente paciente)
+        {
+            if (paciente.Cedula == cedula)
+            {
+                context.Entry(paciente).State = EntityState.Modified;
+                context.SaveChanges();
+                return Ok();
+            }
+            return BadRequest();
+        }
+
+        // DELETE: api/<PacienteController>
         [HttpDelete("{cedula}")]
         public ActionResult Delete(string cedula)
         {
