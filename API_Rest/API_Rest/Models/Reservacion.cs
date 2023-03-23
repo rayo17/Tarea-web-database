@@ -7,10 +7,11 @@ namespace API_Rest.Models
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("Paciente")]
-        
+        [ForeignKey("Paciente")] 
         public string Paciente { get; set; }
+        [ForeignKey("Fecha")]
         public DateTime Fecha { get; set; }
+        [ForeignKey("Procedimiento")]
         public string Procedimiento { get; set; }
     }
 }
