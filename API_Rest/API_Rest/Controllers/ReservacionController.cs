@@ -53,6 +53,18 @@ namespace DetailTEC_API.Controllers
             return BadRequest();
         }
         
+        // Update: api/<ReservacionController>
+        [HttpPut("{cedula}/{id_procedimiento}")]
+        public ActionResult Put(string cedula, int id_procedimiento, [FromBody] Reservacion reservacion)
+        {
+            if (reservacion.Paciente == cedula && reservacion.Id_Procedimiento == id_procedimiento)
+            {
+                context.Entry(reservacion).State = EntityState.Modified;
+                context.SaveChanges();
+                return Ok();
+            }
+            return BadRequest();
+        }
         
 
     }
