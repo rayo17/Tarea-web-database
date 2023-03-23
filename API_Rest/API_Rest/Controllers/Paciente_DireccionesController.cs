@@ -72,7 +72,7 @@ namespace DetailTEC_API.Controllers
         }
         */
     
-        // DELETE: api/<PacienteController>
+        // DELETE: api/<Paciente_DireccionesController>
         [HttpDelete("{cedula}/{ubicacion}")]
         public ActionResult Delete(string cedula, string ubicacion)
         {
