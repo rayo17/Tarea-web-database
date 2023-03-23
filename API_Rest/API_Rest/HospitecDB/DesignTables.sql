@@ -49,6 +49,8 @@ CREATE TABLE PROCEDIMIENTO_MEDICO(
 );
 
 
+
+
 -- Cama
 CREATE TABLE CAMA(
     Cantidad INT NOT NULL
@@ -66,6 +68,7 @@ CREATE TABLE RESERVACION(
                             FOREIGN KEY (Paciente) REFERENCES PACIENTE(Cedula),
                             FOREIGN KEY (Id_Procedimiento) REFERENCES PROCEDIMIENTO_MEDICO(Id)
 );
+
 
 
 -- Historial clinico
