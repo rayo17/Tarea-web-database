@@ -38,7 +38,11 @@ namespace DetailTEC_API.Controllers
                 return BadRequest("Error saving the entity changes: " + e.InnerException?.Message);
             }
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> f0d9ab4bf738420012ed32835258db7ba5e3e389
         // DELETE: api/<ReservacionController>
         [HttpDelete("{cedula}/{id_procedimiento}")]
         public ActionResult Delete(string cedula)
@@ -66,6 +70,10 @@ namespace DetailTEC_API.Controllers
             return BadRequest();
         }
         
+<<<<<<< HEAD
+=======
+
+>>>>>>> f0d9ab4bf738420012ed32835258db7ba5e3e389
     }
     
 }

@@ -1,12 +1,8 @@
-<<<<<<< HEAD
-import React, { Component } from 'react'
-//import axios from 'axios'
-import Pacientes from './funcion'
-=======
 import React, { Component } from 'react';
 import axios from 'axios';
 import NuevoPacienteFormulario from "./NuevoPacienteFormulario.js";
->>>>>>> ff6b413adbc56db45a10e7c48f977836a33b8daf
+import { CSSTransition } from 'react-transition-group';
+
 
 
 class Paciente extends Component {
@@ -20,10 +16,14 @@ class Paciente extends Component {
       direcciones: [],
       showForm: false,
       error: null,
+      showDialog: false, // estado para mostrar/ocultar el diálogo
     };
   }
   toggleForm = () => {
     this.setState({ showForm: !this.state.showForm });
+  };
+  toggleDialog = () => {
+    this.setState(prevState => ({ showDialog: !prevState.showDialog }));
   };
 
   
@@ -83,47 +83,107 @@ class Paciente extends Component {
     this.setState({ error: error.message });
   });
 }
+openDialog() {
+  this.setState({ isOpen: true });
+  document.body.style.overflow = "hidden";
+  document.getElementById("root").classList.add("blur");
+  document.querySelector(".dialog").classList.add("dialog-enter");
+}
+
+closeDialog() {
+  this.setState({ isOpen: false });
+  document.body.style.overflow = "auto";
+  document.getElementById("root").classList.remove("blur");
+  document.querySelector(".dialog").classList.add("dialog-exit");
+  setTimeout(() => {
+    document.querySelector(".dialog").classList.remove("dialog-enter", "dialog-exit");
+  }, 500); // espera a que termine la transición antes de remover las clases
+}
 
 
-  render() {
-    const { pacientes, direcciones, error } = this.state;
-  
-    return (
-      <div>
-        <h1>Pacientes</h1>
-        {error && <div>Error: {error}</div>}
-        <table style={{ borderCollapse: 'collapse', width: '80%', margin: '20px' }}>
-          <thead>
-            <tr>
-              <th style={{ border: '1px solid black', padding: '10px' }}>Nombre</th>
-              <th style={{ border: '1px solid black', padding: '10px' }}>Apellidos</th>
-              <th style={{ border: '1px solid black', padding: '10px' }}>Cédula</th>
-              <th style={{ border: '1px solid black', padding: '10px' }}>Fecha de nacimiento</th>
-              <th style={{ border: '1px solid black', padding: '10px' }}>Dirección</th>
-              <th style={{ border: '1px solid black', padding: '10px' }}>Teléfonos</th>
-              <th style={{ border: '1px solid black', padding: '10px' }}>Patologías</th>
+
+
+render() {
+  const { pacientes, direcciones, error, showDialog } = this.state;
+
+  return (
+    <div style={{ backgroundColor: '#fff', textAlign: 'center' }}>
+  <h1 style={{ margin: '50px 0', fontSize: '2.5rem', fontWeight: 'bold', textTransform: 'uppercase' }}>Pacientes</h1>
+      {error && <div>Error: {error}</div>}
+      <table style={{ borderCollapse: 'collapse', width: '80%', margin: '0 auto' }}>
+        <thead>
+          <tr>
+            <th style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>Nombre</th>
+            <th style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>Apellidos</th>
+            <th style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>Cédula</th>
+            <th style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>Fecha de nacimiento</th>
+            <th style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>Dirección</th>
+            <th style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>Teléfonos</th>
+            <th style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>Patologías</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pacientes.map(paciente => (
+            <tr key={paciente.cedula}>
+              <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{paciente.nombre}</td>
+              <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{paciente.primer_apellido} {paciente.segundo_apellido}</td>
+              <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{paciente.cedula}</td>
+              <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{paciente.fecha_nacimiento}</td>
+              <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{direcciones[paciente.cedula]}</td>
+              <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{this.state.telefonos[paciente.cedula] ? this.state.telefonos[paciente.cedula].join(', ') : ''}</td>
+              <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{this.state.patologias[paciente.cedula] ? this.state.patologias[paciente.cedula].map(patologia => `${patologia.nombre} (${patologia.tratamiento})`).join(', ') : ''}</td>
             </tr>
-          </thead>
-          <tbody>
-            {pacientes.map(paciente => (
-              <tr key={paciente.cedula}>
-                <td style={{ border: '1px solid black', padding: '10px' }}>{paciente.nombre}</td>
-                <td style={{ border: '1px solid black', padding: '10px' }}>{paciente.primer_apellido} {paciente.segundo_apellido}</td>
-                <td style={{ border: '1px solid black', padding: '10px' }}>{paciente.cedula}</td>
-                <td style={{ border: '1px solid black', padding: '10px' }}>{paciente.fecha_nacimiento}</td>
-                <td style={{ border: '1px solid black', padding: '10px' }}>{direcciones[paciente.cedula]}</td>
-                <td style={{ border: '1px solid black', padding: '10px' }}>{this.state.telefonos[paciente.cedula] ? this.state.telefonos[paciente.cedula].join(', ') : ''}</td>
-                <td style={{ border: '1px solid black', padding: '10px' }}>{this.state.patologias[paciente.cedula] ? this.state.patologias[paciente.cedula].map(patologia => `${patologia.nombre} (${patologia.tratamiento})`).join(', ') : ''}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <button onClick={this.toggleForm}>Nuevo Paciente</button>
-        {this.state.showForm && <NuevoPacienteFormulario onClose={this.toggleForm} onNewPatient={this.handleNewPatient} />}
+          ))}
+        </tbody>
+      </table>
+      <button style={{ marginTop: '20px', padding: '10px 20px', borderRadius: '5px', backgroundColor: '#fff', color: '#4CAF50', border: '2px solid #4CAF50', cursor: 'pointer' }} 
+      onClick={this.toggleDialog}>Nuevo Paciente</button>
+      {showDialog && (
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              background: "rgba(0, 0, 0, 0.5)", // fondo semitransparente
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 999 // asegurarse de que el diálogo esté por encima del resto del contenido
+            }}
+          >
+            <div>
+          <CSSTransition in={this.state.isOpen} classNames="dialog" timeout={500}>
+          <div
+            className="dialog"
+            style={{
+              backgroundColor: "#fff",
+              padding: "20px",
+              borderRadius: "5px",
+              maxWidth: "80%",
+              maxHeight: "80%",
+              overflow: "auto",
+              marginBottom: "5px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", // sombra para dar profundidad
+            }}
+          >
+            {/* contenido del diálogo */}
+            <NuevoPacienteFormulario
+              onClose={this.toggleDialog}
+              onNewPatient={this.handleNewPatient}
+            />
+          </div>
+        </CSSTransition>
+          </div>
+          </div>
+        )}
       </div>
     );
   }
-  
 }
 
 export default Paciente;
