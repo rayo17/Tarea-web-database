@@ -19,7 +19,7 @@ function Pacientes() {
       <h1>Listado de Pacientes</h1>
       <ul>
         {pacientes.map(paciente => (
-          <li key={paciente.id}>{paciente.nombre} {paciente.apellidos}</li>
+          <li key={paciente.id}>{paciente.nombre} {paciente.primer_apellido}</li>
         ))}
       </ul>
     </div>
