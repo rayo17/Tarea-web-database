@@ -42,10 +42,9 @@ CREATE TABLE PATOLOGIA(
 
 -- Procedimiento
 CREATE TABLE PROCEDIMIENTO_MEDICO(
-                                     Id int NOT NULL,
                                      Nombre VARCHAR(20) NOT NULL,
 
-                                     PRIMARY KEY(Id)
+                                     PRIMARY KEY(Nombre)
 );
 
 
@@ -62,15 +61,11 @@ CREATE TABLE RESERVACION(
                             Id int NOT NULL,
                             Paciente VARCHAR(10) NOT NULL,
                             Fecha DATE NOT NULL,
-<<<<<<< HEAD
-                            Id_Procedimiento VARCHAR (20) NOT NULL,
-=======
-                            Id_Procedimiento int NOT NULL,
->>>>>>> ff6b413adbc56db45a10e7c48f977836a33b8daf
+                            Procedimiento VARCHAR(20) NOT NULL,
 
                             PRIMARY KEY(Id),
                             FOREIGN KEY (Paciente) REFERENCES PACIENTE(Cedula),
-                            FOREIGN KEY (Id_Procedimiento) REFERENCES PROCEDIMIENTO_MEDICO(Id)
+                            FOREIGN KEY (Procedimiento) REFERENCES PROCEDIMIENTO_MEDICO(Nombre)
 );
 
 
@@ -78,16 +73,15 @@ CREATE TABLE RESERVACION(
 
 -- Historial clinico
 CREATE TABLE HISTORIAL(
-                          Id int NOT NULL, -- Cambiar por Varchar para que coincida con Cedula de paciente
+                          Paciente VARCHAR(10) NOT NULL, -- Cambiar por Varchar para que coincida con Cedula de paciente
                           Procedimiento VARCHAR (20) NOT NULL,
                           Fecha DATE NOT NULL,
                           Tratamiento VARCHAR (20),
 
-                          PRIMARY KEY(Id),
-                          FOREIGN KEY (Id) REFERENCES PACIENTE(Cedula),
+                          PRIMARY KEY(Paciente),
+                          FOREIGN KEY (Paciente) REFERENCES PACIENTE(Cedula),
                           FOREIGN KEY (Procedimiento) REFERENCES PROCEDIMIENTO_MEDICO(Nombre),
-                          FOREIGN KEY (Fecha) REFERENCES RESERVACION(Fecha),
-                          FOREIGN KEY (Tratamiento) REFERENCES PATOLOGIA(Tratamiento)
+                          FOREIGN KEY (Fecha) REFERENCES RESERVACION(Fecha)
 );
 
 

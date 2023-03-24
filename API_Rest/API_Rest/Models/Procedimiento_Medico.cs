@@ -7,11 +7,8 @@ public class Procedimiento_Medico
     public Procedimiento_Medico()
     {
     }
-    [ForeignKey("Paciente")] 
-    
-    public int paciente { get; set; }
+    [Key]
     public string nombre { get; set; }
-    public DateTime Fecha { get; set; }
 
     
 }

@@ -38,14 +38,12 @@ namespace DetailTEC_API.Controllers
                 return BadRequest("Error saving the entity changes: " + e.InnerException?.Message);
             }
         }
-<<<<<<< HEAD
-=======
-        
+
         // DELETE: api/<ReservacionController>
         [HttpDelete("{cedula}/{id_procedimiento}")]
-        public ActionResult Delete(string cedula, int id_procedimiento)
+        public ActionResult Delete(string cedula)
         {
-            var reservacion = context.Reservacion.FirstOrDefault(r => r.Paciente == cedula && r.Id_Procedimiento == id_procedimiento);
+            var reservacion = context.Reservacion.FirstOrDefault(r => r.Paciente == cedula);
             if (reservacion != null)
             {
                 context.Reservacion.Remove(reservacion);
@@ -59,7 +57,7 @@ namespace DetailTEC_API.Controllers
         [HttpPut("{cedula}/{id_procedimiento}")]
         public ActionResult Put(string cedula, int id_procedimiento, [FromBody] Reservacion reservacion)
         {
-            if (reservacion.Paciente == cedula && reservacion.Id_Procedimiento == id_procedimiento)
+            if (reservacion.Paciente == cedula)
             {
                 context.Entry(reservacion).State = EntityState.Modified;
                 context.SaveChanges();
@@ -68,8 +66,6 @@ namespace DetailTEC_API.Controllers
             return BadRequest();
         }
         
-
->>>>>>> ff6b413adbc56db45a10e7c48f977836a33b8daf
     }
     
 }
