@@ -49,6 +49,8 @@ CREATE TABLE PROCEDIMIENTO_MEDICO(
 );
 
 
+
+
 -- Cama
 CREATE TABLE CAMA(
     Cantidad INT NOT NULL
@@ -60,12 +62,18 @@ CREATE TABLE RESERVACION(
                             Id int NOT NULL,
                             Paciente VARCHAR(10) NOT NULL,
                             Fecha DATE NOT NULL,
+<<<<<<< HEAD
                             Id_Procedimiento VARCHAR (20) NOT NULL,
+=======
+                            Id_Procedimiento int NOT NULL,
+>>>>>>> ff6b413adbc56db45a10e7c48f977836a33b8daf
 
                             PRIMARY KEY(Id),
                             FOREIGN KEY (Paciente) REFERENCES PACIENTE(Cedula),
                             FOREIGN KEY (Id_Procedimiento) REFERENCES PROCEDIMIENTO_MEDICO(Id)
 );
+
+
 
 
 -- Historial clinico

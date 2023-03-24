@@ -11,6 +11,10 @@ namespace API_Rest.Models
         public string Paciente { get; set; }
         public DateTime Fecha { get; set; }
         [ForeignKey("Id_Procedimiento")]
+<<<<<<< HEAD
         public string Id_Procedimiento { get; set; }
+=======
+        public int Id_Procedimiento { get; set; }
+>>>>>>> ff6b413adbc56db45a10e7c48f977836a33b8daf
     }
 }
