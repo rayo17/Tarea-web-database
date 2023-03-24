@@ -31,7 +31,7 @@ CREATE TABLE PACIENTE_TELEFONOS(
 -- Patologia
 CREATE TABLE PATOLOGIA(
                           Paciente VARCHAR(10) NOT NULL,
-                          --Id INT NOT NULL,
+                          -- Id INT NOT NULL,
                           Nombre VARCHAR(20) NOT NULL,
                           Tratamiento VARCHAR(20) NOT NULL,
 
@@ -42,12 +42,10 @@ CREATE TABLE PATOLOGIA(
 
 -- Procedimiento
 CREATE TABLE PROCEDIMIENTO_MEDICO(
-                                     Paciente VARCHAR(10) NOT NULL,
+                                     Id int NOT NULL,
                                      Nombre VARCHAR(20) NOT NULL,
-                                     Fecha DATE NOT NULL,
 
-                                     PRIMARY KEY(Nombre, Fecha),
-                                     FOREIGN KEY (Paciente) REFERENCES PACIENTE(Cedula)
+                                     PRIMARY KEY(Id)
 );
 
 
@@ -62,11 +60,11 @@ CREATE TABLE RESERVACION(
                             Id int NOT NULL,
                             Paciente VARCHAR(10) NOT NULL,
                             Fecha DATE NOT NULL,
-                            Procedimiento VARCHAR (20) NOT NULL,
+                            Id_Procedimiento VARCHAR (20) NOT NULL,
 
                             PRIMARY KEY(Id),
                             FOREIGN KEY (Paciente) REFERENCES PACIENTE(Cedula),
-                            FOREIGN KEY (Procedimiento, Fecha) REFERENCES PROCEDIMIENTO_MEDICO(Nombre, Fecha)
+                            FOREIGN KEY (Id_Procedimiento) REFERENCES PROCEDIMIENTO_MEDICO(Id)
 );
 
 
@@ -79,7 +77,8 @@ CREATE TABLE HISTORIAL(
 
                           PRIMARY KEY(Id),
                           FOREIGN KEY (Id) REFERENCES PACIENTE(Cedula),
-                          FOREIGN KEY (Procedimiento, Fecha) REFERENCES PROCEDIMIENTO_MEDICO(Nombre, Fecha),
+                          FOREIGN KEY (Procedimiento) REFERENCES PROCEDIMIENTO_MEDICO(Nombre),
+                          FOREIGN KEY (Fecha) REFERENCES RESERVACION(Fecha),
                           FOREIGN KEY (Tratamiento) REFERENCES PATOLOGIA(Tratamiento)
 );
 
