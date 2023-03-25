@@ -1,0 +1,49 @@
+<changelist name="Uncommitted_changes_before_Update_at_23_3_2023_00_12_[Changes]" date="1679551978246" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_12_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 23/3/2023 00:12 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="API_Rest/obj/Debug/net7.0/API_Rest.dll" />
+    <option name="AFTER_PATH" value="API_Rest/obj/Debug/net7.0/API_Rest.dll" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_12_[Changes]/API_Rest.dll" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="API_Rest/obj/project.nuget.cache" />
+    <option name="AFTER_PATH" value="API_Rest/obj/project.nuget.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_12_[Changes]/project.nuget.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="API_Rest/HospitecDB/HospitalTECNologico.db" />
+    <option name="AFTER_PATH" value="API_Rest/HospitecDB/HospitalTECNologico.db" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_12_[Changes]/HospitalTECNologico.db" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="API_Rest/obj/Debug/net7.0/API_Rest.assets.cache" />
+    <option name="AFTER_PATH" value="API_Rest/obj/Debug/net7.0/API_Rest.assets.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_12_[Changes]/API_Rest.assets.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="API_Rest/bin/Debug/net7.0/API_Rest.pdb" />
+    <option name="AFTER_PATH" value="API_Rest/bin/Debug/net7.0/API_Rest.pdb" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_12_[Changes]/API_Rest.pdb" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="API_Rest/bin/Debug/net7.0/API_Rest.dll" />
+    <option name="AFTER_PATH" value="API_Rest/bin/Debug/net7.0/API_Rest.dll" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_12_[Changes]/API_Rest1.dll" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="API_Rest/obj/Debug/net7.0/API_Rest.pdb" />
+    <option name="AFTER_PATH" value="API_Rest/obj/Debug/net7.0/API_Rest.pdb" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_12_[Changes]/API_Rest1.pdb" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="API_Rest/obj/Debug/net7.0/API_Rest.csproj.CoreCompileInputs.cache" />
+    <option name="AFTER_PATH" value="API_Rest/obj/Debug/net7.0/API_Rest.csproj.CoreCompileInputs.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_12_[Changes]/API_Rest.csproj.CoreCompileInputs.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="API_Rest/obj/Debug/net7.0/API_Rest.genruntimeconfig.cache" />
+    <option name="AFTER_PATH" value="API_Rest/obj/Debug/net7.0/API_Rest.genruntimeconfig.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_12_[Changes]/API_Rest.genruntimeconfig.cache" />
+  </binary>
+</changelist>

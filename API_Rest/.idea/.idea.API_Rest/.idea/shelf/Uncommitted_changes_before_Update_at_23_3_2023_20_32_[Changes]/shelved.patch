@@ -1,0 +1,34 @@
+Index: API_Rest/obj/rider.project.restore.info
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>16795984602643000
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/API_Rest/obj/rider.project.restore.info b/API_Rest/obj/rider.project.restore.info
+--- a/API_Rest/obj/rider.project.restore.info	(revision ff6b413adbc56db45a10e7c48f977836a33b8daf)
++++ b/API_Rest/obj/rider.project.restore.info	(date 1679618319489)
+@@ -1,1 +1,1 @@
+-16795984602643000
+\ No newline at end of file
++16796183194883715
+\ No newline at end of file
+Index: .idea/.idea.API_Rest/.idea/dataSources.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DataSourceManagerImpl\" format=\"xml\" multifile-model=\"true\">\r\n    <data-source source=\"LOCAL\" name=\"HospitalTECNologico\" uuid=\"bf3494a3-86e7-4772-8bc3-9d222f7e01df\">\r\n      <driver-ref>sqlite.xerial</driver-ref>\r\n      <synchronize>true</synchronize>\r\n      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>\r\n      <jdbc-url>jdbc:sqlite:D:\\Universidad\\SemestreVII\\Tarea-web-database\\API_Rest\\API_Rest\\HospitecDB\\HospitalTECNologico.db</jdbc-url>\r\n      <working-dir>$ProjectFileDir$</working-dir>\r\n      <libraries>\r\n        <library>\r\n          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/sqlite-jdbc-3.40.1.jar</url>\r\n        </library>\r\n        <library>\r\n          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/xerial-sqlite-license.txt</url>\r\n        </library>\r\n      </libraries>\r\n    </data-source>\r\n    <data-source source=\"LOCAL\" name=\"HospitalTECNologico.db\" uuid=\"43dd5896-f4de-488e-9342-a1f8b975fbf4\">\r\n      <driver-ref>sqlite.xerial</driver-ref>\r\n      <synchronize>true</synchronize>\r\n      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>\r\n      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/API_Rest/HospitecDB/HospitalTECNologico.db</jdbc-url>\r\n      <working-dir>$ProjectFileDir$</working-dir>\r\n    </data-source>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.idea.API_Rest/.idea/dataSources.xml b/.idea/.idea.API_Rest/.idea/dataSources.xml
+--- a/.idea/.idea.API_Rest/.idea/dataSources.xml	(revision ff6b413adbc56db45a10e7c48f977836a33b8daf)
++++ b/.idea/.idea.API_Rest/.idea/dataSources.xml	(date 1679623611173)
+@@ -5,7 +5,7 @@
+       <driver-ref>sqlite.xerial</driver-ref>
+       <synchronize>true</synchronize>
+       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+-      <jdbc-url>jdbc:sqlite:D:\Universidad\SemestreVII\Tarea-web-database\API_Rest\API_Rest\HospitecDB\HospitalTECNologico.db</jdbc-url>
++      <jdbc-url>jdbc:sqlite:HospitecDB\HospitalTECNologico.db</jdbc-url>
+       <working-dir>$ProjectFileDir$</working-dir>
+       <libraries>
+         <library>
