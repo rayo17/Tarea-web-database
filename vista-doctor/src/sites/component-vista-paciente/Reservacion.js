@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import '../Reservacion.css'
+
 function Reservacion() {
-    const [stateCama, setStateCama] = useState()
     const [create, setcreate] = useState('create')
     const [modificar, setmodificar] = useState('null')
     const [opcion, setopcion] = useState('create')
-    const [name, setName] = useState('')
-    const [cedula,setcedula]=useState('')
-    const [modifacaBody, setmodificarBody]=useState('null')
+    const [cedula, setcedula] = useState('')
+    const [modificaBody, setmodificarBody] = useState('null')
     const boton = (e) => {
+        e.preventDefault()
+    }
+    const botonCedula = (e) => {
         e.preventDefault()
     }
 
@@ -18,7 +20,7 @@ function Reservacion() {
             setcreate('crear')
             setmodificar('null')
             setopcion('create')
-            
+
         }
         if (e.target.value === 'modificar') {
             setmodificar('modificar')
@@ -31,15 +33,24 @@ function Reservacion() {
     }
 
 
-    const change_cedula = (e)=>{
+    const change_cedula = (e) => {
         setcedula(e.target.value)
-     }   
+    }
 
 
-    const info = axios.post(`http://localhost:5004/api/${cedula}`).then(response => response.data).catch(error => alert('error'))
-    
+    const peticion = () => {
+        const info = axios.post(`http://localhost:5004/api/${cedula}`)
+            .then(response =>{
+                alert(response.data)
 
-    const { nombre, fecha, procedimiento } = info
+            }
+            ).catch(error => alert('error'))
+
+    }
+
+
+
+    /*const { nombre, fecha, procedimiento } = info*/
     return (
         <div>
             <div>
@@ -77,25 +88,26 @@ function Reservacion() {
             </div>
 
             <div>
-                <form >
+                <form onSubmit={peticion}>
                     <div className={modificar}>
                         <div >
                             <label>Por favor ingrese su numerode cedula</label>
-                            <input name='cedula' onChange={change_cedula}/>
+                            <input name='cedula' onChange={change_cedula} />
+                            <button type='submit' onSubmit={botonCedula}>{opcion}</button>
                         </div>
-                        <div className={modifacaBody}>
+                        <div className={modificaBody}>
 
                             <div >
                                 <h3>fecha de entrada</h3>
-                                <input type='date' name='calendario' value={fecha} />
+                                <input type='date' name='calendario' />
                             </div>
                             <div className='nombre'>
                                 <label>nombre del paciente</label>
-                                <input name='nombre' placeholder='nombre' value={nombre} />
+                                <input name='nombre' placeholder='nombre' />
                             </div>
                             <div className='procedimiento'>
                                 <label>Procedimiento Medico</label>
-                                <input name='procedimiento' placeholder='procedimiento' value={procedimiento} />
+                                <input name='procedimiento' placeholder='procedimiento' />
 
                             </div>
                             <button type='submit' onSubmit={boton}>{opcion}</button>
