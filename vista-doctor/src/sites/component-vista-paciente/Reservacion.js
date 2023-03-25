@@ -37,16 +37,15 @@ function Reservacion() {
         setcedula(e.target.value)
     }
 
-
     const peticion = () => {
-        const info = axios.post(`http://localhost:5004/api/${cedula}`)
-            .then(response =>{
-                alert(response.data)
-
-            }
-            ).catch(error => alert('error'))
-
+    
+     axios.get(`http://localhost:44362/api/${cedula}`)
+            .then(response => {alert(response.data)})
+            .catch(error => alert('error'))
     }
+
+    
+    
 
 
 
