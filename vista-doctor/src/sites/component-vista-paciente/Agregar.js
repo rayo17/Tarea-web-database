@@ -55,9 +55,8 @@ function Agregar() {
         console.log(e.target.value)
         setfecha(e.target.value)
     }
-    const task = (event) => {
+    const submit = (event) => {
         event.preventDefault();
-        condiciones_iniciales()
     
         // Enviar los datos al backend para crear un nuevo registro
         axios
@@ -74,7 +73,14 @@ function Agregar() {
               .post("http://localhost:5004/api/Paciente_Direcciones", {
                 paciente: cedula,
                 ubicacion: direct})}
-              ).catch((error) => {
+              ).then((response) => {
+                // Agregar la dirección del paciente
+                axios
+                  .post("http://localhost:5004/api/Patologia", {
+                    paciente: cedula,
+                    Patologia: patologia})}
+                  )
+              .catch((error) => {
                 console.log('error')
               })
             
@@ -84,7 +90,7 @@ function Agregar() {
             <div>
                 <h1>Crear cuenta</h1>
             </div>
-            <form onSubmit={task}>
+            <form onSubmit={submit}>
                 <div className='calendario'>
                     <label>Fecha de nacimiento</label>
                     <input type='date' name='calendario' value={fecha} onChange={cambiarFecha}/>
@@ -116,7 +122,7 @@ function Agregar() {
                 </div>
                 <div className='Tratamientos'>
                     <label>Tratamientos</label>
-                    <input name='tratamientos' placeholder='tratamientos' value={tratamiento.tratamientos} onChange={cambiarTratamiento} />
+                    <input name='tratamientos' placeholder='tratamientos' value={tratamiento} onChange={cambiarTratamiento} />
                 </div>
                 <button type="submit">crear paciente</button>
             </form>
