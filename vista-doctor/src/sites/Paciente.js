@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import NuevoPacienteFormulario from "./NuevoPacienteFormulario.js";
 import { CSSTransition } from 'react-transition-group';
+import AñadirData from './AñadirData';
+
 
 
 
@@ -17,6 +19,8 @@ class Paciente extends Component {
       showForm: false,
       error: null,
       showDialog: false, // estado para mostrar/ocultar el diálogo
+      showtwoDialog: false,
+      showtwoForm: false,
     };
   }
   toggleForm = () => {
@@ -24,6 +28,12 @@ class Paciente extends Component {
   };
   toggleDialog = () => {
     this.setState(prevState => ({ showDialog: !prevState.showDialog }));
+  };
+  toggletwoForm = () => {
+    this.setState({ showtwoForm: !this.state.showtwoForm });
+  };
+  toggletwoDialog = () => {
+    this.setState(prevState => ({ showtwoDialog: !prevState.showtwoDialog }));
   };
 
   
@@ -42,8 +52,12 @@ class Paciente extends Component {
   .then(response => {
     const direcciones = {};
     response.data.forEach(direccion => {
-      direcciones[direccion.paciente] = direccion.ubicacion;
+      if(!direcciones[direccion.paciente]){
+        direcciones[direccion.paciente] = [];
+      }
+      direcciones[direccion.paciente].push(direccion.ubicacion);
     });
+    
     axios.get('http://localhost:5004/api/Paciente_Telefonos')
       .then(response => {
         const telefonos = {};
@@ -90,6 +104,7 @@ openDialog() {
   document.querySelector(".dialog").classList.add("dialog-enter");
 }
 
+
 closeDialog() {
   this.setState({ isOpen: false });
   document.body.style.overflow = "auto";
@@ -104,7 +119,7 @@ closeDialog() {
 
 
 render() {
-  const { pacientes, direcciones, error, showDialog } = this.state;
+  const { pacientes, direcciones, error, showDialog, showtwoDialog } = this.state;
 
   return (
     <div style={{ backgroundColor: '#fff', textAlign: 'center' }}>
@@ -129,7 +144,7 @@ render() {
               <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{paciente.primer_apellido} {paciente.segundo_apellido}</td>
               <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{paciente.cedula}</td>
               <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{paciente.fecha_nacimiento}</td>
-              <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{direcciones[paciente.cedula]}</td>
+              <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{this.state.direcciones[paciente.cedula] ? this.state.direcciones[paciente.cedula].join(',') : ''}</td>
               <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{this.state.telefonos[paciente.cedula] ? this.state.telefonos[paciente.cedula].join(', ') : ''}</td>
               <td style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>{this.state.patologias[paciente.cedula] ? this.state.patologias[paciente.cedula].map(patologia => `${patologia.nombre} (${patologia.tratamiento})`).join(', ') : ''}</td>
             </tr>
@@ -179,9 +194,55 @@ render() {
           </div>
         </CSSTransition>
           </div>
+        </div>
+        )}
+        <button style={{ marginTop: '20px', padding: '10px 20px', borderRadius: '5px', backgroundColor: '#fff', color: '#4CAF50', border: '2px solid #4CAF50', cursor: 'pointer' }} 
+      onClick={this.toggletwoDialog}>Añadir</button>
+      {showtwoDialog && (
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              background: "rgba(0, 0, 0, 0.5)", // fondo semitransparente
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 999 // asegurarse de que el diálogo esté por encima del resto del contenido
+            }}
+          >
+            <div>
+          <CSSTransition in={this.state.isOpen} classNames="dialog" timeout={500}>
+          <div
+            className="dialog"
+            style={{
+              backgroundColor: "#fff",
+              padding: "20px",
+              borderRadius: "5px",
+              maxWidth: "80%",
+              maxHeight: "80%",
+              overflow: "auto",
+              marginBottom: "5px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)", // sombra para dar profundidad
+            }}
+          >
+            {/* contenido del diálogo */}
+            <AñadirData
+              onClose={this.toggletwoDialog}
+              onAdd={this.componentDidMount}
+            />
           </div>
+        </CSSTransition>
+          </div>
+        </div>
         )}
       </div>
+      
     );
   }
 }
