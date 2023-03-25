@@ -6,11 +6,7 @@
     <projectFile profileName="https">API_Rest/API_Rest.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7c588a4-9f37-46d3-8a0b-36e038ce4904" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/API_Rest/HospitecDB/HospitalTECNologico.db" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/HospitecDB/HospitalTECNologico.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API_Rest/bin/Debug/net7.0/API_Rest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/bin/Debug/net7.0/API_Rest.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vista-doctor/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vista-doctor/src/App.js" afterDir="false" />
-    </list>
+    <list default="true" id="f7c588a4-9f37-46d3-8a0b-36e038ce4904" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -162,7 +158,7 @@
       <workItem from="1679598265586" duration="6614000" />
       <workItem from="1679626475078" duration="36000" />
       <workItem from="1679630296361" duration="3630000" />
-      <workItem from="1679786296833" duration="1098000" />
+      <workItem from="1679786296833" duration="1460000" />
     </task>
     <task id="LOCAL-00001" summary="Correcciones">
       <created>1678754549563</created>
