@@ -4,6 +4,7 @@ import { Navbar } from './Navbar'
 import Paciente from './sites/Paciente';
 import Historial from './sites/Historial';
 import Principal from './sites/Principal';
+import  Menu  from './sites/Menu';
 
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
         
 
           <Routes>
-            <Route path='/' element={ <Principal/> }/>
+            <Route path='/' element={ <Menu/> }/>
+            <Route path='/principal' element={ <Principal/> }/>
             <Route path='/Paciente' element={ <Paciente/> }/>
             <Route path='/Historial' element={ <Historial/> }/>
           </Routes>
