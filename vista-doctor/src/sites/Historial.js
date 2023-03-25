@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
-//import axios from 'axios'
+import React, { Component, useState } from 'react'
 import Historiales from './funcionHistorial'
+import DialogAddHistorial from './dialogAddHistorial'
+import DialogEditHistorial from './dialogEditHistorial'
+import './Historial.css'
 
 
 class Historial extends Component {
@@ -14,12 +16,16 @@ class Historial extends Component {
   
 
   render() {
-    const { posts, errorMsg } = this.state
 
     return (
       <div>
-        <h1>Pacientes</h1>
-        <div><Historiales/></div>
+        <h1>Historiales</h1>
+        <Historiales/>
+        <div className="row">
+          <div className="col"> <DialogAddHistorial /> </div>
+          <div className="col"> <DialogEditHistorial /> </div>
+        </div>
+        
       </div>
     )
   }

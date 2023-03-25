@@ -16,6 +16,12 @@ namespace DetailTEC_API.Controllers
             this.context = context;
         }
         
+        [HttpGet]
+        public IEnumerable<Reservacion> Get()
+        {
+            return context.Reservacion.ToList();
+        }
+        
         // GET: api/<ReservacionController>/cedula
         [HttpGet("{cedula}")]
         public Reservacion Get(string cedula)

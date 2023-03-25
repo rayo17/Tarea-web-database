@@ -4,6 +4,7 @@ import { Navbar } from './Navbar'
 import Paciente from './sites/Paciente';
 import Historial from './sites/Historial';
 import Principal from './sites/Principal';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 
 function App() {
