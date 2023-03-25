@@ -20,7 +20,7 @@ function Menu () {
         <Navbar.Collapse id="basic-navbar-nav" className='space'>
           <Nav className="me-auto">
             <Nav.Link href="/vistaAdministrador">Doctor</Nav.Link>
-            <Nav.Link href="/paciente">Paciente</Nav.Link>
+            <Nav.Link href="/Vistapaciente">Paciente</Nav.Link>
             <NavDropdown title="Gestion" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.">A</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">r</NavDropdown.Item>
