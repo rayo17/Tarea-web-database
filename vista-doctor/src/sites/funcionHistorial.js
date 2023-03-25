@@ -4,6 +4,7 @@ import axios from 'axios';
 function Historiales() {
   const [historiales, setHistoriales] = useState([]);
 
+  
   useEffect(() => {
     axios.get('http://localhost:5004/api/historial')
       .then(response => {
@@ -13,14 +14,42 @@ function Historiales() {
         console.log(error);
       });
   }, []);
+/*
+  useEffect(() => {
+    loadPacientes();
+  }, []);
+
+  const loadPacientes = async () => {
+    const result = await axios.get('http://localhost:5004/api/historial')
+    setHistoriales(result.data);
+  };*/
 
   return (
-    <div>
-      <ul>
-        {historiales.map(historial => (
-          <li key={historial.id}>{historial.procedimiento} {historial.fecha} {historial.tratamiento}</li>
-        ))}
-      </ul>
+    <div className="container">
+      <div className="py-4">
+        <table className="table border shadow">
+        <thead>
+            <tr>
+              <th>Paciente</th>
+              <th>Procedimiento</th>
+              <th>Fecha</th>
+              <th>Tratamiento</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              historiales.map((user) => (
+                <tr>
+                  <td>{user.paciente}</td>
+                  <td>{user.procedimiento}</td>
+                  <td>{user.fecha}</td>
+                  <td>{user.tratamiento}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

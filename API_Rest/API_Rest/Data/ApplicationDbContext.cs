@@ -20,10 +20,14 @@ namespace API_Rest.Data
                 .HasKey(p => new {p.Paciente, p.Ubicacion});
             modelBuilder.Entity<Paciente_Telefonos>()
                 .HasKey(p => new {p.Paciente, p.Telefono});
-            modelBuilder.Entity<Procedimiento_Medico>().HasKey(p => new { p.nombre, p.Fecha });
-            modelBuilder.Entity<Patologia>().HasKey(p => new { p.nombre, p.tratamiento });
-            
-            modelBuilder.Entity<Reservacion>().HasKey(r => new {r.Paciente, r.Id_Procedimiento});
+
+            modelBuilder.Entity<Procedimiento_Medico>()
+                .HasKey(p => new { p.nombre });
+            modelBuilder.Entity<Patologia>()
+                .HasKey(p => new { p.nombre, p.tratamiento });
+            modelBuilder.Entity<Reservacion>()
+                .HasKey(r => new {r.Paciente, r.Procedimiento});
+
         }
 
         public DbSet<Paciente> Paciente { get; set; }

@@ -25,7 +25,7 @@ namespace DetailTEC_API.Controllers
         [HttpGet("{cedula}")]
         public Historial Get(string cedula)
         { // Eliminar el toString luego de cambiar el tipo de iD (TODO)
-            return context.Historial.FirstOrDefault(h => h.Id.ToString() == cedula);
+            return context.Historial.FirstOrDefault(h => h.Paciente == cedula);
         }
 
         [HttpPost]
@@ -46,7 +46,7 @@ namespace DetailTEC_API.Controllers
         [HttpPut("{cedula}")]
         public ActionResult Put(string cedula, [FromBody] Historial historial)
         {
-            if (historial.Id.ToString() == cedula) // Eliminar el toString tras cambiar el tipo de Id (TODO)
+            if (historial.Paciente == cedula) // Eliminar el toString tras cambiar el tipo de Id (TODO)
             {
                 context.Entry(historial).State = EntityState.Modified;
                 context.SaveChanges();
@@ -59,7 +59,7 @@ namespace DetailTEC_API.Controllers
         [HttpDelete("{cedula}")]
         public ActionResult Delete(string cedula)
         {
-            var h = context.Historial.FirstOrDefault(t => t.Id.ToString() == cedula);
+            var h = context.Historial.FirstOrDefault(p => p.Paciente == cedula);
             if (h != null)
             {
                 context.Historial.Remove(h);

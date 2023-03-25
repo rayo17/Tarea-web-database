@@ -16,6 +16,12 @@ namespace DetailTEC_API.Controllers
             this.context = context;
         }
         
+        [HttpGet]
+        public IEnumerable<Reservacion> Get()
+        {
+            return context.Reservacion.ToList();
+        }
+        
         // GET: api/<ReservacionController>/cedula
         [HttpGet("{cedula}")]
         public Reservacion Get(string cedula)
@@ -41,9 +47,9 @@ namespace DetailTEC_API.Controllers
         
         // DELETE: api/<ReservacionController>
         [HttpDelete("{cedula}/{id_procedimiento}")]
-        public ActionResult Delete(string cedula, int id_procedimiento)
+        public ActionResult Delete(string cedula)
         {
-            var reservacion = context.Reservacion.FirstOrDefault(r => r.Paciente == cedula && r.Id_Procedimiento == id_procedimiento);
+            var reservacion = context.Reservacion.FirstOrDefault(r => r.Paciente == cedula);
             if (reservacion != null)
             {
                 context.Reservacion.Remove(reservacion);
@@ -57,7 +63,7 @@ namespace DetailTEC_API.Controllers
         [HttpPut("{cedula}/{id_procedimiento}")]
         public ActionResult Put(string cedula, int id_procedimiento, [FromBody] Reservacion reservacion)
         {
-            if (reservacion.Paciente == cedula && reservacion.Id_Procedimiento == id_procedimiento)
+            if (reservacion.Paciente == cedula)
             {
                 context.Entry(reservacion).State = EntityState.Modified;
                 context.SaveChanges();
@@ -65,8 +71,5 @@ namespace DetailTEC_API.Controllers
             }
             return BadRequest();
         }
-        
-
     }
-    
 }

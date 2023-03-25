@@ -26,20 +26,6 @@ namespace DetailTEC_API.Controllers
             return _context.Procedimiento_Medico.ToList();
         }
 
-        // GET: api/ProcedimientoMedico/5
-        [HttpGet("{paciente}")]
-        public ActionResult<Procedimiento_Medico> Get(int paciente)
-        {
-            var procedimientoMedico = _context.Procedimiento_Medico.FirstOrDefault(p => p.paciente == paciente);
-
-            if (procedimientoMedico == null)
-            {
-                return NotFound();
-            }
-
-            return procedimientoMedico;
-        }
-
         // POST: api/ProcedimientoMedico
         [HttpPost]
         public ActionResult<Procedimiento_Medico> Post(Procedimiento_Medico procedimientoMedico)
@@ -48,8 +34,7 @@ namespace DetailTEC_API.Controllers
             {
                 _context.Procedimiento_Medico.Add(procedimientoMedico);
                 _context.SaveChanges();
-
-                return CreatedAtAction(nameof(Get), new { paciente = procedimientoMedico.paciente }, procedimientoMedico);
+                return Ok();
             }
             catch (Exception e)
             {
@@ -57,41 +42,11 @@ namespace DetailTEC_API.Controllers
             }
         }
 
-        // PUT: api/ProcedimientoMedico/5
-        [HttpPut("{paciente}")]
-        public IActionResult Put(int paciente, Procedimiento_Medico procedimientoMedico)
-        {
-            if (paciente != procedimientoMedico.paciente)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(procedimientoMedico).State = EntityState.Modified;
-
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProcedimientoMedicoExists(paciente))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
         // DELETE: api/ProcedimientoMedico/5
         [HttpDelete("{paciente}")]
-        public IActionResult Delete(int paciente)
+        public IActionResult Delete(string procedimiento)
         {
-            var procedimientoMedico = _context.Procedimiento_Medico.FirstOrDefault(p => p.paciente == paciente);
+            var procedimientoMedico = _context.Procedimiento_Medico.FirstOrDefault(p => p.nombre == procedimiento);
 
             if (procedimientoMedico == null)
             {
@@ -102,11 +57,6 @@ namespace DetailTEC_API.Controllers
             _context.SaveChanges();
 
             return NoContent();
-        }
-
-        private bool ProcedimientoMedicoExists(int paciente)
-        {
-            return _context.Procedimiento_Medico.Any(p => p.paciente == paciente);
         }
     }
 }
