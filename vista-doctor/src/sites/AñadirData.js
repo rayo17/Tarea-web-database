@@ -1,15 +1,23 @@
+/**
+ * Componente de clase que representa el formulario para agregar datos de un paciente.
+ * @class
+ * @extends Component
+ */
+
 import React, { Component } from "react";
 import axios from "axios";
 import { Form} from 'react-bootstrap';
 
-
-
-
-
 class AñadirData extends Component {
+  
+  /**
+   * Constructor de la clase.
+   * @constructor
+   * @param {object} props - Propiedades del componente.
+   */
+  
   constructor(props) {
     super(props);
-
     this.state = {
       cedula: "",
       direccion: "",
@@ -22,6 +30,11 @@ class AñadirData extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleOuterClick = this.handleOuterClick.bind(this);
   }
+
+  /**
+   * Manejador del evento onSubmit del formulario.
+   * @param {object} event - Evento del formulario.
+   */
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -49,22 +62,48 @@ class AñadirData extends Component {
     this.props.onClose();
   };
 
+  /**
+   * Manejador del evento onChange de los campos del formulario.
+   * @param {object} event - Evento del formulario.
+   */
+
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
+  /**
+   * Manejador del evento onClick en cualquier parte fuera del formulario.
+   * @param {object} event - Evento del formulario.
+   */
+
   handleOuterClick(event) {
     const container = document.querySelector('.container');
     if (container && !container.contains(event.target)) {
       this.props.onClose();
     }
   };
+
+  /**
+   * Se añade el manejador del evento onClick en cualquier parte fuera del formulario.
+   */
+
   componentDidMount() {
     document.addEventListener('mousedown', this.handleOuterClick);
   };
 
+  /**
+   * Se elimina el manejador del evento onClick en cualquier parte fuera del formulario.
+   */
+
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleOuterClick);
   };
+  
+  /**
+   * Renderiza el formulario para agregar datos del paciente.
+   * @returns {object} - Elemento con el formulario renderizado.
+   */
+  
   render() {    
     return (
       <div
@@ -153,4 +192,5 @@ class AñadirData extends Component {
             );
     }
 }
+
 export default AñadirData;
