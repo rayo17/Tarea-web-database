@@ -7,6 +7,7 @@ function Reservacion() {
     const [modificar, setmodificar] = useState('null')
     const [opcion, setopcion] = useState('create')
     const [name, setName] = useState('')
+    const [cedula,setcedula]=useState('')
     const [modifacaBody, setmodificarBody]=useState('null')
     const boton = (e) => {
         e.preventDefault()
@@ -30,8 +31,8 @@ function Reservacion() {
     }
 
 
-    const cedula = (e)=>{
-        return e.target.value
+    const change_cedula = (e)=>{
+        setcedula(e.target.value)
      }   
 
 
@@ -80,7 +81,7 @@ function Reservacion() {
                     <div className={modificar}>
                         <div >
                             <label>Por favor ingrese su numerode cedula</label>
-                            <input name='cedula' />
+                            <input name='cedula' onChange={change_cedula}/>
                         </div>
                         <div className={modifacaBody}>
 
