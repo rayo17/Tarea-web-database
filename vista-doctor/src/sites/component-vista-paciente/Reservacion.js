@@ -35,14 +35,16 @@ function Reservacion() {
             setcondicion('crear')
             console.log('create')
         }
-        if(e.target.value==='modif'){
+        if(e.target.value==='modificar'){
             setcondicion('modificar')
-            console.log('modif')
         }
         else{
             setcondicion('Eliminar')
             console.log('delete')
         }
+    }
+    const cedula=()=>{
+        const info = axios.post(`http://localhost:5004/api/${cedula}`).then(response => response.data).catch(error => alert('error'))
     }
     return (
         <div>
@@ -55,10 +57,12 @@ function Reservacion() {
                     <option value="delete">eliminar reservacion</option>
                 </select>
             </div>
+
             <div>
                 <h1>Reservacion de camas</h1>
             </div>
-            <form>
+
+            <form className='create'>
                 <div>
                     <h3>fecha de entrada</h3>
                     <input type='date' name='calendario'/>
@@ -74,6 +78,29 @@ function Reservacion() {
                 </div>
                 <button type='submit' onSubmit={boton}>{condicion}</button>
             </form>
+            <div>
+                <div>
+                    <label>Por favor ingrese su numerode cedula</label>
+                    <input name='cedula'/>
+                </div>
+            <form className='modificar'>
+                <div>
+                    <h3>fecha de entrada</h3>
+                    <input type='date' name='calendario'/>
+                </div>
+                <div className='nombre'>
+                    <label>nombre del paciente</label>
+                    <input name='nombre' placeholder='nombre' />
+                </div>
+                <div className='procedimiento'>
+                    <label>Procedimiento Medico</label>
+                    <input name='procedimiento' placeholder='procedimiento' />
+
+                </div>
+                <button type='submit' onSubmit={boton}>{condicion}</button>
+            </form>
+
+            </div>
 
         </div>
     )

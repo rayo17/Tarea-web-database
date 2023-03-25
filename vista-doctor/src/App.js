@@ -13,15 +13,15 @@ import Reservacion from './sites/component-vista-paciente/Reservacion';
 function App() {
   return (
     <div className="App">
+      
       <Router>
-        <Navbar/>
-        
+      <Navbar/>
           <Routes>
             <Route path='/' element={ <Menu/> }/>
             <Route path='/Reservacion' element={ <Reservacion />}/>
             <Route path='/Vistapaciente' element={ <Vistapaciente/> }/>
             <Route path='/Agregar' element={ <Agregar/> }/>
-            <Route path='/principal' element={ <Principal/> }/>
+            <Route path='/Vistadoctor' element={ <Principal/> }/>
             <Route path='/Paciente' element={ <Paciente/> }/>
             <Route path='/Historial' element={ <Historial/> }/>
           </Routes>
