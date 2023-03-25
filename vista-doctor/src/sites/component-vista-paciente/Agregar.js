@@ -9,7 +9,8 @@ function Agregar() {
     const [apellido2, setapellido2]=useState('')
     const [cedula, setcedula]=useState('')
     const [tratamiento, settratamiento]=useState('')
-
+    const [loading, setloading] = useState(false)
+    const [error, seterror]=useState(null)
     const condiciones_iniciales =()=>{
         setName('')
         setapellido1('')
@@ -99,30 +100,54 @@ function Agregar() {
                 <div className='nombre'>
                     <label>nombre</label>
                     <input name='nombre' placeholder='nombre' value={name} onChange={cambiarNombre}/>
+                    <div className='alert alert-danger'>
+                            erorr el el nombre
+                    </div>
                 </div>
                 <div className='apellido1'>
                     <label>apellido1</label>
                     <input name='apellido1' placeholder='apellido1' value={apellido1} onChange={cambiarApellido1}/>
+                    <div className='alert alert-danger'>
+                            erorr el el nombre
+                    </div>
                 </div>
                 <div className='apellido2'>
                     <label>apellido2</label>
                     <input name='apellido2' placeholder='apellido2' value={apellido2} onChange={cambiarApellido2}/>
+                    <div className='alert alert-danger'>
+                            erorr apellido2
+                    </div>
                 </div>
                 <div className='direccion'>
                     <label>direccion</label>
                     <input name='direccion' placeholder='direccion' value={direct.direcciones} onChange={cambiarDireccion}/>
+                    <div className='alert alert-danger'>
+                       Erorr direccion
+                    </div>
+                
                 </div>
-                <div className='direccion'>
+                <div className='cedula'>
                     <label>cedula</label>
                     <input name='cedula' placeholder='cedula'value={cedula} onChange={cambiarCedula} />
+                    <div className='alert alert-danger'>
+                            Erorr el cedula
+                    </div>
                 </div>
                 <div className='patologias'>
                     <label>patologias</label>
                     <input name='patologias' placeholder='patologias' value={patologia} onChange={cambiarPatologia}/>
+                
+                    <div className='alert alert-danger'>
+                            Error patologia
+                    </div>
                 </div>
                 <div className='Tratamientos'>
                     <label>Tratamientos</label>
                     <input name='tratamientos' placeholder='tratamientos' value={tratamiento} onChange={cambiarTratamiento} />
+                
+                    <div className='alert alert-danger'>
+                            Erorr el el tratamiento
+                    </div>
                 </div>
                 <button type="submit">crear paciente</button>
             </form>

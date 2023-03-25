@@ -8,11 +8,12 @@ import Paciente from './Paciente';
 import Historial from './Historial';
 import Card from '../Card';
 
+
 const Principal = () => {
   return (
     <div>
         <div className='row'>
-
+        
         <div className='col-md-3'></div>
 
         <div className='col-md-3'>
