@@ -44,7 +44,6 @@ function Agregar() {
     const cambiarTratamiento = (e) =>{
         console.log(e.target.value)
         settratamiento(e.target.value)
-        settratamiento([...tratamiento,{tratamientos:''}])
         console.log(tratamiento)
     }
     const cambiarCedula = (e) =>{
@@ -60,7 +59,7 @@ function Agregar() {
     
         // Enviar los datos al backend para crear un nuevo registro
         axios
-          .post("http://localhost:5004/api/paciente", {
+          .post("https://localhost:44362/api/Paciente", {
             cedula: cedula,
             nombre: name,
             primer_apellido: apellido1,
@@ -70,15 +69,16 @@ function Agregar() {
           .then((response) => {
             // Agregar la dirección del paciente
             axios
-              .post("http://localhost:5004/api/Paciente_Direcciones", {
+              .post("https://localhost:44362/api/Paciente_Direcciones", {
                 paciente: cedula,
                 ubicacion: direct})}
               ).then((response) => {
                 // Agregar la dirección del paciente
                 axios
-                  .post("http://localhost:5004/api/Patologia", {
-                    paciente: cedula,
-                    Patologia: patologia})}
+                  .post("https://localhost:44362/api/Patologia", {
+                    Paciente: cedula,
+                    Nombre: patologia,
+                    Tratamiento: tratamiento})}
                   )
               .catch((error) => {
                 console.log('error')
