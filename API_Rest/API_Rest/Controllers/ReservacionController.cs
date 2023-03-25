@@ -41,9 +41,9 @@ namespace DetailTEC_API.Controllers
         
         // DELETE: api/<ReservacionController>
         [HttpDelete("{cedula}/{id_procedimiento}")]
-        public ActionResult Delete(string cedula)
+        public ActionResult Delete(string cedula, string id_procedimiento)
         {
-            var reservacion = context.Reservacion.FirstOrDefault(r => r.Paciente == cedula);
+            var reservacion = context.Reservacion.FirstOrDefault(r => r.Paciente == cedula && r.Procedimiento == id_procedimiento);
             if (reservacion != null)
             {
                 context.Reservacion.Remove(reservacion);
@@ -55,9 +55,9 @@ namespace DetailTEC_API.Controllers
         
         // Update: api/<ReservacionController>
         [HttpPut("{cedula}/{id_procedimiento}")]
-        public ActionResult Put(string cedula, int id_procedimiento, [FromBody] Reservacion reservacion)
+        public ActionResult Put(string cedula, string id_procedimiento, [FromBody] Reservacion reservacion)
         {
-            if (reservacion.Paciente == cedula)
+            if (reservacion.Paciente == cedula && reservacion.Procedimiento == id_procedimiento)
             {
                 context.Entry(reservacion).State = EntityState.Modified;
                 context.SaveChanges();
