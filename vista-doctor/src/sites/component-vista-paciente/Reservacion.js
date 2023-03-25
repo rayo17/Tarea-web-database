@@ -36,7 +36,7 @@ function Reservacion() {
      }   
 
 
-    const info = axios.post(`http://localhost:5004/api/${cedula}`).then(response => response.data).catch(error => alert('error'))
+    const info = axios.get(`http://localhost:44362/api/${cedula}`).then(response => response.data).catch(error => alert('error'))
     
 
     const { nombre, fecha, procedimiento } = info
