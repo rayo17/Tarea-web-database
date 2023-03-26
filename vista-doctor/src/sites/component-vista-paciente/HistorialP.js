@@ -13,7 +13,8 @@ function HistorialP() {
     /* useEffect(()=>{
          cargar_historial()
      })*/
-    const cargar_historial = async () => {
+    const cargar_historial = async (event) => {
+        event.preventDefault();
         const resp = await axios.get('https://localhost:44362/api/Historial')
         setusuarios(resp.data)
         setvible('historial')
