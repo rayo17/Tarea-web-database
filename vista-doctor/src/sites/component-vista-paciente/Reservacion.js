@@ -63,12 +63,12 @@ function Reservacion() {
  
     const peticion_crear = (event)=>{
         event.preventDefault();
-        setcontador(1+contador)
+        setcontador(6+contador)
         axios.post('https://localhost:44362/api/Reservacion',{
-            Paciente:cedula,
+            paciente:cedula,
             procedimiento:proce,
-            Fecha:fecha,
-            Id: contador
+            fecha:fecha,
+            id: contador
 
          })
         .then(response => console.log('todo bien'))
