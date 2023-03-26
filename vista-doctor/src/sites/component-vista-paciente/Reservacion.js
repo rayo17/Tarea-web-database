@@ -65,7 +65,7 @@ function Reservacion() {
     const peticion_modificar = (event) => {
         event.preventDefault();
 
-        axios.get(`https://localhost:44362/api/Reservacion/${cedula}`)
+        axios.get(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`)
             .then(response => {console.log(response) 
             setmodificarBody('modificar')
             })
@@ -75,6 +75,8 @@ function Reservacion() {
 
     const validacion=()=>{
         let errors={}
+        
+        
     }
 
     const peticion_crear = (event) => {// petion para crear se hace con un post donde se envian un json
