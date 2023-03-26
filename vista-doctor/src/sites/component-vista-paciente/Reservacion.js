@@ -68,6 +68,9 @@ function Reservacion() {
         axios.get(`https://localhost:44362/api/Reservacion/${cedula}`)
             .then(response => {
                 console.log(response)
+                setcedula(response.data.cedula)
+                setproce(response.data.procedimiento)
+                setfecha(response.data.fecha)
                 setmodificarBody('modificar')
             })
             .catch(error => alert('error'))
@@ -82,7 +85,10 @@ function Reservacion() {
     const peticion_modif = (event) => {
         event.preventDefault()
         axios.put(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`)
-            .then(response => console.log(response))
+            .then(response => {
+                console.log(response.data)
+            
+            })
 
     }
     const peticion_crear = (event) => {// petion para crear se hace con un post donde se envian un json
@@ -186,7 +192,11 @@ function Reservacion() {
                                 <h3>fecha de entrada</h3>
                                 <input type='date' name='calendario' />
                             </div>
-                            <div className='nombre'>
+                            <div className='fecha'>
+                                <label>cedula del paciente</label>
+                                <input name='fecha' type='date' required  value={fecha} onChange={changeFecha}/>
+                            </div>
+                            <div className='cedula'>
                                 <label>cedula del paciente</label>
                                 <input name='cedula' placeholder='cedula del paciente' type='number' required/>
                             </div>
