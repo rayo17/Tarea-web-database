@@ -4,6 +4,7 @@ import '../Reservacion.css'
 
 function Reservacion() {
     /* se crean los state hook para los diferentes cambios de estos */
+    const [usuario, setusuario] = useState([])
     const [create, setcreate] = useState('crear') // para crear
     const [modificar, setmodificar] = useState('null') // para modificar
     const [opcion, setopcion] = useState('crear') // para opciones como modificar, crear o eliminar
@@ -15,8 +16,13 @@ function Reservacion() {
     const [contador, setcontador] = useState(1)
     const [eliminar, seteliminar] = useState('null')
     const [errors, seterror] = useState({})
-    const [id, setid]=useState(0)
-
+    const [id, setid] = useState(0)
+    const init = () => {
+        setcedula('')
+        setfecha('')
+        setname('')
+        setproce('')
+    }
 
     const boton = (e) => {
         e.preventDefault()// para no refrescar el form
@@ -74,6 +80,7 @@ function Reservacion() {
                 setfecha(response.data.fecha)
                 setid(response.data.id)
                 setmodificarBody('modificar')
+                setusuario(response.data)
             })
             .catch(error => alert('error'))
 
@@ -86,15 +93,17 @@ function Reservacion() {
     }
     const peticion_modif = (event) => {
         event.preventDefault()
-        axios.put(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`,{
-           id:id,
-           cedula:cedula,
-           procedimiento:proce
+        axios.put(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`, {
+            id: id,
+            paciente: cedula,
+            procedimiento: proce,
+            fecha:fecha
         })
             .then(response => {
                 console.log(response.data)
-            
-            })
+                setid(response.data.id)
+
+            }).catch(error => console.log(error))
 
     }
     const peticion_crear = (event) => {// petion para crear se hace con un post donde se envian un json
@@ -189,28 +198,32 @@ function Reservacion() {
                         </div>
                     </div>
                 </form>
-            
+
             </div>
             <div className={modificaBody}>
-                <form onSubmit={peticion_modif}>
+                {usuario.map((data, index) => {
+                    return (
+                        <form key={index} onSubmit={peticion_modif}>
 
                             <div className='fecha'>
                                 <label>fecha de entrada</label>
-                                <input name='fecha' type='date' required  value={fecha} onChange={changeFecha}/>
+                                <input name='fecha' type='date' required value={data.fecha} onChange={changeFecha} />
                             </div>
                             <div className='cedula'>
                                 <label>cedula del paciente</label>
-                                <input name='cedula' placeholder='cedula del paciente' type='number' value={cedula}/>
+                                <input name='cedula' placeholder='cedula del paciente' type='number' value={data.paciente} />
                             </div>
                             <div className='procedimiento'>
                                 <label>Procedimiento Medico</label>
-                                <input name='procedimiento' placeholder='procedimiento' value={proce}/>
+                                <input name='procedimiento' placeholder='procedimiento' value={data.procedimiento} />
 
                             </div>
                             <button type='submit'>{opcion}</button>
-                            </form>
-                       </div>
-                  
+                        </form>)
+                })}
+
+            </div>
+
 
         </div>
     )
