@@ -60,6 +60,7 @@ class AñadirData extends Component {
 
     console.log("Datos paciente agregado");
     this.props.onClose();
+    this.props.onAdd();
   };
 
   /**
