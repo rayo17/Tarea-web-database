@@ -26,6 +26,7 @@ function HistorialP() {
                 <form onSubmit={cargar_historial}>
                     <label>Ingresa tu cedula para ver tu historial clinico</label>
                     <input value={cedula} onChange={changeCedula} />
+                    <button type='submit'>Enviar</button>
                 </form>
 
             </div>
