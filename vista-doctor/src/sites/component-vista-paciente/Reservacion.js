@@ -97,8 +97,8 @@ function Reservacion() {
                         <input type='date' name='calendario' value={fecha} onChange={changeFecha} />
                     </div>
                     <div className='nombre'>
-                        <label>nombre del paciente</label>
-                        <input name='nombre' placeholder='nombre' value={name}  onChange={changeName}/>
+                        <label>cedula del paciente</label>
+                        <input name='cedula' placeholder='cedula' value={cedula}  onChange={change_cedula}/>
                     </div>
                     <div className='procedimiento'>
                         <label>Procedimiento Medico</label>
