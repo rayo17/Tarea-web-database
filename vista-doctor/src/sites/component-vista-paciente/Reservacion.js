@@ -209,8 +209,12 @@ function Reservacion() {
                     setcedula(data.paciente)
                     setfecha(data.fecha)
                     setid(data.id)
-                    setproce(data.proce)
+                    setproce(data.procedimiento)
+                    console.log('cedula',cedula)
+                    console.log('fecha',fecha)
+                    console.log('proce',proce)
                   }
+
                     return (
                         <div key={index}>
                             <form  onSubmit={peticion_modif}>
