@@ -220,9 +220,6 @@ function Agregar() {
                         {errors.apellido1}
                     </div>
                     }
-                    <div className='ok'>
-                        Todo bien
-                    </div>
                 </div>
                 <div className='apellido2'>
                     <label>apellido2</label>
@@ -230,9 +227,6 @@ function Agregar() {
                     {errors.apellido2 && <div className='alert alert-danger'>
                         {errors.apellido2}
                     </div>}
-                    <div className='ok'>
-                        Todo bien
-                    </div>
                 </div>
                 <div className='direccion'>
                     <label>direccion</label>
@@ -240,9 +234,6 @@ function Agregar() {
                     {errors.direct && <div className='alert alert-danger'>
                         {errors.direct}
                     </div>}
-                    <div className='ok'>
-                        Todo bien
-                    </div>
 
                 </div>
                 <div className='cedula'>
@@ -251,9 +242,6 @@ function Agregar() {
                     {errors.cedula && <div className='alert alert-danger'>
                         {errors.cedula}
                     </div>}
-                    <div className='ok'>
-                        Todo bien
-                    </div>
 
                 </div>
                 <div className='patologias'>
@@ -263,9 +251,6 @@ function Agregar() {
                         <div className='alert alert-danger'>
                             {errors.patologia}
                         </div>}
-                    <div className='ok'>
-                        Todo bien
-                    </div>
                 </div>
                 <div className='Tratamientos'>
                     <label>Tratamientos</label>
@@ -275,9 +260,6 @@ function Agregar() {
                             {errors.tratamiento}
                         </div>
                     }
-                    <div className='ok'>
-                        Todo bien
-                    </div>
                 </div>
                 <button type="submit" disabled ={loading}>{loading? 'Enviando...':'Crear paciente'}</button>
             </form>
