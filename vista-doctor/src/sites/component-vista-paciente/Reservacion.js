@@ -177,11 +177,6 @@ function Reservacion() {
                             <label>Por favor ingrese su numerode cedula</label>
                             <input type='number' name='cedula' onChange={change_cedula} />
                         </div>
-                        <div >
-                            <label>Por favor ingrese el Procedimiento</label>
-                            <input name='procedimiento' onChange={changeProcedimiento} />
-                            <button type='submit' onSubmit={botonCedula}>{opcion}</button>
-                        </div>
                     </div>
 
 
@@ -205,16 +200,6 @@ function Reservacion() {
             </div>
             <div className={modificaBody}>
                 {usuario.map((data, index) => {
-                  
-                    setcedula(data.paciente)
-                    setfecha(data.fecha)
-                    setid(data.id)
-                    setproce(data.procedimiento)
-                    console.log('cedula',cedula)
-                    console.log('fecha',fecha)
-                    console.log('proce',proce)
-                  
-
                     return (
                         <div key={index}>
                             <form  onSubmit={peticion_modif}>
