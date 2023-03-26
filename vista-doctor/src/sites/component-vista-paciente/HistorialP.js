@@ -21,16 +21,16 @@ function HistorialP() {
                     return (
                         <div key={index}>
                             <div>
-                                <label>nombre </label>
-                                <input value={usuario.nombre} />
-                            </div>
-                            <div>
                                 <label>Fecha</label>
                                 <input value={usuario.fecha} />
                             </div>
                             <div>
-                                <label>Fecha</label>
-                                <input value={usuario.procedimiento} />
+                                <label>Procedimiento</label>
+                                <input value={usuario.Procedimiento} />
+                            </div>
+                            <div>
+                                <label>Tratamiento</label>
+                                <input value={usuario.Tratamiento} />
                             </div>
 
                         </div>
