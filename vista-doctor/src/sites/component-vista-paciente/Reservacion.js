@@ -210,7 +210,7 @@ function Reservacion() {
 
                                 <div className='fecha'>
                                     <label>fecha de entrada</label>
-                                    <input name='fecha' type='date' required value={data.fecha} onChange={changeFecha} />
+                                    <input name='fecha' type='date' required onChange={changeFecha} />
                                 </div>
                                 <div className='cedula'>
                                     <label>cedula del paciente</label>
