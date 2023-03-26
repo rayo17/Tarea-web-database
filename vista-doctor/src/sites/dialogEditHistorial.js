@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Form, Button } from 'react-bootstrap';
+
 
 class DialogEditHistorial extends Component {
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             paciente: '',
             procedimiento: '',
             fecha: '',
-            tratamiento: ''
-        }
+            tratamiento: '',
+            showModal: false,
+
+        };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleOuterClick = this.handleOuterClick.bind(this);
     }   
 
     changeHandler = (e) => {
@@ -27,13 +33,33 @@ class DialogEditHistorial extends Component {
             .catch(error => {
                 console.log(error)
             })
+            this.props.onClose();
+            this.props.update();
     }
 
-  
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value });
+      };
+      handleOuterClick(event) {
+        const dialog = document.querySelector('.dialog-edit-historial');
+        if (dialog && !dialog.contains(event.target.closest('.dialog-edit-historial'))) {
+            this.props.onClose();
+            this.props.update();
+
+        }
+    };
+      componentDidMount() {
+        document.addEventListener('mousedown', this.handleOuterClick);
+      };
+    
+      componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleOuterClick);
+      };
+      
   render() {
     const { paciente, procedimiento, fecha, tratamiento } = this.state
     return (
-      <div>
+        <div className="dialog-edit-historial">
         <h2>Editar historial</h2>
         <br></br>
         <form onSubmit={this.submitHandler}>
@@ -41,8 +67,7 @@ class DialogEditHistorial extends Component {
                 <label>Cédula paciente:</label>
                 <br></br>
                 <input 
-                    type="text"
-                    
+                    type="text"  
                     name="paciente" 
                     value={paciente}
                     onChange={this.changeHandler}/>
@@ -78,7 +103,7 @@ class DialogEditHistorial extends Component {
                     onChange={this.changeHandler}/>
             </div>
             <br></br>
-            <button type="submit">Editar</button>
+            <button type="submit" className="button-minimalista">Editar</button>
         </form>
       </div>
     )

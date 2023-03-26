@@ -7,16 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7c588a4-9f37-46d3-8a0b-36e038ce4904" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../.vscode/launch.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.vscode/tasks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/API_Rest/Controllers/CamaController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/Controllers/CamaController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API_Rest/HospitecDB/HospitalTECNologico.db" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/HospitecDB/HospitalTECNologico.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API_Rest/bin/Debug/net7.0/API_Rest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/bin/Debug/net7.0/API_Rest.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API_Rest/bin/Debug/net7.0/API_Rest.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/bin/Debug/net7.0/API_Rest.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vista-doctor/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../vista-doctor/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +170,7 @@
       <workItem from="1679788299398" duration="724000" />
       <workItem from="1679789048859" duration="98000" />
       <workItem from="1679789571150" duration="613000" />
+      <workItem from="1679795359114" duration="867000" />
     </task>
     <task id="LOCAL-00001" summary="Correcciones">
       <created>1678754549563</created>
