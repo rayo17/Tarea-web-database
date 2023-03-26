@@ -68,7 +68,8 @@ function Reservacion() {
         axios.get(`https://localhost:44362/api/Reservacion/${cedula}`)
             .then(response => {
                 console.log(response)
-                setcedula(response.data.cedula)
+                console.log('cedula',response.data.paciente)
+                setcedula(response.data.paciente)
                 setproce(response.data.procedimiento)
                 setfecha(response.data.fecha)
                 setmodificarBody('modificar')
@@ -188,21 +189,18 @@ function Reservacion() {
             <div className={modificaBody}>
                 <form onSubmit={peticion_modif}>
 
-                            <div >
-                                <h3>fecha de entrada</h3>
-                                <input type='date' name='calendario' />
-                            </div>
+                            
                             <div className='fecha'>
-                                <label>cedula del paciente</label>
+                                <label>Fecha de entrada</label>
                                 <input name='fecha' type='date' required  value={fecha} onChange={changeFecha}/>
                             </div>
                             <div className='cedula'>
                                 <label>cedula del paciente</label>
-                                <input name='cedula' placeholder='cedula del paciente' type='number' required/>
+                                <input name='cedula' placeholder='cedula del paciente' type='number' required value={cedula}/>
                             </div>
                             <div className='procedimiento'>
                                 <label>Procedimiento Medico</label>
-                                <input name='procedimiento' placeholder='procedimiento' required/>
+                                <input name='procedimiento' placeholder='procedimiento' required value={proce}/>
 
                             </div>
                             <button type='submit'>{opcion}</button>
