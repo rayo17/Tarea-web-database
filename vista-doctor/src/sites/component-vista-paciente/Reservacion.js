@@ -176,6 +176,7 @@ function Reservacion() {
                         <div >
                             <label>Por favor ingrese su numerode cedula</label>
                             <input type='number' name='cedula' onChange={change_cedula} />
+                            <button type='submit' onSubmit={botonCedula}>{opcion}</button>
                         </div>
                     </div>
 
