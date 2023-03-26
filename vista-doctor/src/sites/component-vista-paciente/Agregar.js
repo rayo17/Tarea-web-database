@@ -58,67 +58,94 @@ function Agregar() {
         setfecha(e.target.value)
     }
     const onValidacion = () => {
-        let esError = false
         let errors = {}
-        let regexName=/^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/
+        let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/
+        if (!fecha.trim()) {
+            errors.fecha = 'El campo Nombre esta vacio'
+    
+        }
         if (!name.trim()) {
             errors.nombre = 'El campo Nombre esta vacio'
-            esError = true
+            
         }
-        else if (!regexName.test(name)){
+        else if (!regexName.test(name)) {
             errors.nombre = 'El campo "Nombre" solo acepta letras y espacios.'
-            esError=true
-          }
+        }
         if (!apellido1.trim()) {
             errors.apellido1 = 'El campo apellido1 esta vacio'
-            esError = true
         }
-        else if (!regexName.test(apellido1)){
+        else if (!regexName.test(apellido1)) {
             errors.apellido1 = 'El campo "apellido1" solo acepta letras y espacios.'
-            esError=true
         }
         if (!apellido2.trim()) {
             errors.apellido2 = 'El campo apellido esta vacio'
-            esError = true
+            
         }
-        else if (!regexName.test(apellido2)){
+        else if (!regexName.test(apellido2)) {
             errors.apellido2 = 'El campo "apellido2" solo acepta letras y espacios.'
-            esError=true
+        
         }
         if (!tratamiento.trim()) {
             errors.tratamiento = 'El campo tratamiento esta vacio'
-            esError = true
         }
-        else if (!regexName.test(tratamiento)){
+        else if (!regexName.test(tratamiento)) {
             errors.tratamiento = 'El campo "tratamiento" solo acepta letras y espacios.'
-            esError=true
         }
         if (!patologia.trim()) {
             errors.patologia = 'El campo patologia esta vacio'
-            esError = true
+
         }
-        else if (!regexName.test(patologia)){
+        else if (!regexName.test(patologia)) {
             errors.patologia = 'El campo "patologia" solo acepta letras y espacios.'
-            esError=true
         }
         if (!cedula.trim()) {
             errors.cedula = 'El campo patologia esta vacio'
-            esError = true
         }
         if (!direct.trim()) {
             errors.direct = 'El campo patologia esta vacio'
-            esError = true
         }
 
 
-        return esError ? errors : null
+        return errors
     }
     const submit = (event) => {
         event.preventDefault();
         // Enviar los datos al backend para crear un nuevo registro
         let err = onValidacion()
-        if (err === null) {
+        seterrors(err)
+        if (Object.keys(err).length===0) {
             console.log('enviando form')
+            setloading(true)
+            axios
+                .post("https://localhost:44362/api/Paciente", {
+                    cedula: cedula,
+                    nombre: name,
+                    primer_apellido: apellido1,
+                    segundo_apellido: apellido2,
+                    fecha_nacimiento: fecha,
+                })
+                .then((response) => {
+                    // Agregar la dirección del paciente
+                    axios
+                        .post("https://localhost:44362/api/Paciente_Direcciones", {
+                            paciente: cedula,
+                            ubicacion: direct
+                        })
+                }
+                ).then((response) => {
+                    // Agregar la dirección del paciente
+                    axios
+                        .post("https://localhost:44362/api/Patologia", {
+                            Paciente: cedula,
+                            Nombre: patologia,
+                            Tratamiento: tratamiento
+                        })
+                }
+                ).then(condiciones_iniciales())
+                .catch((error) => {
+                    console.log('error')
+                    setloading(false)
+                })
         }
         else {
             seterrors(err)
@@ -166,18 +193,22 @@ function Agregar() {
                 <div className='calendario'>
                     <label className='form-label '>Fecha de nacimiento</label>
                     <input type='date' name='calendario' value={fecha} onChange={cambiarFecha} />
+
                 </div>
+                {errors.calendario && <div className='ok'>
+                    {errors.calendario}
+                </div>}
                 <div className='ok'>
                     Todo bien
                 </div>
 
                 <div className='nombre'>
                     <label>nombre</label>
-                    <input name='nombre' placeholder='nombre' value={name} onChange={cambiarNombre}  />
+                    <input name='nombre' placeholder='nombre' value={name} onChange={cambiarNombre} />
                     {errors.nombre && <div className='alert alert-danger p-1 '>
-                     {errors.nombre}
+                        {errors.nombre}
                     </div>}
-                    
+
                     <div className='ok'>
                         Todo bien
                     </div>
@@ -197,7 +228,7 @@ function Agregar() {
                     <label>apellido2</label>
                     <input name='apellido2' placeholder='apellido2' value={apellido2} onChange={cambiarApellido2} />
                     {errors.apellido2 && <div className='alert alert-danger'>
-                        { errors.apellido2}
+                        {errors.apellido2}
                     </div>}
                     <div className='ok'>
                         Todo bien
@@ -205,7 +236,7 @@ function Agregar() {
                 </div>
                 <div className='direccion'>
                     <label>direccion</label>
-                    <input name='direccion' placeholder='direccion' value={direct} onChange={cambiarDireccion}  />  
+                    <input name='direccion' placeholder='direccion' value={direct} onChange={cambiarDireccion} />
                     {errors.direct && <div className='alert alert-danger'>
                         {errors.direct}
                     </div>}
@@ -227,10 +258,10 @@ function Agregar() {
                 </div>
                 <div className='patologias'>
                     <label>patologias</label>
-                    <input name='patologias' placeholder='patologias' value={patologia} onChange={cambiarPatologia}  />
+                    <input name='patologias' placeholder='patologias' value={patologia} onChange={cambiarPatologia} />
                     {errors.patologia &&
                         <div className='alert alert-danger'>
-                              {errors.patologia}
+                            {errors.patologia}
                         </div>}
                     <div className='ok'>
                         Todo bien
@@ -238,17 +269,17 @@ function Agregar() {
                 </div>
                 <div className='Tratamientos'>
                     <label>Tratamientos</label>
-                    <input name='tratamientos' placeholder='tratamientos' value={tratamiento} onChange={cambiarTratamiento}  />
+                    <input name='tratamientos' placeholder='tratamientos' value={tratamiento} onChange={cambiarTratamiento} />
                     {errors.tratamiento &&
                         <div className='alert alert-danger'>
-                              {errors.tratamiento}
+                            {errors.tratamiento}
                         </div>
                     }
                     <div className='ok'>
                         Todo bien
                     </div>
                 </div>
-                <button type="submit">crear paciente</button>
+                <button type="submit" disabled ={loading}>{loading? 'Enviando...':'Crear paciente'}</button>
             </form>
 
             <div className='cuentas'>
