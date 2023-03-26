@@ -205,8 +205,8 @@ function Reservacion() {
             <div className={modificaBody}>
                 {usuario.map((data, index) => {
                     return (
-                        <div>
-                            <form key={index} onSubmit={peticion_modif}>
+                        <div key={index}>
+                            <form  onSubmit={peticion_modif}>
 
                                 <div className='fecha'>
                                     <label>fecha de entrada</label>
