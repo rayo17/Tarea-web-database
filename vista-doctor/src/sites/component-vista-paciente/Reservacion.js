@@ -66,7 +66,9 @@ function Reservacion() {
         event.preventDefault();
 
         axios.get(`https://localhost:44362/api/Reservacion/${cedula}`)
-            .then(response => { alert(response.data) })
+            .then(response => {console.log(response) 
+            setmodificarBody('modificar')
+            })
             .catch(error => alert('error'))
 
     }
