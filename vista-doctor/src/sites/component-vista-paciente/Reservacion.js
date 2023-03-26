@@ -3,32 +3,34 @@ import axios from 'axios'
 import '../Reservacion.css'
 
 function Reservacion() {
-    const [create, setcreate] = useState('crear')
-    const [modificar, setmodificar] = useState('null')
-    const [opcion, setopcion] = useState('crear')
-    const [cedula, setcedula] = useState('')
+    /* se crean los state hook para los diferentes cambios de estos */
+    const [create, setcreate] = useState('crear') // para crear
+    const [modificar, setmodificar] = useState('null') // para modificar
+    const [opcion, setopcion] = useState('crear') // para opciones como modificar, crear o eliminar
+    const [cedula, setcedula] = useState('') // cedula
     const [modificaBody, setmodificarBody] = useState('null')
     const [name, setname] = useState('')
-    const [fecha, setfecha]=useState('')
-    const [proce, setproce]= useState('')
-    const[contador, setcontador]=useState(1)
+    const [fecha, setfecha] = useState('')
+    const [proce, setproce] = useState('')
+    const [contador, setcontador] = useState(1)
+    const [eliminar, seteliminar] = useState('null')
 
 
     const boton = (e) => {
-        e.preventDefault()
+        e.preventDefault()// para no refrescar el form
     }
     const botonCedula = (e) => {
         e.preventDefault()
     }
 
-    const changeName =(e)=>{
-        setname(e.target.value)
+    const changeName = (e) => {
+        setname(e.target.value) // para actualizar el input de nombre
     }
-    const changeFecha = (e) =>{
+    const changeFecha = (e) => {
         setfecha(e.target.value)
     }
-    const changeProcedimiento = (e) =>{
-        setproce(e.target.value)
+    const changeProcedimiento = (e) => {
+        setproce(e.target.value)//actualiza el texto del input procedimiento
     }
 
     const cambioSeleccion = (e) => {
@@ -36,46 +38,57 @@ function Reservacion() {
             setcreate('crear')
             setmodificar('null')
             setopcion('crear')
+            seteliminar('null')
 
         }
         if (e.target.value === 'modificar') {
             setmodificar('modificar')
             setcreate('null')
             setopcion('modificar')
+            seteliminar('null')
         }
-        if (e.target.value === 'eliminar'){
+        if (e.target.value === 'eliminar') {
             setopcion('eliminar')
+            seteliminar('eliminar')
+            setmodificar('null')
+            setcreate('null')
+
         }
     }
 
 
     const change_cedula = (e) => {
-        setcedula(e.target.value)
+        setcedula(e.target.value) //actualiza la cedula
     }
 
     const peticion_modificar = (event) => {
-     event.preventDefault();
-     axios.get(`https://localhost:44362/api/Reservacion/${cedula}`)
-            .then(response => {alert(response.data)})
-            .catch(error => alert('error'))
-            
-    }
- 
-    const peticion_crear = (event)=>{
         event.preventDefault();
-        setcontador(1+contador)
-        axios.post('https://localhost:44362/api/Reservacion',{
-            Paciente:cedula,
-            procedimiento:proce,
-            Fecha:fecha,
+        axios.get(`https://localhost:44362/api/Reservacion/${cedula}`)
+            .then(response => { alert(response.data) })
+            .catch(error => alert('error'))
+
+    }
+
+    const peticion_crear = (event) => {// petion para crear se hace con un post donde se envian un json
+        event.preventDefault();
+        setcontador(1 + contador)
+        axios.post('https://localhost:44362/api/Reservacion', {
+            Paciente: cedula,
+            procedimiento: proce,
+            Fecha: fecha,
             Id: contador
 
-         })
-        .then(response => console.log('todo bien'))
-        .catch(error => alert('error'))
+        })
+            .then(response => console.log('todo bien'))
+            .catch(error => alert('error'))
     }
-    
-    
+    const peticion_eliminar = (event) => {
+        event.preventDefault()
+        axios.delete(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`).then(res=> res.data)
+
+
+    }
+
 
 
 
@@ -86,7 +99,7 @@ function Reservacion() {
                 <label>Seleccione la opcion que desee:</label>
 
                 <select onChange={cambioSeleccion}>
-                     <option >Reservacion</option>
+                    <option >Reservacion</option>
                     <option value="create">crear Reservacion</option>
                     <option value="modificar">modificar reservacion</option>
                     <option value="eliminar">eliminar reservacion</option>
@@ -96,18 +109,18 @@ function Reservacion() {
                 <div>
                     <h1>Reservacion de camas</h1>
                 </div>
-                <form onSubmit={peticion_crear}> 
+                <form onSubmit={peticion_crear}>
                     <div>
                         <h3>fecha de entrada</h3>
                         <input type='date' name='calendario' value={fecha} onChange={changeFecha} />
                     </div>
                     <div className='nombre'>
                         <label>cedula del paciente</label>
-                        <input name='cedula' placeholder='cedula' value={cedula}  onChange={change_cedula}/>
+                        <input name='cedula' placeholder='cedula' value={cedula} onChange={change_cedula} />
                     </div>
                     <div className='procedimiento'>
                         <label>Procedimiento Medico</label>
-                        <input name='procedimiento' placeholder='procedimiento' value={proce} onChange={changeProcedimiento}  />
+                        <input name='procedimiento' placeholder='procedimiento' value={proce} onChange={changeProcedimiento} />
 
                     </div>
                     <div>
@@ -123,11 +136,6 @@ function Reservacion() {
                         <div >
                             <label>Por favor ingrese su numerode cedula</label>
                             <input name='cedula' onChange={change_cedula} />
-                            <button type='submit' onSubmit={botonCedula}>{opcion}</button>
-                        </div>
-                        <div>
-                        <label>Por favor ingrese el nombre del procedimiento</label>
-                            <input name='procedimiento' value={proce} onChange={changeProcedimiento} />
                             <button type='submit' onSubmit={botonCedula}>{opcion}</button>
                         </div>
                         <div className={modificaBody}>
@@ -152,7 +160,22 @@ function Reservacion() {
 
                 </form>
             </div>
-            
+            <div>
+                <form onSubmit={peticion_eliminar}>
+                    <div className={eliminar}>
+                        <div >
+                            <label>Por favor ingrese su numerode cedula</label>
+                            <input name='cedula' onChange={change_cedula} />
+                        </div>
+                        <div >
+                            <label>Por favor ingrese su numerode cedula</label>
+                            <input name='procedimiento' onChange={changeProcedimiento} />
+                            <button type='submit' onSubmit={botonCedula}>{opcion}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
         </div>
     )
 }
