@@ -15,6 +15,7 @@ function Reservacion() {
     const [contador, setcontador] = useState(1)
     const [eliminar, seteliminar] = useState('null')
     const [errors, seterror] = useState({})
+    const [id, setid]=useState(0)
 
 
     const boton = (e) => {
@@ -68,10 +69,10 @@ function Reservacion() {
         axios.get(`https://localhost:44362/api/Reservacion/${cedula}`)
             .then(response => {
                 console.log(response)
-                console.log('cedula',response.data.paciente)
                 setcedula(response.data.paciente)
                 setproce(response.data.procedimiento)
                 setfecha(response.data.fecha)
+                setid(response.data.id)
                 setmodificarBody('modificar')
             })
             .catch(error => alert('error'))
@@ -85,7 +86,11 @@ function Reservacion() {
     }
     const peticion_modif = (event) => {
         event.preventDefault()
-        axios.put(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`)
+        axios.put(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`,{
+           id:id,
+           cedula:cedula,
+           procedimiento:proce
+        })
             .then(response => {
                 console.log(response.data)
             
@@ -189,18 +194,17 @@ function Reservacion() {
             <div className={modificaBody}>
                 <form onSubmit={peticion_modif}>
 
-                            
                             <div className='fecha'>
-                                <label>Fecha de entrada</label>
+                                <label>fecha de entrada</label>
                                 <input name='fecha' type='date' required  value={fecha} onChange={changeFecha}/>
                             </div>
                             <div className='cedula'>
                                 <label>cedula del paciente</label>
-                                <input name='cedula' placeholder='cedula del paciente' type='number' required value={cedula}/>
+                                <input name='cedula' placeholder='cedula del paciente' type='number' value={cedula}/>
                             </div>
                             <div className='procedimiento'>
                                 <label>Procedimiento Medico</label>
-                                <input name='procedimiento' placeholder='procedimiento' required value={proce}/>
+                                <input name='procedimiento' placeholder='procedimiento' value={proce}/>
 
                             </div>
                             <button type='submit'>{opcion}</button>
