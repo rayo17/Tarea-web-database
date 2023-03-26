@@ -53,7 +53,7 @@ function Reservacion() {
 
     const peticion_modificar = () => {
     
-     axios.get(`http://localhost:44362/api/${cedula}`)
+     axios.get(`https://localhost:44362/api/${cedula}`)
             .then(response => {alert(response.data)})
             .catch(error => alert('error'))
             
