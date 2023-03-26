@@ -63,6 +63,7 @@ function Reservacion() {
 
     const peticion_modificar = (event) => {
         event.preventDefault();
+
         axios.get(`https://localhost:44362/api/Reservacion/${cedula}`)
             .then(response => { alert(response.data) })
             .catch(error => alert('error'))
@@ -72,11 +73,11 @@ function Reservacion() {
     const peticion_crear = (event) => {// petion para crear se hace con un post donde se envian un json
         event.preventDefault();
         setcontador(1 + contador)
-        axios.post('https://localhost:44362/api/Reservacion', {
-            Paciente: cedula,
-            procedimiento: proce,
-            Fecha: fecha,
-            Id: contador
+        axios.post('https://localhost:44362/api/Reservacion',{
+            paciente:cedula,
+            procedimiento:proce,
+            fecha:fecha,
+            id: contador
 
         })
             .then(response => console.log('todo bien'))
