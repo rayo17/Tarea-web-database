@@ -46,7 +46,7 @@ namespace DetailTEC_API.Controllers
         }
         
         // DELETE: api/<ReservacionController>
-        [HttpDelete("{cedula}/{id_procedimiento}")]
+        [HttpDelete("{cedula}/{id}")]
         public ActionResult Delete(string cedula)
         {
             var reservacion = context.Reservacion.FirstOrDefault(r => r.Paciente == cedula);
@@ -60,7 +60,7 @@ namespace DetailTEC_API.Controllers
         }
         
         // Update: api/<ReservacionController>
-        [HttpPut("{cedula}/{id_procedimiento}")]
+        [HttpPut("{cedula}/{id}")]
         public ActionResult Put(string cedula, int id_procedimiento, [FromBody] Reservacion reservacion)
         {
             if (reservacion.Paciente == cedula)

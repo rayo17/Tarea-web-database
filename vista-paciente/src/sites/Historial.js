@@ -1,8 +1,5 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import Historiales from './funcionHistorial'
-import DialogAddHistorial from './dialogAddHistorial'
-import DialogEditHistorial from './dialogEditHistorial'
-import './Historial.css'
 
 
 class Historial extends Component {

@@ -1,22 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { Component } from 'react'
+import axios from 'axios'
 
-function Historiales() {
-  const [historiales, setHistoriales] = useState([]);
+class GetHistorial extends Component {
+  constructor(props) {
+      super(props)
 
-  
-  useEffect(() => {
-    axios.get('http://localhost:5004/api/historial')
-      .then(response => {
-        setHistoriales(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
+      this.state = {
+          paciente: '',
+          procedimiento: '',
+          fecha: '',
+          tratamiento: ''
+      }
+  }   
 
+  changeHandler = (e) => {
+      this.setState({[e.target.name]: e.target.value})
+  }
+
+  submitHandler = e => {
+      e.preventDefault()
+      console.log(this.state)
+      axios.get('http://localhost:5004/api/historial/'+this.state.paciente)
+          .then(response => {
+              console.log(response.data)
+              this.setState(response.data)
+          })
+          .catch(error => {
+              console.log(error)
+          })
+  }
+
+
+render() {
+  const { paciente } = this.state
   return (
-    <div className="container">
+    <div>
+      <form onSubmit={this.submitHandler}>
+          <div>
+              <label>Tu cédula:</label>
+              <br></br>
+              <input 
+                  type="text"
+                  
+                  name="paciente" 
+                  value={paciente}
+                  onChange={this.changeHandler}/>
+          </div>
+          <br></br>
+          <button type="submit">Buscar</button>
+      </form>
+
+      <div className="container">
       <div className="py-4">
         <table className="table border shadow">
         <thead>
@@ -28,21 +62,18 @@ function Historiales() {
             </tr>
           </thead>
           <tbody>
-            {
-              historiales.map((user) => (
-                <tr>
-                  <td>{user.paciente}</td>
-                  <td>{user.procedimiento}</td>
-                  <td>{user.fecha}</td>
-                  <td>{user.tratamiento}</td>
-                </tr>
-              ))
-            }
+                  <td>{this.state.paciente}</td>
+                  <td>{this.state.procedimiento}</td>
+                  <td>{this.state.fecha}</td>
+                  <td>{this.state.tratamiento}</td>
           </tbody>
         </table>
       </div>
     </div>
-  );
+  
+    </div>
+  )
+}
 }
 
-export default Historiales;
+export default GetHistorial
