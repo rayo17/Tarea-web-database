@@ -205,7 +205,12 @@ function Reservacion() {
             </div>
             <div className={modificaBody}>
                 {usuario.map((data, index) => {
-                  
+                  const actualizar=()=>{
+                    setcedula(data.paciente)
+                    setfecha(data.fecha)
+                    setid(data.id)
+                    setproce(data.proce)
+                  }
                     return (
                         <div key={index}>
                             <form  onSubmit={peticion_modif}>
@@ -223,7 +228,7 @@ function Reservacion() {
                                     <input name='procedimiento' placeholder='procedimiento' value={data.procedimiento} />
 
                                 </div>
-                                <button type='submit'>{opcion}</button>
+                                <button type='submit' onSubmit={actualizar}>{opcion}</button>
                             </form>
                         </div>
                     )
