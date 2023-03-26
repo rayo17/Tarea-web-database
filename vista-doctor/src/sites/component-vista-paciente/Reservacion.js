@@ -67,7 +67,7 @@ function Reservacion() {
             Paciente:cedula,
             procedimiento:proce,
             Fecha:fecha,
-            Id: setnumero(...numero+1)
+            Id: setnumero(...numero, 1)
 
          })
         .then(response => console.log('todo bien'))
