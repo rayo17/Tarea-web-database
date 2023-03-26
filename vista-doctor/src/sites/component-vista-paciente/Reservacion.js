@@ -11,7 +11,7 @@ function Reservacion() {
     const [name, setname] = useState('')
     const [fecha, setfecha]=useState('')
     const [proce, setproce]= useState('')
-    const[numero,setnumero]=useState(1)
+    const[contador, setcontador]=useState(1)
 
 
     const boton = (e) => {
@@ -63,11 +63,12 @@ function Reservacion() {
  
     const peticion_crear = (event)=>{
         event.preventDefault();
+        setcontador(1+contador)
         axios.post('https://localhost:44362/api/Reservacion',{
             Paciente:cedula,
             procedimiento:proce,
             Fecha:fecha,
-            Id: setnumero(...numero, 1)
+            Id: contador
 
          })
         .then(response => console.log('todo bien'))
