@@ -12,6 +12,7 @@ function Reservacion() {
     const [fecha, setfecha]=useState('')
     const [proce, setproce]= useState('')
 
+
     const boton = (e) => {
         e.preventDefault()
     }
@@ -101,7 +102,7 @@ function Reservacion() {
                     </div>
                     <div className='procedimiento'>
                         <label>Procedimiento Medico</label>
-                        <input name='procedimiento' placeholder='procedimiento' value={proce} />
+                        <input name='procedimiento' placeholder='procedimiento' value={proce}  />
 
                     </div>
                     <div>
@@ -117,6 +118,11 @@ function Reservacion() {
                         <div >
                             <label>Por favor ingrese su numerode cedula</label>
                             <input name='cedula' onChange={change_cedula} />
+                            <button type='submit' onSubmit={botonCedula}>{opcion}</button>
+                        </div>
+                        <div>
+                        <label>Por favor ingrese el nombre del procedimiento</label>
+                            <input name='procedimiento' value={proce} onChange={changeProcedimiento} />
                             <button type='submit' onSubmit={botonCedula}>{opcion}</button>
                         </div>
                         <div className={modificaBody}>
