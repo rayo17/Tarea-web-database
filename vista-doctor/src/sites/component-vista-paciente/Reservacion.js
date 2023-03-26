@@ -35,6 +35,7 @@ function Reservacion() {
         setname(e.target.value) // para actualizar el input de nombre
     }
     const changeFecha = (e) => {
+        console.log(fecha)
         setfecha(e.target.value)
     }
     const changeProcedimiento = (e) => {
