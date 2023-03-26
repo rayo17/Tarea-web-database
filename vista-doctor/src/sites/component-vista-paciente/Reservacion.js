@@ -208,13 +208,6 @@ function Reservacion() {
                   
                     return (
                         <div key={index}>
-                            {  setcedula(data.paciente)
-                                                          }
-                            {setproce(data.procedimiento)}
-                            {setfecha(data.fecha)}
-                            {
-                                setid(data.id)
-                            }
                             <form  onSubmit={peticion_modif}>
 
                                 <div className='fecha'>
@@ -223,11 +216,11 @@ function Reservacion() {
                                 </div>
                                 <div className='cedula'>
                                     <label>cedula del paciente</label>
-                                    <input name='cedula' placeholder='cedula del paciente' type='number' value={data.paciente} />
+                                    <input name='cedula' placeholder='cedula del paciente' type='number' onLoad={setcedula(data.paciente)} value={data.paciente} />
                                 </div>
                                 <div className='procedimiento'>
                                     <label>Procedimiento Medico</label>
-                                    <input name='procedimiento' placeholder='procedimiento' value={data.procedimiento} />
+                                    <input name='procedimiento' placeholder='procedimiento' onLoad={setproce(data.procedimiento)} value={data.procedimiento} />
 
                                 </div>
                                 <button type='submit'>{opcion}</button>
