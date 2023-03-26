@@ -14,7 +14,7 @@ function Reservacion() {
     const [proce, setproce] = useState('')
     const [contador, setcontador] = useState(1)
     const [eliminar, seteliminar] = useState('null')
-    const [errors,seterror]=useState({})
+    const [errors, seterror] = useState({})
 
 
     const boton = (e) => {
@@ -65,27 +65,33 @@ function Reservacion() {
     const peticion_modificar = (event) => {
         event.preventDefault();
 
-        axios.put(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`)
-            .then(response => {console.log(response) 
-            setmodificarBody('modificar')
+        axios.get(`https://localhost:44362/api/Reservacion/${cedula}`)
+            .then(response => {
+                console.log(response)
+                setmodificarBody('modificar')
             })
             .catch(error => alert('error'))
 
     }
 
-    const validacion=()=>{
-        let errors={}
-        
-        
-    }
+    const validacion = () => {
+        let errors = {}
 
+
+    }
+    const peticion_modif = (event) => {
+        event.preventDefault()
+        axios.put(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`)
+            .then(response => console.log(response))
+
+    }
     const peticion_crear = (event) => {// petion para crear se hace con un post donde se envian un json
         event.preventDefault();
         setcontador(1 + contador)
-        axios.post('https://localhost:44362/api/Reservacion',{
-            paciente:cedula,
-            procedimiento:proce,
-            fecha:fecha,
+        axios.post('https://localhost:44362/api/Reservacion', {
+            paciente: cedula,
+            procedimiento: proce,
+            fecha: fecha,
             id: contador
 
         })
@@ -94,7 +100,7 @@ function Reservacion() {
     }
     const peticion_eliminar = (event) => {
         event.preventDefault()
-        axios.delete(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`).then(res=> res.data)
+        axios.delete(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`).then(res => res.data)
 
 
     }
@@ -152,23 +158,6 @@ function Reservacion() {
                             <input name='procedimiento' onChange={changeProcedimiento} />
                             <button type='submit' onSubmit={botonCedula}>{opcion}</button>
                         </div>
-                        <div className={modificaBody}>
-
-                            <div >
-                                <h3>fecha de entrada</h3>
-                                <input type='date' name='calendario' />
-                            </div>
-                            <div className='nombre'>
-                                <label>nombre del paciente</label>
-                                <input name='nombre' placeholder='nombre' />
-                            </div>
-                            <div className='procedimiento'>
-                                <label>Procedimiento Medico</label>
-                                <input name='procedimiento' placeholder='procedimiento' />
-
-                            </div>
-                            <button type='submit'>{opcion}</button>
-                        </div>
                     </div>
 
 
@@ -188,7 +177,28 @@ function Reservacion() {
                         </div>
                     </div>
                 </form>
+            
             </div>
+            <div className={modificaBody}>
+                <form onSubmit={peticion_modif}>
+
+                            <div >
+                                <h3>fecha de entrada</h3>
+                                <input type='date' name='calendario' />
+                            </div>
+                            <div className='nombre'>
+                                <label>cedula del paciente</label>
+                                <input name='cedula' placeholder='cedula del paciente' type='number' required/>
+                            </div>
+                            <div className='procedimiento'>
+                                <label>Procedimiento Medico</label>
+                                <input name='procedimiento' placeholder='procedimiento' required/>
+
+                            </div>
+                            <button type='submit'>{opcion}</button>
+                            </form>
+                       </div>
+                  
 
         </div>
     )
