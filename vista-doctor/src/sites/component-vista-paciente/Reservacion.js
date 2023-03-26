@@ -93,12 +93,13 @@ function Reservacion() {
     }
     const peticion_modif = (event) => {
         event.preventDefault()
+
         axios.put(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`, {
             id: id,
             paciente: cedula,
             procedimiento: proce,
-            fecha:fecha
-        })
+            fecha:fecha})
+
             .then(response => {
                 console.log(response.data)
                 setid(response.data.id)
