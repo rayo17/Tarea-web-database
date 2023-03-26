@@ -143,7 +143,11 @@ function Reservacion() {
                     <div className={modificar}>
                         <div >
                             <label>Por favor ingrese su numerode cedula</label>
-                            <input name='cedula' onChange={change_cedula} />
+                            <input type='number' name='cedula' onChange={change_cedula} />
+                        </div>
+                        <div >
+                            <label>Por favor ingrese el Procedimiento</label>
+                            <input name='procedimiento' onChange={changeProcedimiento} />
                             <button type='submit' onSubmit={botonCedula}>{opcion}</button>
                         </div>
                         <div className={modificaBody}>
@@ -173,10 +177,10 @@ function Reservacion() {
                     <div className={eliminar}>
                         <div >
                             <label>Por favor ingrese su numerode cedula</label>
-                            <input name='cedula' onChange={change_cedula} />
+                            <input type='number' name='cedula' onChange={change_cedula} />
                         </div>
                         <div >
-                            <label>Por favor ingrese su numerode cedula</label>
+                            <label>Por favor ingrese el Procedimiento</label>
                             <input name='procedimiento' onChange={changeProcedimiento} />
                             <button type='submit' onSubmit={botonCedula}>{opcion}</button>
                         </div>
