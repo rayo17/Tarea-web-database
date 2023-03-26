@@ -198,9 +198,6 @@ function Agregar() {
                 {errors.calendario && <div className='ok'>
                     {errors.calendario}
                 </div>}
-                <div className='ok'>
-                    Todo bien
-                </div>
 
                 <div className='nombre'>
                     <label>nombre</label>
@@ -208,10 +205,6 @@ function Agregar() {
                     {errors.nombre && <div className='alert alert-danger p-1 '>
                         {errors.nombre}
                     </div>}
-
-                    <div className='ok'>
-                        Todo bien
-                    </div>
                 </div>
                 <div className='apellido1'>
                     <label>apellido1</label>

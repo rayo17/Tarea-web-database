@@ -14,6 +14,7 @@ function Reservacion() {
     const [proce, setproce] = useState('')
     const [contador, setcontador] = useState(1)
     const [eliminar, seteliminar] = useState('null')
+    const [errors,seterror]=useState({})
 
 
     const boton = (e) => {
@@ -68,6 +69,10 @@ function Reservacion() {
             .then(response => { alert(response.data) })
             .catch(error => alert('error'))
 
+    }
+
+    const validacion=()=>{
+        let errors={}
     }
 
     const peticion_crear = (event) => {// petion para crear se hace con un post donde se envian un json
