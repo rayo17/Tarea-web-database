@@ -205,7 +205,7 @@ function Reservacion() {
             </div>
             <div className={modificaBody}>
                 {usuario.map((data, index) => {
-                  const actualizar=()=>{
+                  
                     setcedula(data.paciente)
                     setfecha(data.fecha)
                     setid(data.id)
@@ -213,8 +213,7 @@ function Reservacion() {
                     console.log('cedula',cedula)
                     console.log('fecha',fecha)
                     console.log('proce',proce)
-                  }
-                  actualizar()
+                  
 
                     return (
                         <div key={index}>
