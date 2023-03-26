@@ -26,11 +26,11 @@ function HistorialP() {
                             </div>
                             <div>
                                 <label>Procedimiento</label>
-                                <input value={usuario.Procedimiento} />
+                                <input value={usuario.procedimiento} />
                             </div>
                             <div>
                                 <label>Tratamiento</label>
-                                <input value={usuario.Tratamiento} />
+                                <input value={usuario.tratamiento} />
                             </div>
 
                         </div>
