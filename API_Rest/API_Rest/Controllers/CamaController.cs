@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API_Rest.Models;
-using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using API_Rest.Data;
 

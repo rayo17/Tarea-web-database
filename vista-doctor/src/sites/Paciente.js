@@ -138,7 +138,7 @@ render() {
     <div style={{ backgroundColor: '#fff', textAlign: 'center' }}>
   <h1 style={{ margin: '50px 0', fontSize: '2.5rem', fontWeight: 'bold', textTransform: 'uppercase' }}>Pacientes</h1>
       {error && <div>Error: {error}</div>}
-      <table style={{ borderCollapse: 'collapse', width: '80%', margin: '0 auto' }}>
+      <table style={{ borderCollapse: 'collapse', width: '80%', margin: '0 auto'}} className="table border shadow">
         <thead>
           <tr>
             <th style={{ padding: '10px', borderBottom: '1px solid #1c3a56' }}>Nombre</th>
@@ -247,7 +247,7 @@ render() {
             {/* contenido del diálogo */}
             <AñadirData
               onClose={this.toggletwoDialog}
-              onAdd={this.componentDidMount}
+              onAdd={this.handleNewPatient}
             />
           </div>
         </CSSTransition>
