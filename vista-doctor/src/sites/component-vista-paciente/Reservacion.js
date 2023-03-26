@@ -232,7 +232,7 @@ function Reservacion() {
                                     <input name='procedimiento' placeholder='procedimiento' value={data.procedimiento} />
 
                                 </div>
-                                <button type='submit' onSubmit={actualizar}>{opcion}</button>
+                                <button type='submit' onClick={actualizar}>{opcion}</button>
                             </form>
                         </div>
                     )
