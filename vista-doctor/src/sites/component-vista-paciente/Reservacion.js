@@ -98,7 +98,8 @@ function Reservacion() {
             id: id,
             paciente: cedula,
             procedimiento: proce,
-            fecha:fecha})
+            fecha: fecha
+        })
 
             .then(response => {
                 console.log(response.data)
@@ -204,23 +205,26 @@ function Reservacion() {
             <div className={modificaBody}>
                 {usuario.map((data, index) => {
                     return (
-                        <form key={index} onSubmit={peticion_modif}>
+                        <div>
+                            <form key={index} onSubmit={peticion_modif}>
 
-                            <div className='fecha'>
-                                <label>fecha de entrada</label>
-                                <input name='fecha' type='date' required value={data.fecha} onChange={changeFecha} />
-                            </div>
-                            <div className='cedula'>
-                                <label>cedula del paciente</label>
-                                <input name='cedula' placeholder='cedula del paciente' type='number' value={data.paciente} />
-                            </div>
-                            <div className='procedimiento'>
-                                <label>Procedimiento Medico</label>
-                                <input name='procedimiento' placeholder='procedimiento' value={data.procedimiento} />
+                                <div className='fecha'>
+                                    <label>fecha de entrada</label>
+                                    <input name='fecha' type='date' required value={data.fecha} onChange={changeFecha} />
+                                </div>
+                                <div className='cedula'>
+                                    <label>cedula del paciente</label>
+                                    <input name='cedula' placeholder='cedula del paciente' type='number' value={data.paciente} />
+                                </div>
+                                <div className='procedimiento'>
+                                    <label>Procedimiento Medico</label>
+                                    <input name='procedimiento' placeholder='procedimiento' value={data.procedimiento} />
 
-                            </div>
-                            <button type='submit'>{opcion}</button>
-                        </form>)
+                                </div>
+                                <button type='submit'>{opcion}</button>
+                            </form>
+                        </div>
+                    )
                 })}
 
             </div>
