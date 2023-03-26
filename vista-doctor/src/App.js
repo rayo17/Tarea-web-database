@@ -8,6 +8,7 @@ import  Menu  from './sites/Menu';
 import Vistapaciente from './sites/VistaPaciente';
 import Agregar from './sites/component-vista-paciente/Agregar';
 import Reservacion from './sites/component-vista-paciente/Reservacion';
+import HistorialP from './sites/component-vista-paciente/HistorialP';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path='/Vistadoctor' element={ <Principal/> }/>
             <Route path='/Paciente' element={ <Paciente/> }/>
             <Route path='/Historial' element={ <Historial/> }/>
+            <Route path='/historial-paciente'element={<HistorialP/>}/> 
           </Routes>
       </Router>
       
