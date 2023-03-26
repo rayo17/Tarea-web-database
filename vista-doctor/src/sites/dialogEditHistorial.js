@@ -20,7 +20,7 @@ class DialogEditHistorial extends Component {
     submitHandler = e => {
         e.preventDefault()
         console.log(this.state)
-        axios.put('http://localhost:5004/api/historial', this.state)
+        axios.put('http://localhost:5004/api/historial/'+this.state.paciente, this.state)
             .then(response => {
                 console.log(response)
             })
