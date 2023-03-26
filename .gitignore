@@ -7,18 +7,20 @@ obj/
 /node_modules
 /wwwroot/node_modules
 
-### react ###
+# React folders and files
 .DS_*
 *.log
 logs
 **/*.backup.*
 **/*.back.*
-
 node_modules
 bower_components
-
 *.sublime*
-
 psd
 thumb
 sketch
+
+#API_Rest
+API_Rest\API_Rest\bin
+API_Rest\API_Rest\.idea
+API_Rest\API_Rest\obj

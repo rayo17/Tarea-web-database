@@ -6,14 +6,32 @@
     <projectFile profileName="https">API_Rest/API_Rest.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7c588a4-9f37-46d3-8a0b-36e038ce4904" name="Changes" comment="" />
+    <list default="true" id="f7c588a4-9f37-46d3-8a0b-36e038ce4904" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_03__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_03__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_12__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_00_12__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_20_32__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/shelf/Uncommitted_changes_before_Update_at_23_3_2023_20_32__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/bin/Debug/net7.0/API_Rest.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/bin/Debug/net7.0/API_Rest.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/API_Rest.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/API_Rest.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/API_Rest.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/API_Rest.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/rider.project.restore.info" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/ramaVistaDoctor" />
+    <option name="BRANCH" value="origin/mergeVistaDoctor" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -159,6 +177,7 @@
       <workItem from="1679626475078" duration="36000" />
       <workItem from="1679630296361" duration="3630000" />
       <workItem from="1679786296833" duration="1460000" />
+      <workItem from="1679788299398" duration="433000" />
     </task>
     <task id="LOCAL-00001" summary="Correcciones">
       <created>1678754549563</created>
