@@ -27,6 +27,15 @@ CREATE TABLE PACIENTE_TELEFONOS(
                                    FOREIGN KEY (Paciente) REFERENCES PACIENTE(Cedula)
 );
 
+-- Usuario de cada paciente
+CREATE TABLE PACIENTE_USUARIO(
+                                Paciente VARCHAR(10) NOT NULL,
+                                Password VARCHAR(20) NOT NULL,
+                              
+                                PRIMARY KEY(Paciente),
+                                FOREIGN KEY(Paciente) REFERENCES PACIENTE(Cedula)
+);
+
 
 -- Patologia
 CREATE TABLE PATOLOGIA(

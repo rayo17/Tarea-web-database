@@ -33,6 +33,7 @@ namespace API_Rest.Data
         public DbSet<Paciente> Paciente { get; set; }
         public DbSet<Paciente_Direcciones> Paciente_Direcciones { get; set; }
         public DbSet<Paciente_Telefonos> Paciente_Telefonos { get; set; }
+        public DbSet<Paciente_Usuario> Paciente_Usuario { get; set; }
         public DbSet<Historial> Historial { get; set; }
         public DbSet<Reservacion> Reservacion { get; set; }
         public DbSet<Patologia> Patologia { get; set; }

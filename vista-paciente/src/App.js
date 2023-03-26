@@ -4,6 +4,7 @@ import { Navbar } from './Navbar'
 import Paciente from './sites/Paciente';
 import Historial from './sites/Historial';
 import Principal from './sites/Principal';
+import Reservacion from './sites/Reservacion';
 import React from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
@@ -19,6 +20,7 @@ function App() {
             <Route path='/' element={ <Principal/> }/>
             <Route path='/Paciente' element={ <Paciente/> }/>
             <Route path='/Historial' element={ <Historial/> }/>
+            <Route path='/Reservacion' element= { <Reservacion />} />
           </Routes>
       </Router>
       
