@@ -94,7 +94,7 @@ function Reservacion() {
     }
     const peticion_modif = (event) => {
         event.preventDefault()
-
+        console.log('modificandoooooo')
         axios.put(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`, {
             id: id,
             paciente: cedula,
@@ -214,6 +214,7 @@ function Reservacion() {
                     console.log('fecha',fecha)
                     console.log('proce',proce)
                   }
+                  actualizar()
 
                     return (
                         <div key={index}>
@@ -232,7 +233,7 @@ function Reservacion() {
                                     <input name='procedimiento' placeholder='procedimiento' value={data.procedimiento} />
 
                                 </div>
-                                <button type='submit' onClick={actualizar}>{opcion}</button>
+                                <button type='submit' >{opcion}</button>
                             </form>
                         </div>
                     )
