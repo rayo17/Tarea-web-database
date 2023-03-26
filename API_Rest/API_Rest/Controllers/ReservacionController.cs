@@ -18,10 +18,11 @@ namespace DetailTEC_API.Controllers
         
         // GET: api/<ReservacionController>/cedula
         [HttpGet("{cedula}")]
-        public Reservacion Get(string cedula)
+        public IEnumerable<Reservacion> Get(string cedula)
         {
-            return context.Reservacion.FirstOrDefault(r=>r.Paciente == cedula);
+            return context.Reservacion.Where(r => r.Paciente == cedula);
         }
+
         
         // POST: api/<ReservacionController>
         [HttpPost]
