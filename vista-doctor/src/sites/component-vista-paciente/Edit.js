@@ -2,8 +2,16 @@ import React, {useState} from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 function Edit() {
-    const parametros=useParams()
+    const parametros = useParams()
     const [fecha, setfecha] = useState('')
+    const [cedula, setcedula] = useState('') 
+    const [proce, setproce] = useState('')
+    const change_cedula = (e) => {
+        setcedula(e.target.value) //actualiza la cedula
+    }
+    const changeProcedimiento = (e) => {
+        setproce(e.target.value)//actualiza el texto del input procedimiento
+    }
 
     const changeFecha = (e) => {
         console.log(fecha)
@@ -13,10 +21,10 @@ function Edit() {
         event.preventDefault()
         console.log('modificandoooooo')
         
-        axios.put(`https://localhost:44362/api/Reservacion/${parametros.paciente}/${parametros.procedimiento}`, {
+        axios.put(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`, {
             id: parametros.id,
-            paciente: parametros.paciente,
-            procedimiento: parametros.procedimiento,
+            paciente: cedula,
+            procedimiento: proce,
             fecha: fecha
         })
 
@@ -35,11 +43,11 @@ function Edit() {
             </div>
             <div>
                 <label>cedula</label>
-                <input value={parametros.paciente} />
+                <input value={cedula} onChange={change_cedula} />
             </div>
             <div>
                 <label>Procedimiento</label>
-                <input value={parametros.procedimiento} />
+                <input value={proce} onChange={changeProcedimiento} />
             </div>
             <button onClick={peticion_modif}></button>
 
