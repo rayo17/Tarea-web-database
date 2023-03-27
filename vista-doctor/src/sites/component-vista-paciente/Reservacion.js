@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import uniquid from 'uniquid'
 import '../Reservacion.css'
+import {Link, link} from 'react-router-dom'
 
 function Reservacion() {
     /* se crean los state hook para los diferentes cambios de estos */
@@ -76,12 +78,13 @@ function Reservacion() {
         axios.get(`https://localhost:44362/api/Reservacion/${cedula}`)
             .then(response => {
                 console.log(response)
-                setcedula(response.data.paciente)
-                setproce(response.data.procedimiento)
-                setfecha(response.data.fecha)
+                const datosUsuario=response.data[0]
+                setcedula(datosUsuario.paciente)
+                setproce(datosUsuario.procedimiento)
+                setfecha(datosUsuario.fecha)
                 setid(response.data.id)
                 setmodificarBody('modificar')
-                setusuario(response.data)
+                setusuario(datosUsuario.data)
             })
             .catch(error => alert('error'))
 
@@ -99,10 +102,8 @@ function Reservacion() {
             id: id,
             paciente: cedula,
             procedimiento: proce,
-            fecha: fecha
-        })
-
-            .then(response => {
+            fecha: fecha}
+        ).then(response => {
                 console.log(response.data)
                 setid(response.data.id)
 
@@ -116,7 +117,7 @@ function Reservacion() {
             paciente: cedula,
             procedimiento: proce,
             fecha: fecha,
-            id: contador
+            id: uniquid()
 
         })
             .then(response => console.log('todo bien'))
@@ -128,6 +129,7 @@ function Reservacion() {
 
 
     }
+
 
 
 
@@ -203,7 +205,7 @@ function Reservacion() {
                 {usuario.map((data, index) => {
                     return (
                         <div key={index}>
-                            <form  onSubmit={peticion_modif}>
+                            <form onSubmit={peticion_modif}>
 
                                 <div className='fecha'>
                                     <label>fecha de entrada</label>
@@ -218,7 +220,7 @@ function Reservacion() {
                                     <input name='procedimiento' placeholder='procedimiento' value={data.procedimiento} />
 
                                 </div>
-                                <button type='submit' >{opcion}</button>
+                               <button type='submit'>modificar</button>
                             </form>
                         </div>
                     )
