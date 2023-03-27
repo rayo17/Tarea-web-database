@@ -49,6 +49,7 @@ function Reservacion() {
             setmodificar('null')
             setopcion('crear')
             seteliminar('null')
+            init()
 
         }
         if (e.target.value === 'modificar') {
@@ -56,12 +57,14 @@ function Reservacion() {
             setcreate('null')
             setopcion('modificar')
             seteliminar('null')
+            init()
         }
         if (e.target.value === 'eliminar') {
             setopcion('eliminar')
             seteliminar('eliminar')
             setmodificar('null')
             setcreate('null')
+            init()
 
         }
     }
@@ -117,7 +120,7 @@ function Reservacion() {
             paciente: cedula,
             procedimiento: proce,
             fecha: fecha,
-            id: uniquid()
+            id: contador
 
         })
             .then(response => console.log('todo bien'))
