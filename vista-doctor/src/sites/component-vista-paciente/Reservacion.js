@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import uniquid from 'uniquid'
+import { Link } from 'react-router-dom'
 import '../Reservacion.css'
 
 function Reservacion() {
@@ -132,12 +132,12 @@ function Reservacion() {
 
 
     }
-    const actualizarUsuarios=()=>{
-        const update={
-            id:id,
-            fecha:fecha,
-            procedimiento:proce,
-            paciente:cedula
+    const actualizarUsuarios = () => {
+        const update = {
+            id: id,
+            fecha: fecha,
+            procedimiento: proce,
+            paciente: cedula
 
         }
     }
@@ -169,11 +169,11 @@ function Reservacion() {
                     </div>
                     <div className='nombre'>
                         <label>cedula del paciente</label>
-                        <input name='cedula' placeholder='cedula' value={cedula} onChange={change_cedula} />
+                        <input name='cedula' placeholder='cedula' value={cedula} />
                     </div>
                     <div className='procedimiento'>
                         <label>Procedimiento Medico</label>
-                        <input name='procedimiento' placeholder='procedimiento' value={proce} onChange={changeProcedimiento} />
+                        <input name='procedimiento' placeholder='procedimiento' value={proce} />
 
                     </div>
                     <div>
@@ -216,23 +216,23 @@ function Reservacion() {
                 {usuario.map((data, index) => {
                     return (
                         <div key={index}>
-                            <form  onSubmit={peticion_modif}>
 
-                                <div className='fecha'>
-                                    <label>fecha de entrada</label>
-                                    <input name='fecha' type='date' value={fecha} required onChange={changeFecha} />
-                                </div>
-                                <div className='cedula'>
-                                    <label>cedula del paciente</label>
-                                    <input name='cedula' placeholder='cedula del paciente' type='number' value={data.paciente} />
-                                </div>
-                                <div className='procedimiento'>
-                                    <label>Procedimiento Medico</label>
-                                    <input name='procedimiento' placeholder='procedimiento' value={data.procedimiento} />
 
-                                </div>
-                                <button type='submit' >{opcion}</button>
-                            </form>
+                            <div className='fecha'>
+                                <label>fecha de entrada</label>
+                                <input name='fecha' type='date' value={fecha} required onChange={changeFecha} />
+                            </div>
+                            <div className='cedula'>
+                                <label>cedula del paciente</label>
+                                <input name='cedula' placeholder='cedula del paciente' type='number' value={data.paciente} />
+                            </div>
+                            <div className='procedimiento'>
+                                <label>Procedimiento Medico</label>
+                                <input name='procedimiento' placeholder='procedimiento' value={data.procedimiento} />
+
+                            </div>
+                            <Link to={`/editar-reservacion${data.id}`} /><li className='btn btn-success'>editar</li>
+
                         </div>
                     )
                 })}
