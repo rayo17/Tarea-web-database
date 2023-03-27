@@ -231,16 +231,20 @@ function Reservacion() {
                                 <input name='procedimiento' placeholder='procedimiento' value={data.procedimiento} />
 
                             </div>
-                            <Link to={`/editar-reservacion/${data.id}`} /><li className='btn btn-success'>editar</li>
+                            <div>
+                                <Link to={`/editar-reservacion/${data.id}`}><li className='btn btn-success'>editar</li>
+                                </Link>
+                            </div>
 
-                        </div>
+
+                    </div>
                     )
                 })}
 
             </div>
 
 
-        </div>
+        </div >
     )
 }
 export default Reservacion
