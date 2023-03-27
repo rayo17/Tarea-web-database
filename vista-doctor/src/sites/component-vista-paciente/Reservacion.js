@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import uniquid from 'uniquid'
+import uniquid from 'uniqid'
 import '../Reservacion.css'
 
 function Reservacion() {
