@@ -86,7 +86,11 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.API_Rest: https">
+  <component name="RunManager" selected="Publish to folder.Publish API_Rest to folder">
+    <configuration name="Publish API_Rest to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="Release" platform="Any CPU" runtime="Portable" target_folder="$PROJECT_DIR$/build" target_framework="net7.0" uuid_high="3985084026641270540" uuid_low="-6238492672217528401" />
+      <method v="2" />
+    </configuration>
     <configuration name="API_Rest: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/API_Rest/API_Rest.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
