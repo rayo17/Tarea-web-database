@@ -26,6 +26,7 @@ function Edit() {
             }).catch(error => console.log(error))
 
     }
+    console.log('parametros',parametros)
     return (
         <div>
             <div>
@@ -33,12 +34,12 @@ function Edit() {
                 <input type={'date'} value={fecha} onChange={changeFecha}/>
             </div>
             <div>
-                <label>Procedimiento</label>
-                <input value={parametros.procedimiento} />
+                <label>cedula</label>
+                <input value={parametros.paciente} />
             </div>
             <div>
-                <label>Tratamiento</label>
-                <input value={parametros.tratamiento} />
+                <label>Procedimiento</label>
+                <input value={parametros.procedimiento} />
             </div>
             <button onClick={peticion_modif}></button>
 

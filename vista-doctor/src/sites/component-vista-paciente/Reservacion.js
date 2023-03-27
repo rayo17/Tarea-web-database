@@ -216,12 +216,6 @@ function Reservacion() {
                 {usuario.map((data, index) => {
                     return (
                         <div key={index}>
-
-
-                            <div className='fecha'>
-                                <label>fecha de entrada</label>
-                                <input name='fecha' type='date' value={fecha} required onChange={changeFecha} />
-                            </div>
                             <div className='cedula'>
                                 <label>cedula del paciente</label>
                                 <input name='cedula' placeholder='cedula del paciente' type='number' value={data.paciente} />
