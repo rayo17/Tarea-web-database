@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './historial.css'
+import  Menu  from '../Menu';
+
 
 function HistorialP() {
     let [usuario, setusuarios] = useState([])
@@ -23,6 +25,7 @@ function HistorialP() {
 
     return (
         <div>
+            <Menu/>
             <div>
                 <form onSubmit={cargar_historial}>
                     <label>Ingresa tu cedula para ver tu historial clinico</label>

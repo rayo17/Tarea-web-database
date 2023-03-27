@@ -4,6 +4,7 @@ import DialogAddHistorial from './dialogAddHistorial'
 import DialogEditHistorial from './dialogEditHistorial'
 import { CSSTransition } from 'react-transition-group';
 import  './Historial.css'
+import  Menu  from '../sites/Menu';
 import axios from 'axios';
 
 
@@ -56,6 +57,7 @@ toggleDialog = async () => {
 
     return (
       <div>
+      <Menu/>
         <h1>Historiales</h1>
         <Historiales/>
         <div className="row">

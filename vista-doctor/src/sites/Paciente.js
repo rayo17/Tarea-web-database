@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
+import  Menu  from '../sites/Menu';
 import NuevoPacienteFormulario from "./NuevoPacienteFormulario.js";
 import { CSSTransition } from 'react-transition-group';
 import AñadirData from './AñadirData';
@@ -136,6 +137,7 @@ render() {
 
   return (
     <div style={{ backgroundColor: '#fff', textAlign: 'center' }}>
+      <Menu/>
   <h1 style={{ margin: '50px 0', fontSize: '2.5rem', fontWeight: 'bold', textTransform: 'uppercase' }}>Pacientes</h1>
       {error && <div>Error: {error}</div>}
       <table style={{ borderCollapse: 'collapse', width: '80%', margin: '0 auto'}} className="table border shadow">

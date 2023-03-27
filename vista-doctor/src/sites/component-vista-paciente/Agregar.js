@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import '../Agregar.css'
+import  Menu  from '../Menu';
+
 function Agregar() {
     const [direct, setdirect] = useState('')
     const [name, setName] = useState('')
@@ -190,7 +192,7 @@ function Agregar() {
 
     return (
         <div>
-
+            <Menu/>
             <form onSubmit={submit} className='w-10' >
                 <div>
                     <h1>Crear cuenta</h1>

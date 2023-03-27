@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import '../Reservacion.css'
+import  Menu  from '../Menu';
+
 
 function Reservacion() {
     /* se crean los state hook para los diferentes cambios de estos */
@@ -140,6 +142,7 @@ function Reservacion() {
     /*const { nombre, fecha, procedimiento } = info*/
     return (
         <div>
+            <Menu/>
             <div>
                 <label>Seleccione la opcion que desee:</label>
 

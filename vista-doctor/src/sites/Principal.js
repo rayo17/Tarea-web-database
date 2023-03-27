@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import pacienteIcon from '../paciente-icon.png';
 import historialIcon from '../historial-icon.png';
+import  Menu  from '../sites/Menu';
 
 import Paciente from './Paciente';
 import Historial from './Historial';
@@ -12,6 +13,7 @@ import Card from '../Card';
 const Principal = () => {
   return (
     <div>
+        <Menu/>
         <div className='row'>
         
         <div className='col-md-3'></div>
