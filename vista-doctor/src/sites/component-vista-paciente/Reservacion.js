@@ -165,7 +165,7 @@ function Reservacion() {
                     </div>
                     <div className='procedimiento'>
                         <label>Procedimiento Medico</label>
-                        <input name='procedimiento' placeholder='procedimiento' value={proce} />
+                        <input name='procedimiento' placeholder='procedimiento' value={proce} onChange={changeProcedimiento} />
 
                     </div>
                     <div>
