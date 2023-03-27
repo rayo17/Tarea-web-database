@@ -132,15 +132,7 @@ function Reservacion() {
 
 
     }
-    const actualizarUsuarios = () => {
-        const update = {
-            id: id,
-            fecha: fecha,
-            procedimiento: proce,
-            paciente: cedula
-
-        }
-    }
+    
 
 
 

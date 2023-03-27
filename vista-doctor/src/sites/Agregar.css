@@ -18,3 +18,16 @@ label{
 input{
     margin:10px;
 }
+input::placeholder{
+    text-align: center;
+}
+
+.botonAgregar{
+    text-align: center;
+    margin: 0 auto;
+    
+}
+
+div{
+    margin: 10px;
+}
