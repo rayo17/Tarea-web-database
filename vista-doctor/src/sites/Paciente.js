@@ -39,12 +39,12 @@ class Paciente extends Component {
   };
 
   // función para alternar la visibilidad del formulario para añadir información adicional a un paciente existente
-  toggletwoForm = () => {
+  togglet = () => {
     this.setState({ showtwoForm: !this.state.showtwoForm });
   };
 
   // función para alternar la visibilidad del diálogo para añadir información adicional a un paciente existente
-  toggletwoDialog = () => {
+  toggletD = () => {
     this.setState(prevState => ({ showtwoDialog: !prevState.showtwoDialog }));
   };
 
@@ -212,7 +212,7 @@ render() {
         </div>
         )}
         <button style={{ marginTop: '20px', padding: '10px 20px', borderRadius: '5px', backgroundColor: '#fff', color: '#4CAF50', border: '2px solid #4CAF50', cursor: 'pointer' }} 
-      onClick={this.toggletwoDialog}>Añadir</button>
+      onClick={this.toggletD}>Añadir</button>
       {showtwoDialog && (
           <div
             style={{
@@ -248,7 +248,7 @@ render() {
           >
             {/* contenido del diálogo */}
             <AñadirData
-              onClose={this.toggletwoDialog}
+              onClose={this.toggletD}
               onAdd={this.handleNewPatient}
             />
           </div>

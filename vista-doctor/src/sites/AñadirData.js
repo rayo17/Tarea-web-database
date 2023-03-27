@@ -78,7 +78,7 @@ class AñadirData extends Component {
    */
 
   handleOuterClick(event) {
-    const container = document.querySelector('.container');
+    const container = document.querySelector('.container2');
     if (container && !container.contains(event.target)) {
       this.props.onClose();
     }
@@ -108,7 +108,7 @@ class AñadirData extends Component {
   render() {    
     return (
       <div
-        className="container"
+        className="container2"
         style={{
           maxWidth: '300px',
           margin: '0 auto',

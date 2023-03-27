@@ -89,7 +89,7 @@ class NuevoPacienteFormulario extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
   handleOuterClick(event) {
-    const container = document.querySelector('.container');
+    const container = document.querySelector('.container1');
     if (container && !container.contains(event.target)) {
       this.props.onClose();
     }
@@ -104,7 +104,7 @@ class NuevoPacienteFormulario extends Component {
   render() {    
     return (
       <div
-        className="container"
+        className="container1"
         style={{
           maxWidth: '300px',
           margin: '0 auto',
