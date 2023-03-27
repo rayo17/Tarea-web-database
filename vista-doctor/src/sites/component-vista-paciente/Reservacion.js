@@ -77,7 +77,7 @@ function Reservacion() {
     const peticion_modificar = (event) => {
         event.preventDefault();
 
-        axios.get(`https://localhost:44362/api/Reservacion/${cedula}`)
+        axios.get(`http://localhost:5004/api/Reservacion/${cedula}`)
             .then(response => {
                 console.log(response)
                 setcedula(response.data.paciente)
@@ -99,7 +99,7 @@ function Reservacion() {
     const peticion_modif = (event) => {
         event.preventDefault()
         console.log('modificandoooooo')
-        axios.put(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`, {
+        axios.put(`http://localhost:5004/api/Reservacion/${cedula}/${proce}`, {
             id: id,
             paciente: cedula,
             procedimiento: proce,
@@ -116,7 +116,7 @@ function Reservacion() {
     const peticion_crear = (event) => {// petion para crear se hace con un post donde se envian un json
         event.preventDefault();
         setcontador(1 + contador)
-        axios.post('https://localhost:44362/api/Reservacion', {
+        axios.post('http://localhost:5004/api/Reservacion', {
             paciente: cedula,
             procedimiento: proce,
             fecha: fecha,
@@ -128,7 +128,7 @@ function Reservacion() {
     }
     const peticion_eliminar = (event) => {
         event.preventDefault()
-        axios.delete(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`).then(res => res.data)
+        axios.delete(`http://localhost:5004/api/Reservacion/${cedula}/${proce}`).then(res => res.data)
 
 
     }
@@ -161,7 +161,7 @@ function Reservacion() {
                     </div>
                     <div className='nombre'>
                         <label>cedula del paciente</label>
-                        <input name='cedula' placeholder='cedula' value={cedula} />
+                        <input name='cedula' placeholder='cedula' value={cedula} onChange={change_cedula} />
                     </div>
                     <div className='procedimiento'>
                         <label>Procedimiento Medico</label>

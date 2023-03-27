@@ -15,7 +15,7 @@ function HistorialP() {
      })*/
     const cargar_historial = async (event) => {
         event.preventDefault();
-        const resp = await axios.get('https://localhost:44362/api/Historial')
+        const resp = await axios.get('http://localhost:5004/api/historial')
         setusuarios(resp.data)
         setvible('historial')
 

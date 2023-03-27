@@ -146,7 +146,7 @@ function Agregar() {
             console.log('enviando form')
             setloading(true)
             axios
-                .post("https://localhost:44362/api/Paciente", {
+                .post("http://localhost:5004/api/paciente", {
                     cedula: cedula,
                     nombre: name,
                     primer_apellido: apellido1,
@@ -156,7 +156,7 @@ function Agregar() {
                 .then((response) => {
                     // Agregar la dirección del paciente
                     axios
-                        .post("https://localhost:44362/api/Paciente_Direcciones", {
+                        .post("http://localhost:5004/api/Paciente_Direcciones", {
                             paciente: cedula,
                             ubicacion: direct
                         })
@@ -164,7 +164,7 @@ function Agregar() {
                 ).then((response) => {
                     // Agregar la dirección del paciente
                     axios
-                        .post("https://localhost:44362/api/Patologia", {
+                        .post("http://localhost:5004/api/Patologia", {
                             Paciente: cedula,
                             Nombre: patologia,
                             Tratamiento: tratamiento

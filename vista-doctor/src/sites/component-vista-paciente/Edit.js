@@ -21,7 +21,7 @@ function Edit() {
         event.preventDefault()
         console.log('modificandoooooo')
         
-        axios.put(`https://localhost:44362/api/Reservacion/${cedula}/${proce}`, {
+        axios.put(`http://localhost:5004/api/Reservacion/${cedula}/${proce}`, {
             id: parametros.id,
             paciente: cedula,
             procedimiento: proce,
