@@ -1,0 +1,11 @@
+.null{
+    display: none;
+}
+
+.create{
+    outline: 1px solid black;
+}
+
+.modificar{
+    outline: 1px solid black;
+}
