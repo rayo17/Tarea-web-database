@@ -6,14 +6,18 @@
     <projectFile profileName="https">API_Rest/API_Rest.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7c588a4-9f37-46d3-8a0b-36e038ce4904" name="Changes" comment="" />
+    <list default="true" id="f7c588a4-9f37-46d3-8a0b-36e038ce4904" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.API_Rest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/API_Rest/obj/Debug/net7.0/API_Rest.assets.cache" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/mergeVistaDoctor" />
+    <option name="BRANCH" value="origin/ramaIgnacio" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -163,7 +167,7 @@
       <workItem from="1679789048859" duration="98000" />
       <workItem from="1679789571150" duration="613000" />
       <workItem from="1679795359114" duration="870000" />
-      <workItem from="1679887160399" duration="652000" />
+      <workItem from="1679887160399" duration="1844000" />
     </task>
     <task id="LOCAL-00001" summary="Correcciones">
       <created>1678754549563</created>
