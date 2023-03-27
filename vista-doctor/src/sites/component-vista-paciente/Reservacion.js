@@ -78,7 +78,7 @@ function Reservacion() {
         axios.get(`https://localhost:44362/api/Reservacion/${cedula}`)
             .then(response => {
                 console.log(response)
-                const datosUsuario=response.data[0]
+                const datosUsuario=response.data
                 setcedula(datosUsuario.paciente)
                 setproce(datosUsuario.procedimiento)
                 setfecha(datosUsuario.fecha)
