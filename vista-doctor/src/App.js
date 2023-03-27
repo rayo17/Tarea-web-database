@@ -27,7 +27,7 @@ function App() {
             <Route path='/Paciente' element={ <Paciente/> }/>
             <Route path='/Historial' element={ <Historial/> }/>
             <Route path='/historial-paciente'element={<HistorialP/>}/> 
-            <Route path='/editar-reservacion/:id' element={Edit}/>
+            <Route path='/editar-reservacion/:id' element={<Edit/>}/>
           </Routes>
       </Router>
       
